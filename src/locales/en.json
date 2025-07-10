@@ -1,0 +1,70 @@
+{
+  "hero": {
+    "title": "Arjun G",
+    "subtitle": "Crafting thoughtful digital experiences across healthcare and open-source domains — blending modern frontend craft, scalable backend design, and emerging AI capabilities to deliver meaningful impact.",
+    "scroll": "Scroll down"
+  },
+  "skills": {
+    "heading": "Professional Experience",
+    "jobs": [
+      {
+        "title": "Thoughtworks",
+        "role": "Application Developer - Senior Consultant (Aug 2024 – Present)",
+        "responsibilities": [
+          "Spearheaded development of an LLM-powered report generation app for a healthcare platform using React.js and Express.js",
+          "Led chatbot productization using Python, FastAPI, and PostgreSQL, delivering real-time user responses in clinical settings",
+          "Supported Bahmni releases through key PRs and in-patient feature development",
+          "Mentored developers, improving code quality and reducing deployment issues by 25%",
+          "Led critical code reviews, cutting production bugs by 20%",
+          "Increased stakeholder alignment with consistent technical documentation and delivery reports (+30% visibility)",
+          "Collaborated cross-functionally to improve delivery efficiency on open-source and client initiatives"
+        ]
+      },
+      {
+        "title": "Thoughtworks",
+        "role": "Application Developer - Consultant (Aug 2021 – Aug 2024)",
+        "responsibilities": [
+          "Migrated legacy AngularJS modules in Bahmni to a Micro Frontend (MFE) architecture using React.js and TypeScript",
+          "Built reusable component libraries, boosting frontend velocity by 25% and reducing UI bugs by 15%",
+          "Optimized backend flows using Spring Boot, Java, and Node.js, improving response time by 5–10%",
+          "Integrated frontend and backend flows with TypeScript, enabling faster feature rollouts (+20% speed)",
+          "Active contributor to OpenMRS & Bahmni open-source ecosystems"
+        ]
+      },
+      {
+        "title": "EDITH Industries",
+        "role": "Intern (Jan 2017 – Jun 2017)",
+        "responsibilities": [
+          "Built a responsive website with React.js, enhancing user engagement",
+          "Gained hands-on experience with containerization and web frameworks"
+        ]
+      }
+    ],
+    "techHeading": "Technical Skills"
+  },
+  "education": {
+    "heading": "Educational Qualifications",
+    "list": [
+      {
+        "degree": "Bachelor of Technology - Honours",
+        "institution": "NSS College of Engineering, Palakkad",
+        "years": "Jun 2017 - Jun 2021"
+      },
+      {
+        "degree": "Higher Secondary School",
+        "institution": "Chinmaya Vidyalaya, Vaduthala",
+        "years": "Jun 2015 - Jun 2017"
+      }
+    ]
+  },
+  "projects": {
+    "heading": "Projects",
+    "githubLink": "View on GitHub →"
+  },
+  "contact": {
+    "heading": "Contact Me",
+    "description": "You can reach out to me via LinkedIn or drop me a mail directly.",
+    "linkedin": "LinkedIn",
+    "email": "Send Email"
+  }
+}
