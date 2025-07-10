@@ -4,6 +4,14 @@
     "subtitle": "Crafting thoughtful digital experiences across healthcare and open-source domains — blending modern frontend craft, scalable backend design, and emerging AI capabilities to deliver meaningful impact.",
     "scroll": "Scroll down"
   },
+  "navbar": {
+    "home": "Home",
+    "skills": "Skills",
+    "experience": "Experience",
+    "education": "Education",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
   "skills": {
     "heading": "Professional Experience",
     "jobs": [
@@ -59,12 +67,67 @@
   },
   "projects": {
     "heading": "Projects",
-    "githubLink": "View on GitHub →"
+    "list": [
+      {
+        "name": "Bahmni Customizations",
+        "description": "Contributed to healthcare module enhancements and microfrontend refactors for Bahmni’s open-source EHR platform.",
+        "tech": ["React", "Webpack", "Node.js"],
+        "links": [
+          { "url": "https://github.com/Bahmni", "text": "View on GitHub →" }
+        ]
+      },
+      {
+        "name": "Client Admin Portal",
+        "description": "Built frontend-heavy internal tooling with reusable components, role-based routing, and analytics.",
+        "tech": ["React", "Redux", "Tailwind"],
+        "links": [
+          {
+            "url": "https://github.com/Bahmni/openmrs-module-ipd-frontend",
+            "text": "View on GitHub →"
+          }
+        ]
+      },
+      {
+        "name": "Portfolio Website",
+        "description": "This site! Designed and developed from scratch using React and Tailwind CSS.",
+        "tech": ["React", "TailwindCSS", "Vite"],
+        "links": [
+          {
+            "url": "https://github.com/Arjun-Gopinath/PortfolioApp",
+            "text": "View on GitHub →"
+          }
+        ]
+      },
+      {
+        "name": "CHA-O-TraffIC",
+        "description": "A HTML5 WebGL game developed using Godot Engine.",
+        "tech": ["Python", "Godot", "WebGL"],
+        "links": [
+          {
+            "url": "https://github.com/Arjun-Gopinath/CHA-O-TraffIC",
+            "text": "View on GitHub →"
+          },
+          { "url": "https://aaryyn.itch.io/chaotic", "text": "Try on itch →" }
+        ]
+      },
+      {
+        "name": "Price-Foreteller-for-Preowned-Cars",
+        "description": "A machine learning based prediction model that is used to predict the price of used cars based on data given by user",
+        "tech": ["Python", "Flask", "LightGBM", "Anaconda"],
+        "links": [
+          {
+            "url": "https://github.com/Arjun-Gopinath/Price-Foreteller-for-Preowned-Cars",
+            "text": "View on GitHub →"
+          }
+        ]
+      }
+    ]
   },
   "contact": {
     "heading": "Contact Me",
     "description": "You can reach out to me via LinkedIn or drop me a mail directly.",
-    "linkedin": "LinkedIn",
-    "email": "Send Email"
+    "linkedin": "Connect on LinkedIn",
+    "email": "Send Email",
+    "github": "Checkout my Github"
   }
 }

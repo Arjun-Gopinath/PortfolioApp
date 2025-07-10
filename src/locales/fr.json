@@ -1,0 +1,136 @@
+{
+  "hero": {
+    "title": "Arjun Gopinath",
+    "subtitle": "Créer des expériences numériques réfléchies dans les domaines des soins de santé et de l'open-source — en associant expertise frontend moderne, conception backend évolutive et IA émergente pour un impact significatif.",
+    "scroll": "Faites défiler vers le bas"
+  },
+  "navbar": {
+    "home": "Accueil",
+    "skills": "Compétences",
+    "experience": "Expérience",
+    "education": "Éducation",
+    "projects": "Projets",
+    "contact": "Contact"
+  },
+  "skills": {
+    "heading": "Expérience Professionnelle",
+    "jobs": [
+      {
+        "title": "Thoughtworks",
+        "role": "Développeur d'Applications - Consultant Senior (Août 2024 – Présent)",
+        "responsibilities": [
+          "Dirigé le développement d'une application de génération de rapports basée sur LLM pour une plateforme de santé en utilisant React.js et Express.js",
+          "Piloté la mise en production d'un chatbot avec Python, FastAPI et PostgreSQL, fournissant des réponses en temps réel en contexte clinique",
+          "Contribué aux versions de Bahmni via des PR clés et le développement de fonctionnalités patient hospitalisé",
+          "Encadré des développeurs, améliorant la qualité du code et réduisant les problèmes de déploiement de 25 %",
+          "Dirigé des revues de code critiques, réduisant les bugs en production de 20 %",
+          "Amélioré l'alignement avec les parties prenantes grâce à une documentation technique et des rapports de livraison (+30 % de visibilité)",
+          "Collaboré en transversal pour améliorer l'efficacité de livraison sur les initiatives open-source et clients"
+        ]
+      },
+      {
+        "title": "Thoughtworks",
+        "role": "Développeur d'Applications - Consultant (Août 2021 – Août 2024)",
+        "responsibilities": [
+          "Migré des modules AngularJS existants de Bahmni vers une architecture Micro Frontend (MFE) avec React.js et TypeScript",
+          "Créé des bibliothèques de composants réutilisables, augmentant la vitesse de développement de 25 % et réduisant les bugs UI de 15 %",
+          "Optimisé les flux backend avec Spring Boot, Java et Node.js, réduisant les temps de réponse de 5–10 %",
+          "Intégré les flux frontend et backend avec TypeScript, accélérant les déploiements de fonctionnalités (+20 %)",
+          "Contributeur actif aux écosystèmes open-source OpenMRS & Bahmni"
+        ]
+      },
+      {
+        "title": "EDITH Industries",
+        "role": "Stagiaire (Jan 2017 – Juin 2017)",
+        "responsibilities": [
+          "Développé un site web responsive avec React.js, améliorant l’engagement utilisateur",
+          "Acquis une expérience pratique de la containerisation et des frameworks web"
+        ]
+      }
+    ],
+    "techHeading": "Compétences Techniques"
+  },
+  "education": {
+    "heading": "Diplômes",
+    "list": [
+      {
+        "degree": "Bachelor of Technology - Honneurs",
+        "institution": "NSS College of Engineering, Palakkad",
+        "years": "Juin 2017 - Juin 2021"
+      },
+      {
+        "degree": "Lycée",
+        "institution": "Chinmaya Vidyalaya, Vaduthala",
+        "years": "Juin 2015 - Juin 2017"
+      }
+    ]
+  },
+  "projects": {
+    "heading": "Projets",
+    "list": [
+      {
+        "name": "Personnalisations Bahmni",
+        "description": "Contributions à l'amélioration des modules de santé et aux refactorisations microfrontend de la plateforme open-source Bahmni.",
+        "tech": ["React", "Webpack", "Node.js"],
+        "links": [
+          { "url": "https://github.com/Bahmni", "text": "Voir sur GitHub →" }
+        ]
+      },
+      {
+        "name": "Portail Admin Client",
+        "description": "Outils internes centrés sur le frontend avec composants réutilisables, routage basé sur les rôles et analytique.",
+        "tech": ["React", "Redux", "Tailwind"],
+        "links": [
+          {
+            "url": "https://github.com/Bahmni/openmrs-module-ipd-frontend",
+            "text": "Voir sur GitHub →"
+          }
+        ]
+      },
+      {
+        "name": "Site Personnel",
+        "description": "Ce site ! Conçu et développé de zéro avec React et Tailwind CSS.",
+        "tech": ["React", "TailwindCSS", "Vite"],
+        "links": [
+          {
+            "url": "https://github.com/Arjun-Gopinath/PortfolioApp",
+            "text": "Voir sur GitHub →"
+          }
+        ]
+      },
+      {
+        "name": "CHA-O-TraffIC",
+        "description": "Jeu WebGL HTML5 développé avec Godot Engine.",
+        "tech": ["Python", "Godot", "WebGL"],
+        "links": [
+          {
+            "url": "https://github.com/Arjun-Gopinath/CHA-O-TraffIC",
+            "text": "Voir sur GitHub →"
+          },
+          {
+            "url": "https://aaryyn.itch.io/chaotic",
+            "text": "Essayer sur itch →"
+          }
+        ]
+      },
+      {
+        "name": "Estimation de Prix de Voitures d’Occasion",
+        "description": "Modèle de prédiction basé sur le machine learning pour estimer le prix de voitures d’occasion selon les données utilisateurs",
+        "tech": ["Python", "Flask", "LightGBM", "Anaconda"],
+        "links": [
+          {
+            "url": "https://github.com/Arjun-Gopinath/Price-Foreteller-for-Preowned-Cars",
+            "text": "Voir sur GitHub →"
+          }
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "heading": "Contact Me",
+    "description": "You can reach out to me via LinkedIn or drop me a mail directly.",
+    "linkedin": "Connect on LinkedIn",
+    "email": "Send Email",
+    "github": "Checkout my Github"
+  }
+}

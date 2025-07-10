@@ -2,7 +2,11 @@ import { useTranslation } from "react-i18next";
 import { useState, useEffect, useRef } from "react";
 import { FaGlobe } from "react-icons/fa";
 
-const languages = [{ code: "en", label: "English" }];
+const languages = [
+  { code: "en", label: "English" },
+  { code: "es", label: "Español" },
+  { code: "fr", label: "Français" },
+];
 
 const ToggleLang = () => {
   const { i18n } = useTranslation();

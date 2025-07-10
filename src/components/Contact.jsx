@@ -38,7 +38,7 @@ const Contact = () => {
             aria-label="Connect on LinkedIn"
           >
             <FaLinkedin className="text-base" />
-            Connect on LinkedIn
+            {t("contact.linkedin")}
           </a>
 
           {/* GitHub Button */}
@@ -50,7 +50,7 @@ const Contact = () => {
             aria-label="Visit GitHub Profile"
           >
             <FaGithub className="text-base" />
-            GitHub
+            {t("contact.github")}
           </a>
         </div>
       </div>
