@@ -12,6 +12,11 @@ const Hero = () => {
       className="relative h-screen flex flex-col justify-center items-center text-center bg-gradient-to-b from-gray-950 to-gray-900 text-white px-4 overflow-hidden"
     >
       <h1 className="text-4xl md:text-6xl font-bold mb-4">{t("hero.title")}</h1>
+      <img
+        src="images/logo.png"
+        alt="AG Logo"
+        className="w-8 h-8 md:w-70 md:h-70 object-contain animate-slowspin"
+      />
       <p className="text-lg md:text-2xl max-w-xl text-gray-300">
         {t("hero.subtitle")}
       </p>

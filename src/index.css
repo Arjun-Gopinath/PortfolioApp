@@ -4,6 +4,12 @@ html {
   scroll-behavior: smooth;
 }
 
+@layer utilities {
+  .animate-slowspin {
+    animation: spin 5s linear infinite;
+  }
+}
+
 .perspective {
   perspective: 1200px;
 }

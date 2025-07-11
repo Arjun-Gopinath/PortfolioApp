@@ -9,7 +9,6 @@ const TopNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const sections = [
-    { id: "hero", label: t("navbar.home") },
     { id: "skills", label: t("navbar.skills") },
     { id: "experience", label: t("navbar.experience") },
     { id: "education", label: t("navbar.education") },
@@ -28,6 +27,17 @@ const TopNavbar = () => {
       style={{ fontFamily: "Manrope, sans-serif" }}
     >
       <div className="flex items-center gap-4">
+        <a
+          href="#hero"
+          onClick={() => handleNavClick("hero")}
+          className="flex items-center gap-2"
+        >
+          <img
+            src="images/logo.svg"
+            alt="AG Logo"
+            className="w-8 h-8 md:w-10 md:h-10 object-contain"
+          />
+        </a>
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden text-2xl"
