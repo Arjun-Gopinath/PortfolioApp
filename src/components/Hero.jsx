@@ -15,7 +15,7 @@ const Hero = () => {
       <img
         src="images/logo.png"
         alt="AG Logo"
-        className="w-8 h-8 md:w-70 md:h-70 object-contain animate-slowspin"
+        className="w-50 h-50 md:w-70 md:h-70 object-contain animate-slowspin"
       />
       <p className="text-lg md:text-2xl max-w-xl text-gray-300">
         {t("hero.subtitle")}

@@ -21,7 +21,7 @@ const Contact = () => {
         <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
           {/* Email Button */}
           <a
-            href="mailto:arjungopinath06@gmail.com?subject=Hey Arjun&body=I loved your portfolio!"
+            href="mailto:arjungopinath06@gmail.com?subject=Kudos%20on%20the%20Portfolio&body=Hi%20Arjun%2C%0A%0AI%20just%20checked%20out%20your%20portfolio%20and%20I%20really%20loved%20the%20work%20you've%20done!%0A%0AJust%20wanted%20to%20reach%20out%20and%20say%20keep%20up%20the%20great%20work!"
             className="inline-flex items-center gap-3 bg-sky-600 hover:bg-sky-700 transition px-5 py-3 rounded-full text-white font-medium text-sm shadow"
             aria-label="Send an email to Arjun"
           >
