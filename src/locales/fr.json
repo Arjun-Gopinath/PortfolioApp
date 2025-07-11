@@ -127,10 +127,10 @@
     ]
   },
   "contact": {
-    "heading": "Contact Me",
-    "description": "You can reach out to me via LinkedIn or drop me a mail directly.",
-    "linkedin": "Connect on LinkedIn",
-    "email": "Send Email",
-    "github": "Checkout my Github"
+    "heading": "Contactez-moi",
+    "description": "Vous pouvez me contacter via LinkedIn ou m'envoyer un e-mail directement.",
+    "linkedin": "Se connecter sur LinkedIn",
+    "email": "Envoyer un e-mail",
+    "github": "Voir mon Github"
   }
 }
