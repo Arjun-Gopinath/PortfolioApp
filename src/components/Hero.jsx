@@ -4,22 +4,6 @@ import { useTranslation } from "react-i18next";
 const Hero = () => {
   const { t } = useTranslation();
 
-  const backgroundImages = [
-    "/images/hero1.jpg",
-    "/images/hero2.jpg",
-    "/images/hero3.jpeg",
-  ];
-
-  const [currentImage, setCurrentImage] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prevIndex) => (prevIndex + 1) % backgroundImages.length);
-    }, 6000); // switch every 6 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section
       id="hero"

@@ -9,14 +9,14 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="py-20 px-6 md:px-12 bg-gray-900 text-white"
+      className="py-16 px-4 sm:px-6 md:px-12 bg-gray-900 text-white"
     >
-      <h2 className="text-3xl font-bold mb-10 text-center">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center">
         {t("skills.heading")}
       </h2>
 
-      <div className="relative max-w-4xl mx-auto mb-20">
-        {/* Timeline line only on md+ screens */}
+      <div className="relative max-w-4xl mx-auto space-y-12">
+        {/* Timeline bar for larger screens */}
         <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-sky-300" />
 
         {jobs.map((job, idx) => {
@@ -33,30 +33,30 @@ const Experience = () => {
                 visible: { opacity: 1, y: 0 },
                 hidden: { opacity: 0, y: 50 },
               }}
-              className={`w-full px-4 mb-10 ${
-                isLeft ? "md:pr-[55%]" : "md:pl-[55%]"
-              }`}
+              className={`w-full ${isLeft ? "md:pr-[55%]" : "md:pl-[55%]"}`}
             >
               <div
-                className={`relative group rounded-xl shadow-md transition-all duration-500 cursor-pointer 
-                  backdrop-blur-md bg-white/5 border border-white/5 text-gray-900
+                className={`relative group rounded-xl shadow-lg transition-all duration-500 cursor-pointer 
+                  backdrop-blur-md bg-white/5 border border-white/10
                   ${isLeft ? "md:ml-auto" : "md:mr-auto"}
-                  hover:shadow-lg`}
+                  hover:shadow-xl`}
               >
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-sky-200 flex items-center gap-2">
+                <div className="p-6 sm:p-8">
+                  <h3 className="text-lg sm:text-xl font-semibold text-sky-200 flex items-center gap-2">
                     <FaBuilding className="text-sky-400" />
                     {job.title}
                   </h3>
-                  <p className="text-sm text-gray-100">{job.role}</p>
+                  <p className="text-sm sm:text-base text-gray-100">
+                    {job.role}
+                  </p>
 
                   <div
                     className={`transition-all duration-500 overflow-hidden mt-4 ${
-                      // On small screens: always visible, on larger screens: hover to expand
+                      // Always expanded on small screens, hover-expand on large
                       "max-h-[1000px] lg:max-h-0 lg:group-hover:max-h-[1000px]"
                     }`}
                   >
-                    <ul className="list-disc list-inside text-sm text-gray-300 space-y-1">
+                    <ul className="list-disc list-inside text-sm sm:text-base text-gray-300 space-y-1 pt-2">
                       {job.responsibilities.map((item, i) => (
                         <li key={i}>{item}</li>
                       ))}
