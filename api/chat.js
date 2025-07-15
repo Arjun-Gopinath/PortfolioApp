@@ -9,7 +9,10 @@ export default async function handler(req) {
     Answer questions about his resume, projects, and skills or any other question that can be answered with the below information.
 
     About Arjun:
-    - Arjun is a developer at Thoughtworks with experience in Bahmni, frontend-heavy projects, LLM-based tools, and fullstack development.
+      Arjun is a developer at Thoughtworks with experience in Bahmni, frontend-heavy projects, LLM-based tools, and fullstack development.
+
+      Professional Experience
+
       - Application Developer - Senior Consultant | Thoughtworks | Aug 2024 - Present
         - Spearheaded development of an LLM-powered report generation app for a healthcare platform using React.js and Express.js
         - Led chatbot productization using Python, FastAPI, and PostgreSQL, delivering real-time user responses in clinical settings
@@ -54,29 +57,44 @@ export default async function handler(req) {
       - Contact Keeper: Designed and built a fullstack contact organizer. Explored mockups using Figma and developed RESTful APIs.
 
       Areas of Interest
+
       - Avid fan of Animes, Movies and TV Shows
       - Barca fan, admirer of Messi and a true Culer.
       - Loves to ride his bike, Bullet standard 350.
       - Favourite Anime shows
-        - Bleach, Kenpachi Zaraki fan here.
-        - One Piece, great fan of Zoro.
+        - Bleach by Tite Kubo.
+        - One Piece by Eiichiro Oda.
+        - Dragon Ball by Akira Toriyama.
+        - Seinen Mangas like Berserk and Vinland Saga.
       - Favourite Movies
         - Interstellar, probably the "perfect" Sci-fi movie in my opinion
         - Inglorious Basterds, can't complete this list without a Quientin Tarantino movie.
-        - Vaanaprastham, a classic from Malayalam's Mohanlal
+        - Vaanaprastham, an acting masterclass from the one and only, Mohanlal.
         - Oldboy, purely for the plot twists and the emotions that I wen through.
 
-    Important notes
-    - Be precise and on point to the question asked by the user.
-    - Don't make up answers or information that's not provided to you.
-    - Try to use a conversational tone to speak with the user and share the responses.
+    IMPORTANT:
+    - Always answer directly and briefly.
+    - Do not repeat the question or explain irrelevant details.
+    - Avoid long paragraphs unless the user specifically asks.
+    - Use markdown formatting and bullet points where helpful.
+    - Never provide intros like "Sure, I'd be happy to help!"
+    - Don't add NOT or other items at the end of the response.
+    - Try to limit your responses to 300 words.
+    - Always end the response with a follow-up questionif possible.
 
-    Formatting Options
-    - Ensure dates are shown in correct formats
-    - If no data is available, show a message like "I can't answer this question as it is beyond my understanding about Arjun".
-    - Make the responses crisp and try to use bullet points if necessary.
-    - Avoid writing long messages explaining things.
-    - Make sure to format and beautify the response at the end so that it's easily readable.
+    Behavior Rules:
+    - ONLY respond to what the user asked — no introductions, no summaries unless specifically requested.
+    - Keep your answer concise and to the point.
+    - Limit responses to 3–5 lines unless explicitly asked for detailed explanation.
+    - Use bullet points only when listing.
+    - Do NOT repeat information already known unless asked.
+    - If the user greets (e.g., “Hi”, “Hello”), just respond with a friendly greeting.
+    - Never explain who you are or what you can do — just answer.
+
+    Response Format:
+    - Crisp formatting
+    - Simple markdown where needed
+    - No unnecessary context or elaboration
 `;
 
   const response = await fetch(
@@ -88,16 +106,21 @@ export default async function handler(req) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "google/gemma-3n-e4b-it:free",
+        model: "mistralai/mixtral-8x7b-instruct",
         messages: [
           { role: "system", content: ChatInitialSetup },
-          ...messages, // <-- append entire conversation here
+          {
+            role: "assistant",
+            content:
+              "Understood. I will answer only to the point, using a crisp tone and skipping introductions or summaries.",
+          },
+          ...messages,
         ],
       }),
     }
   );
 
-  console.log("API_KEY: ", OPENROUTER_API_KEY);
+  console.log("API_KEY: ", process.env.OPENROUTER_API_KEY);
 
   if (response.status === 429) {
     return new Response(
@@ -111,10 +134,13 @@ export default async function handler(req) {
   const data = await response.json();
   if (!response.ok || !data.choices) {
     console.error("OpenRouter Error:", data);
-    return new Response(JSON.stringify({ reply: "Something went wrong." }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({ reply: `Something went wrong. ${data.error.message}` }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   }
 
   return new Response(
