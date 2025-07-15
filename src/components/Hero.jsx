@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import ChatWithMe from "./ChatWithMe";
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -31,6 +31,8 @@ const Hero = () => {
           <div className="mt-2 w-6 h-6 border-2 border-white rounded-full mx-auto"></div>
         </div>
       </div>
+
+      <ChatWithMe />
     </section>
   );
 };
