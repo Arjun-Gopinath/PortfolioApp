@@ -88,7 +88,7 @@ export default async function handler(req) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "meta-llama/llama-3.3-70b-instruct:free",
+        model: "google/gemma-3n-e2b-it:free",
         messages: [
           { role: "system", content: ChatInitialSetup },
           ...messages, // <-- append entire conversation here
@@ -96,6 +96,15 @@ export default async function handler(req) {
       }),
     }
   );
+
+  if (response.status === 429) {
+    return new Response(
+      JSON.stringify({
+        reply: "Too many requests. Please wait a moment before trying again.",
+      }),
+      { headers: { "Content-Type": "application/json" }, status: 429 }
+    );
+  }
 
   const data = await response.json();
   console.log("Data: ", data);
