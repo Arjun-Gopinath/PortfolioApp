@@ -76,7 +76,7 @@ export default async function handler(req) {
     - If no data is available, show a message like "I can't answer this question as it is beyond my understanding about Arjun".
     - Make the responses crisp and try to use bullet points if necessary.
     - Avoid writing long messages explaining things.
-    - If 
+    - Make sure to format and beautify the response at the end so that it's easily readable.
 `;
 
   const response = await fetch(
