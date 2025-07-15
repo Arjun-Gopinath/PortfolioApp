@@ -107,7 +107,6 @@ export default async function handler(req) {
   }
 
   const data = await response.json();
-  console.log("Data: ", data);
   if (!response.ok || !data.choices) {
     console.error("OpenRouter Error:", data);
     return new Response(JSON.stringify({ reply: "Something went wrong." }), {
