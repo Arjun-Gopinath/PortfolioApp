@@ -88,7 +88,7 @@ export default async function handler(req) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "google/gemma-3n-e2b-it:free",
+        model: "google/gemma-3n-e4b-it:free",
         messages: [
           { role: "system", content: ChatInitialSetup },
           ...messages, // <-- append entire conversation here
