@@ -97,6 +97,8 @@ export default async function handler(req) {
     }
   );
 
+  console.log("API_KEY: ", OPENROUTER_API_KEY);
+
   if (response.status === 429) {
     return new Response(
       JSON.stringify({
