@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiMessageCircle, FiX } from "react-icons/fi";
+import ReactMarkdown from "react-markdown";
 
 const ChatWithMe = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -111,7 +112,27 @@ const ChatWithMe = () => {
                         : "bg-gray-800 text-gray-200 text-left"
                     }`}
                   >
-                    {msg.content}
+                    {msg.role === "assistant" ? (
+                      <ReactMarkdown
+                        components={{
+                          strong: ({ children }) => (
+                            <strong className="text-sky-300 font-semibold">
+                              {children}
+                            </strong>
+                          ),
+                          li: ({ children }) => (
+                            <li className="ml-4 list-disc">{children}</li>
+                          ),
+                          p: ({ children }) => (
+                            <p className="mb-2">{children}</p>
+                          ),
+                        }}
+                      >
+                        {msg.content}
+                      </ReactMarkdown>
+                    ) : (
+                      msg.content
+                    )}
                   </div>
                 ))}
                 <div ref={messagesEndRef} />
