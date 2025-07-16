@@ -10,6 +10,21 @@ const ChatWithMe = () => {
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
+  useEffect(() => {
+    if (isOpen) {
+      // Lock scroll
+      document.body.style.overflow = "hidden";
+    } else {
+      // Restore scroll
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   // 🔽 Auto-scroll to the bottom on new message
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
