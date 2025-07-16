@@ -79,17 +79,18 @@ const ChatWithMe = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-end md:justify-end"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "tween", duration: 0.3 }}
+            className="fixed bottom-0 right-0 z-50 w-full lg:w-[500px] h-full bg-gray-950 text-white shadow-2xl flex flex-col border-l border-gray-800"
           >
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="bg-gray-950 text-white w-full md:w-[400px] h-full p-6 shadow-xl flex flex-col"
+              className="bg-gray-950 text-white w-full lg:w-[500px] h-full md:rounded-l-2xl mt-auto p-6 shadow-2xl flex flex-col"
             >
               {/* Header */}
               <div className="flex justify-between items-center mb-4">
@@ -109,6 +110,10 @@ const ChatWithMe = () => {
                     className={`text-sm p-3 rounded ${
                       msg.role === "user"
                         ? "bg-sky-700 text-white text-right"
+                        : msg.content.toLowerCase().includes("oops") ||
+                          msg.content.toLowerCase().includes("error") ||
+                          msg.content.toLowerCase().includes("wrong")
+                        ? "bg-red-800 text-red-100 text-left"
                         : "bg-gray-800 text-gray-200 text-left"
                     }`}
                   >

@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative h-screen flex items-center justify-center text-center px-4 py-12 bg-center bg-cover bg-gradient-to-b from-gray-950 to-gray-900 duration-1000"
+      className="relative h-screen flex items-center sm:h-[80%] justify-center text-center px-4 py-12 bg-center bg-cover bg-gradient-to-b from-gray-950 to-gray-900 duration-1000"
     >
       {/* Overlay for readability */}
       <div className="absolute inset-6 rounded-2xl z-0" />
