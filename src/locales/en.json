@@ -1,6 +1,6 @@
 {
   "hero": {
-    "subtitle": "Crafting thoughtful digital experiences across healthcare and open-source domains — blending modern frontend craft, scalable backend design, and emerging AI capabilities to deliver meaningful impact.",
+    "subtitle": "Fullstack Software Engineer with experience building enterprise-grade web applications across healthcare, analytics, and trading domains. Strong expertise in React, JavaScript, TypeScript, Python, FastAPI, REST APIs, and cloud-native delivery on AWS/Azure environments. Proven track record in building scalable frontend experiences, backend services, AI-powered products, and data visualization platforms. Experienced in Agile delivery, mentoring engineers, troubleshooting production issues, and collaborating with business, product, and data science teams.",
     "scroll": "Scroll down"
   },
   "navbar": {
@@ -26,7 +26,7 @@
       },
       {
         "title": "Thoughtworks",
-        "role": "Application Developer - Senior Consultant (Aug 2024 – Present)",
+        "role": "Application Developer - Senior Consultant (Aug 2024 – Jan 2026)",
         "responsibilities": [
           "Spearheaded development of an LLM-powered report generation app for a healthcare platform using React.js and Express.js",
           "Led chatbot productization using Python, FastAPI, and PostgreSQL, delivering real-time user responses in clinical settings",

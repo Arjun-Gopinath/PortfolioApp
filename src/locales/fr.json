@@ -1,6 +1,6 @@
 {
   "hero": {
-    "subtitle": "Créer des expériences numériques réfléchies dans les domaines des soins de santé et de l'open-source — en associant expertise frontend moderne, conception backend évolutive et IA émergente pour un impact significatif.",
+    "subtitle": "Ingénieur logiciel fullstack avec une expérience dans la création d'applications web de niveau entreprise dans les domaines de la santé, de l'analyse et du trading. Solide expertise en React, JavaScript, TypeScript, Python, FastAPI, REST APIs et livraison cloud-native sur les environnements AWS/Azure. Un parcours éprouvé dans la construction d'expériences frontend évolutives, de services backend, de produits alimentés par l'IA et de plateformes de visualisation de données. Expérimenté dans la livraison Agile, le mentorat d'ingénieurs, le dépannage des problèmes de production et la collaboration avec les équipes commerciales, produit et data science.",
     "scroll": "Faites défiler vers le bas"
   },
   "navbar": {
@@ -15,8 +15,18 @@
     "heading": "Expérience Professionnelle",
     "jobs": [
       {
+        "title": "Ransky Tech",
+        "role": "Ingénieur Logiciel (Fév 2026 - Avr 2026)",
+        "responsibilities": [
+          "Conçu des plateformes internes à faible latence pour les flux de travail HFT, permettant aux traders d'analyser les données commerciales à haut volume en quasi temps réel.",
+          "Créé des tableaux de bord en temps réel et des pipelines d'analyse pour la visibilité du PnL, de la qualité d'exécution et des performances commerciales.",
+          "Collaboré avec les équipes de trading pour identifier les inefficacités et automatiser les flux de travail d'analyse, améliorant la vitesse de prise de décision.",
+          "Exploité des outils assistés par l'IA pour accélérer le développement de fonctionnalités d'analyse et d'outils internes."
+        ]
+      },
+      {
         "title": "Thoughtworks",
-        "role": "Développeur d'Applications - Consultant Senior (Août 2024 – Présent)",
+        "role": "Développeur d'Applications - Consultant Senior (Août 2024 – Jan 2026)",
         "responsibilities": [
           "Dirigé le développement d'une application de génération de rapports basée sur LLM pour une plateforme de santé en utilisant React.js et Express.js",
           "Piloté la mise en production d'un chatbot avec Python, FastAPI et PostgreSQL, fournissant des réponses en temps réel en contexte clinique",

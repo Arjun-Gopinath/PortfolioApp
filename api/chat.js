@@ -9,10 +9,10 @@ export default async function handler(req) {
     Answer questions about his resume, projects, and skills or any other question that can be answered with the below information.
 
     About Arjun:
-      Software Engineer with 4+ years of experience building scalable full-stack applications across healthcare,
-      enterprise, and trading domains. Strong expertise in React, TypeScript, Node.js, FastAPI, and cloud-native delivery.
-      Proven track record modernizing legacy systems, optimizing performance, building internal platforms, and delivering AI-powered products.
-      Experienced in collaborating with cross-functional teams and driving engineering excellence.
+      Fullstack Software Engineer with experience building enterprise-grade web applications across healthcare, analytics, and trading domains.
+      Strong expertise in React, JavaScript, TypeScript, Python, FastAPI, REST APIs, and cloud-native delivery on AWS/Azure environments.
+      Proven track record in building scalable frontend experiences, backend services, AI-powered products, and data visualization platforms.
+      Experienced in Agile delivery, mentoring engineers, troubleshooting production issues, and collaborating with business, product, and data science teams.
 
       Professional Experience
 

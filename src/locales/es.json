@@ -1,6 +1,6 @@
 {
   "hero": {
-    "subtitle": "Creando experiencias digitales reflexivas en los sectores de la salud y el código abierto, combinando desarrollo frontend moderno, diseño backend escalable y capacidades emergentes de IA para generar un impacto significativo.",
+    "subtitle": "Ingeniero de Software Fullstack con experiencia en la construcción de aplicaciones web de nivel empresarial en los dominios de salud, análisis y trading. Fuerte experiencia en React, JavaScript, TypeScript, Python, FastAPI, REST APIs y entrega nativa en la nube en entornos AWS/Azure. Historial comprobado en la construcción de experiencias frontend escalables, servicios backend, productos impulsados por IA y plataformas de visualización de datos. Experiencia en entrega ágil, mentoría de ingenieros, solución de problemas en producción y colaboración con equipos de negocio, producto y ciencia de datos.",
     "scroll": "Desplázate hacia abajo"
   },
   "navbar": {
@@ -15,8 +15,18 @@
     "heading": "Experiencia Profesional",
     "jobs": [
       {
+        "title": "Ransky Tech",
+        "role": "Ingeniero de Software (Feb 2026 - Abr 2026)",
+        "responsibilities": [
+          "Diseñé plataformas internas de baja latencia para flujos de trabajo de HFT, permitiendo a los traders analizar datos comerciales de alto volumen en tiempo real.",
+          "Construí paneles de control en tiempo real y tuberías de análisis para PnL, calidad de ejecución y visibilidad del rendimiento comercial.",
+          "Colaboré con equipos de trading para identificar ineficiencias y automatizar flujos de trabajo de análisis, mejorando la velocidad de toma de decisiones.",
+          "Aproveché herramientas asistidas por IA para acelerar el desarrollo de características de análisis y herramientas internas."
+        ]
+      },
+      {
         "title": "Thoughtworks",
-        "role": "Desarrollador de Aplicaciones - Consultor Senior (Ago 2024 – Presente)",
+        "role": "Desarrollador de Aplicaciones - Consultor Senior (Ago 2024 – Ene 2026)",
         "responsibilities": [
           "Lideré el desarrollo de una aplicación de generación de informes basada en LLM para una plataforma de salud utilizando React.js y Express.js",
           "Encabecé la implementación de un chatbot usando Python, FastAPI y PostgreSQL, brindando respuestas en tiempo real en entornos clínicos",
