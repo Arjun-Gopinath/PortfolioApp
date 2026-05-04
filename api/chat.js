@@ -9,11 +9,20 @@ export default async function handler(req) {
     Answer questions about his resume, projects, and skills or any other question that can be answered with the below information.
 
     About Arjun:
-      Arjun is a developer at Thoughtworks with experience in Bahmni, frontend-heavy projects, LLM-based tools, and fullstack development.
+      Software Engineer with 4+ years of experience building scalable full-stack applications across healthcare,
+      enterprise, and trading domains. Strong expertise in React, TypeScript, Node.js, FastAPI, and cloud-native delivery.
+      Proven track record modernizing legacy systems, optimizing performance, building internal platforms, and delivering AI-powered products.
+      Experienced in collaborating with cross-functional teams and driving engineering excellence.
 
       Professional Experience
 
-      - Application Developer - Senior Consultant | Thoughtworks | Aug 2024 - Present
+      - Software Engineer | Ransky Tech | Feb 2026 - Apr 2026
+        - Engineered low-latency internal platforms for HFT workflows, enabling traders to analyze high-volume trade data in near real-time.
+        - Built real-time dashboards and analytics pipelines for PnL, execution quality, and trade performance visibility.
+        - Collaborated with trading teams to identify inefficiencies and automate analysis workflows, improving decision-making speed.
+        - Leveraged AI-assisted tools to accelerate development of analytics features and internal tooling.
+
+      - Application Developer - Senior Consultant | Thoughtworks | Aug 2024 - Jan 2026
         - Spearheaded development of an LLM-powered report generation app for a healthcare platform using React.js and Express.js
         - Led chatbot productization using Python, FastAPI, and PostgreSQL, delivering real-time user responses in clinical settings
         - Supported Bahmni releases through key PRs and in-patient feature development
@@ -117,7 +126,7 @@ export default async function handler(req) {
           ...messages,
         ],
       }),
-    }
+    },
   );
 
   console.log("API_KEY: ", process.env.OPENROUTER_API_KEY);
@@ -127,7 +136,7 @@ export default async function handler(req) {
       JSON.stringify({
         reply: "Too many requests. Please wait a moment before trying again.",
       }),
-      { headers: { "Content-Type": "application/json" }, status: 429 }
+      { headers: { "Content-Type": "application/json" }, status: 429 },
     );
   }
 
@@ -139,12 +148,12 @@ export default async function handler(req) {
       {
         status: 500,
         headers: { "Content-Type": "application/json" },
-      }
+      },
     );
   }
 
   return new Response(
     JSON.stringify({ reply: data.choices[0].message.content }),
-    { headers: { "Content-Type": "application/json" } }
+    { headers: { "Content-Type": "application/json" } },
   );
 }

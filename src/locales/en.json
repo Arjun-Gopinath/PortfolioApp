@@ -15,6 +15,16 @@
     "heading": "Professional Experience",
     "jobs": [
       {
+        "title": "Ransky Tech",
+        "role": "Software Engineer (Feb 2026 - Apr 2026)",
+        "responsibilities": [
+          "Engineered low-latency internal platforms for HFT workflows, enabling traders to analyze high-volume trade data in near real-time.",
+          "Built real-time dashboards and analytics pipelines for PnL, execution quality, and trade performance visibility.",
+          "Collaborated with trading teams to identify inefficiencies and automate analysis workflows, improving decision-making speed.",
+          "Leveraged AI-assisted tools to accelerate development of analytics features and internal tooling."
+        ]
+      },
+      {
         "title": "Thoughtworks",
         "role": "Application Developer - Senior Consultant (Aug 2024 – Present)",
         "responsibilities": [
