@@ -81,7 +81,7 @@ const Skills = () => {
       title: "Practices",
       skills: [
         { name: "TDD" },
-        { name: "Agile/Scrum" },
+        { name: "Agile / Scrum" },
         { name: "CI/CD" },
         { name: "Atomic Design" },
         { name: "MFE Architecture" },
@@ -102,44 +102,42 @@ const Skills = () => {
       id="skills"
       className="py-20 px-6 md:px-12 bg-gray-900 text-white"
     >
-      <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+      <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">
         {t("skills.techHeading")}
       </h2>
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div className="max-w-5xl mx-auto space-y-10">
         {categorizedSkills.map((category, index) => (
           <motion.div
             key={index}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            variants={{
-              visible: { opacity: 1, y: 0 },
-              hidden: { opacity: 0, y: 50 },
-            }}
+            transition={{ duration: 0.45, delay: index * 0.07 }}
+            className="space-y-3"
           >
-            <div
-              key={index}
-              className="backdrop-blur-md bg-white/5 border border-white/10 text-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col gap-4"
-            >
-              <h3 className="text-lg font-bold text-sky-200">
+            {/* Category label + horizontal rule */}
+            <div className="flex items-center gap-4">
+              <span className="text-xs uppercase tracking-widest text-gray-500 shrink-0">
                 {category.title}
-              </h3>
+              </span>
+              <div className="flex-1 h-px bg-white/10" />
+            </div>
 
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, idx) => (
-                  <div
-                    key={idx}
-                    title={skill.name}
-                    className="flex items-center gap-2 bg-white/20 text-white rounded-full px-3 py-1 text-sm font-medium shadow-sm hover:scale-105 transition-transform duration-200"
-                  >
-                    {skill.icon && (
-                      <span className="text-lg text-sky-300">{skill.icon}</span>
-                    )}
-                    <span>{skill.name}</span>
-                  </div>
-                ))}
-              </div>
+            {/* Skill pills */}
+            <div className="flex flex-wrap gap-2">
+              {category.skills.map((skill, idx) => (
+                <div
+                  key={idx}
+                  title={skill.name}
+                  className="flex items-center gap-2 bg-white/10 border border-white/10 text-white rounded-full px-3 py-1 text-sm font-medium shadow-sm hover:scale-105 hover:bg-white/15 transition-all duration-200"
+                >
+                  {skill.icon && (
+                    <span className="text-base text-sky-300">{skill.icon}</span>
+                  )}
+                  <span>{skill.name}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
         ))}

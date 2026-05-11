@@ -1,4 +1,5 @@
 import Certifications from "./components/Certifications";
+import ChatWithMe from "./components/ChatWithMe";
 import Contact from "./components/Contact";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
@@ -24,6 +25,7 @@ function App() {
         <Projects />
         <Contact />
       </main>
+      <ChatWithMe />
       <Footer />
       <ScrollToTop />
     </>
