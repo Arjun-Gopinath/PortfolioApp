@@ -78,11 +78,15 @@ const Hero = () => {
           </a>
         </motion.div>
 
-        <div className="mt-16 animate-bounce hidden sm:block">
-          <span className="text-xs uppercase tracking-widest text-gray-500">
-            {t("hero.scroll")}
-          </span>
-          <div className="mt-2 w-5 h-5 border border-white/30 rounded-full mx-auto" />
+        <div className="mt-16 hidden sm:flex flex-col items-center">
+          <div className="relative w-px h-12 bg-white/10 overflow-hidden rounded-full">
+            <motion.div
+              className="absolute top-0 left-0 w-full rounded-full bg-gradient-to-b from-sky-400 to-sky-400/0"
+              animate={{ y: ["-100%", "200%"] }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+              style={{ height: "50%" }}
+            />
+          </div>
         </div>
       </div>
     </section>

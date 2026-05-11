@@ -1,10 +1,17 @@
 import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FiMessageCircle, FiX } from "react-icons/fi";
+import { FiMessageCircle, FiX, FiTrash2 } from "react-icons/fi";
 import ReactMarkdown from "react-markdown";
 
 const WELCOME = "Ask me anything about Arjun's experience, projects, or skills.";
 const MAX_MESSAGES = 20;
+
+const SUGGESTED_PROMPTS = [
+  "What's his experience?",
+  "What are his skills?",
+  "What projects has he built?",
+  "Where did he study?",
+];
 
 const TypingIndicator = () => (
   <div className="flex gap-1.5 p-3 bg-gray-800 rounded-lg w-fit">
@@ -19,6 +26,23 @@ const TypingIndicator = () => (
   </div>
 );
 
+const markdownComponents = {
+  strong: ({ children }) => (
+    <strong className="text-sky-300 font-semibold">{children}</strong>
+  ),
+  ul: ({ children }) => <ul className="space-y-1 my-2">{children}</ul>,
+  ol: ({ children }) => (
+    <ol className="space-y-1 my-2 list-decimal ml-4">{children}</ol>
+  ),
+  li: ({ children }) => (
+    <li className="flex gap-2 items-start">
+      <span className="text-sky-400 shrink-0 mt-0.5">•</span>
+      <span>{children}</span>
+    </li>
+  ),
+  p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+};
+
 const ChatWithMe = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -30,14 +54,15 @@ const ChatWithMe = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [conversation, loading]);
 
-  const sendMessage = async () => {
-    if (!input.trim() || loading) return;
+  const sendMessage = async (overrideText) => {
+    const text = overrideText ?? input;
+    if (!text.trim() || loading) return;
 
-    const userMessage = { role: "user", content: input.trim() };
+    const userMessage = { role: "user", content: text.trim() };
     const updated = [...conversation, userMessage].slice(-MAX_MESSAGES);
 
     setConversation(updated);
-    setInput("");
+    if (!overrideText) setInput("");
     setLoading(true);
 
     try {
@@ -104,9 +129,20 @@ const ChatWithMe = () => {
               <h3 className="text-lg font-semibold text-sky-400">
                 Ask Arjun Anything
               </h3>
-              <button onClick={() => setIsOpen(false)} aria-label="Close chat">
-                <FiX size={24} />
-              </button>
+              <div className="flex items-center gap-3">
+                {conversation.length > 0 && (
+                  <button
+                    onClick={() => setConversation([])}
+                    aria-label="Clear conversation"
+                    className="text-gray-500 hover:text-gray-300 transition-colors duration-200"
+                  >
+                    <FiTrash2 size={18} />
+                  </button>
+                )}
+                <button onClick={() => setIsOpen(false)} aria-label="Close chat">
+                  <FiX size={24} />
+                </button>
+              </div>
             </div>
 
             {/* Messages */}
@@ -115,9 +151,21 @@ const ChatWithMe = () => {
               style={{ overscrollBehavior: "contain" }}
             >
               {conversation.length === 0 && (
-                <p className="text-sm text-gray-500 text-center mt-6 px-4">
-                  {WELCOME}
-                </p>
+                <div className="mt-6 px-2 space-y-4">
+                  <p className="text-sm text-gray-500 text-center">{WELCOME}</p>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {SUGGESTED_PROMPTS.map((prompt) => (
+                      <button
+                        key={prompt}
+                        onClick={() => sendMessage(prompt)}
+                        disabled={loading}
+                        className="text-xs border border-white/15 hover:border-sky-500/50 hover:bg-sky-500/10 text-gray-400 hover:text-sky-300 px-3 py-1.5 rounded-full transition-all duration-200 disabled:opacity-40"
+                      >
+                        {prompt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               )}
 
               {conversation.map((msg, idx) => (
@@ -132,21 +180,7 @@ const ChatWithMe = () => {
                   }`}
                 >
                   {msg.role === "assistant" ? (
-                    <ReactMarkdown
-                      components={{
-                        strong: ({ children }) => (
-                          <strong className="text-sky-300 font-semibold">
-                            {children}
-                          </strong>
-                        ),
-                        li: ({ children }) => (
-                          <li className="ml-4 list-disc">{children}</li>
-                        ),
-                        p: ({ children }) => (
-                          <p className="mb-2 last:mb-0">{children}</p>
-                        ),
-                      }}
-                    >
+                    <ReactMarkdown components={markdownComponents}>
                       {msg.content}
                     </ReactMarkdown>
                   ) : (
@@ -173,7 +207,7 @@ const ChatWithMe = () => {
                 className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-sky-600 transition-colors duration-200 disabled:opacity-60"
               />
               <button
-                onClick={sendMessage}
+                onClick={() => sendMessage()}
                 disabled={loading || !input.trim()}
                 className="bg-sky-600 hover:bg-sky-700 disabled:opacity-50 disabled:cursor-not-allowed px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
               >
