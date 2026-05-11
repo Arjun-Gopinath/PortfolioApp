@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaEnvelope, FaLinkedin, FaGithub, FaFileDownload } from "react-icons/fa";
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -51,6 +51,17 @@ const Contact = () => {
           >
             <FaGithub className="text-base" />
             {t("contact.github")}
+          </a>
+
+          {/* Resume Download Button */}
+          <a
+            href="/resume/arjun-gopinath-resume.pdf"
+            download
+            className="inline-flex items-center gap-3 bg-sky-700 hover:bg-sky-800 transition px-5 py-3 rounded-full text-white font-medium text-sm shadow"
+            aria-label="Download Arjun's resume"
+          >
+            <FaFileDownload className="text-base" />
+            {t("contact.resume")}
           </a>
         </div>
       </div>

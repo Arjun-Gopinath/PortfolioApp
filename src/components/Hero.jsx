@@ -1,5 +1,9 @@
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import { FaFileDownload } from "react-icons/fa";
 import ChatWithMe from "./ChatWithMe";
+
+const isOpenToWork = import.meta.env.VITE_OPEN_TO_WORK === "true";
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -9,22 +13,74 @@ const Hero = () => {
       id="hero"
       className="relative h-screen flex items-center sm:h-[80%] justify-center text-center px-4 py-12 bg-center bg-cover bg-gradient-to-b from-gray-950 to-gray-900 duration-1000"
     >
-      {/* Overlay for readability */}
       <div className="absolute inset-6 rounded-2xl z-0" />
 
-      {/* Main content inside the padded, rounded container */}
       <div className="relative z-10 p-8 md:p-16 bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl max-w-3xl">
+        {isOpenToWork && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="flex justify-center mb-4"
+          >
+            <span className="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/40 text-green-400 text-xs font-medium px-3 py-1 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              {t("hero.openToWork")}
+            </span>
+          </motion.div>
+        )}
+
         <img
           src="images/logo.png"
           alt="AG Logo"
-          className="w-50 h-50 md:w-80 md:h-80 object-contain animate-slowspin mx-auto mb-4"
+          className="w-50 h-50 md:w-64 md:h-64 object-contain animate-slowspin mx-auto mb-4"
         />
 
-        <p className="text-lg md:text-2xl text-gray-200">
-          {t("hero.subtitle")}
-        </p>
+        <motion.h1
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500 mb-1"
+        >
+          {t("hero.name")}
+        </motion.h1>
 
-        <div className="mt-10 animate-bounce">
+        <motion.h2
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-base md:text-lg font-medium text-gray-300 mb-4"
+        >
+          {t("hero.title")}
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-sm md:text-base text-gray-200"
+        >
+          {t("hero.subtitle")}
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-6 flex justify-center"
+        >
+          <a
+            href="/resume/arjun-gopinath-resume.pdf"
+            download
+            className="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-700 transition-colors duration-200 px-5 py-2.5 rounded-full text-white text-sm font-medium shadow"
+            aria-label="Download Arjun's resume"
+          >
+            <FaFileDownload className="text-base" />
+            {t("hero.downloadResume")}
+          </a>
+        </motion.div>
+
+        <div className="mt-8 animate-bounce">
           <span className="text-sm uppercase tracking-widest text-gray-300">
             {t("hero.scroll")}
           </span>
