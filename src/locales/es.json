@@ -108,17 +108,46 @@
     "heading": "Proyectos",
     "list": [
       {
+        "name": "Captain's Wheel",
+        "description": "Un juego de navegador de temática casino desarrollado con Phaser 3. Gira la rueda, iguala el palo, vence a la casa.",
+        "tech": [
+          "JavaScript",
+          "Phaser 3"
+        ],
+        "links": [
+          {
+            "url": "https://github.com/Arjun-Gopinath/captains-wheel",
+            "text": "Ver en GitHub →"
+          },
+          {
+            "url": "https://arjun-gopinath.itch.io/captains-wheel",
+            "text": "Jugar en itch →"
+          }
+        ]
+      },
+      {
         "name": "Personalizaciones de Bahmni",
         "description": "Contribuí a mejoras de módulos de salud y refactorizaciones de microfrontends en la plataforma de EHR de código abierto Bahmni.",
-        "tech": ["React", "Webpack", "Node.js"],
+        "tech": [
+          "React",
+          "Webpack",
+          "Node.js"
+        ],
         "links": [
-          { "url": "https://github.com/Bahmni", "text": "Ver en GitHub →" }
+          {
+            "url": "https://github.com/Bahmni",
+            "text": "Ver en GitHub →"
+          }
         ]
       },
       {
         "name": "Portal de Administración de Clientes",
         "description": "Herramientas internas centradas en frontend con componentes reutilizables, enrutamiento basado en roles y análisis.",
-        "tech": ["React", "Redux", "Tailwind"],
+        "tech": [
+          "React",
+          "Redux",
+          "Tailwind"
+        ],
         "links": [
           {
             "url": "https://github.com/Bahmni/openmrs-module-ipd-frontend",
@@ -129,7 +158,11 @@
       {
         "name": "Sitio Web de Portafolio",
         "description": "¡Este sitio! Diseñado y desarrollado desde cero usando React y Tailwind CSS.",
-        "tech": ["React", "TailwindCSS", "Vite"],
+        "tech": [
+          "React",
+          "TailwindCSS",
+          "Vite"
+        ],
         "links": [
           {
             "url": "https://github.com/Arjun-Gopinath/PortfolioApp",
@@ -140,7 +173,11 @@
       {
         "name": "CHA-O-TraffIC",
         "description": "Un juego WebGL HTML5 desarrollado con Godot Engine.",
-        "tech": ["Python", "Godot", "WebGL"],
+        "tech": [
+          "Python",
+          "Godot",
+          "WebGL"
+        ],
         "links": [
           {
             "url": "https://github.com/Arjun-Gopinath/CHA-O-TraffIC",
@@ -155,7 +192,12 @@
       {
         "name": "Predicción de Precios de Autos Usados",
         "description": "Modelo de predicción basado en machine learning para estimar el precio de autos usados según datos proporcionados por el usuario",
-        "tech": ["Python", "Flask", "LightGBM", "Anaconda"],
+        "tech": [
+          "Python",
+          "Flask",
+          "LightGBM",
+          "Anaconda"
+        ],
         "links": [
           {
             "url": "https://github.com/Arjun-Gopinath/Price-Foreteller-for-Preowned-Cars",

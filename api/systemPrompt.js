@@ -45,6 +45,7 @@ Arjun Gopinath is a frontend-focused Full Stack Engineer with 4+ years of experi
 
 ## Projects
 
+- **Captain's Wheel** — Fast-paced casino-themed browser game built with Phaser 3. Spin the wheel, match the suit, beat the house. Playable on itch.io.
 - **Financial Reporting Platform** — Cross-exchange platform to track balances, P&L, and fees with automated daily reporting
 - **AI Chatbot for Healthcare** — Medical admin chatbot built with FastAPI and Temporal Workflows for real-time database-driven responses to clinical queries
 - **EMS Code Migration** — Migrated a legacy Angular 1.x EMR codebase to a modular React MFE system, improving UX, performance, and modularity
