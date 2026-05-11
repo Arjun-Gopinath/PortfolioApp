@@ -1,6 +1,10 @@
 {
   "hero": {
-    "subtitle": "Ingeniero de Software Fullstack con experiencia en la construcción de aplicaciones web de nivel empresarial en los dominios de salud, análisis y trading. Fuerte experiencia en React, JavaScript, TypeScript, Python, FastAPI, REST APIs y entrega nativa en la nube en entornos AWS/Azure. Historial comprobado en la construcción de experiencias frontend escalables, servicios backend, productos impulsados por IA y plataformas de visualización de datos. Experiencia en entrega ágil, mentoría de ingenieros, solución de problemas en producción y colaboración con equipos de negocio, producto y ciencia de datos.",
+    "name": "Arjun Gopinath",
+    "title": "Ingeniero de Software Fullstack",
+    "openToWork": "Disponible para trabajar",
+    "downloadResume": "Descargar CV",
+    "subtitle": "Experiencia en la construcción de aplicaciones web de nivel empresarial en los dominios de salud, análisis y trading. Fuerte experiencia en React, JavaScript, TypeScript, Python, FastAPI, REST APIs y entrega nativa en la nube en entornos AWS/Azure. Historial comprobado en la construcción de experiencias frontend escalables, servicios backend, productos impulsados por IA y plataformas de visualización de datos.",
     "scroll": "Desplázate hacia abajo"
   },
   "navbar": {
@@ -140,6 +144,10 @@
     "description": "Puedes contactarme a través de LinkedIn o enviarme un correo directamente.",
     "linkedin": "Conéctate en LinkedIn",
     "email": "Enviar correo",
-    "github": "Mira mi GitHub"
+    "github": "Mira mi GitHub",
+    "resume": "Descargar CV"
+  },
+  "footer": {
+    "quickLinks": "Enlaces Rápidos"
   }
 }
