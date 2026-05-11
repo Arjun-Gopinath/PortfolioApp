@@ -14,7 +14,7 @@ export default async function handler(req) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: "google/gemma-4-31b-it:free",
+      model: "nvidia/nemotron-3-super-120b-a12b:free",
       messages: [
         { role: "system", content: systemPrompt },
         ...messages,
