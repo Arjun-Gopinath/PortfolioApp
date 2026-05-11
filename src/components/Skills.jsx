@@ -100,7 +100,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="py-16 px-6 md:px-12 transition-all duration-500 bg-gray-900 text-white"
+      className="py-20 px-6 md:px-12 bg-gray-900 text-white"
     >
       <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
         {t("skills.techHeading")}
@@ -120,7 +120,7 @@ const Skills = () => {
           >
             <div
               key={index}
-              className="backdrop-blur-md bg-white/5 border border-white/5 text-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col gap-4"
+              className="backdrop-blur-md bg-white/5 border border-white/10 text-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col gap-4"
             >
               <h3 className="text-lg font-bold text-sky-200">
                 {category.title}

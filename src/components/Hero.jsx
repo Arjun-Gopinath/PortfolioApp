@@ -11,11 +11,11 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative h-screen flex items-center sm:h-[80%] justify-center text-center px-4 py-12 bg-center bg-cover bg-gradient-to-b from-gray-950 to-gray-900 duration-1000"
+      className="relative min-h-screen flex items-center justify-center text-center px-4 py-20 bg-center bg-cover bg-gradient-to-b from-gray-950 to-gray-900"
     >
       <div className="absolute inset-6 rounded-2xl z-0" />
 
-      <div className="relative z-10 p-8 md:p-16 bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl max-w-3xl">
+      <div className="relative z-10 p-5 sm:p-8 md:p-14 bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl max-w-3xl w-full">
         {isOpenToWork && (
           <motion.div
             initial={{ opacity: 0, y: -8 }}
@@ -33,7 +33,7 @@ const Hero = () => {
         <img
           src="images/logo.png"
           alt="AG Logo"
-          className="w-50 h-50 md:w-64 md:h-64 object-contain animate-slowspin mx-auto mb-4"
+          className="w-28 h-28 sm:w-40 sm:h-40 md:w-56 md:h-56 object-contain animate-slowspin mx-auto mb-4"
         />
 
         <motion.h1
@@ -80,7 +80,7 @@ const Hero = () => {
           </a>
         </motion.div>
 
-        <div className="mt-8 animate-bounce">
+        <div className="mt-8 animate-bounce hidden sm:block">
           <span className="text-sm uppercase tracking-widest text-gray-300">
             {t("hero.scroll")}
           </span>

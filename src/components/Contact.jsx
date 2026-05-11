@@ -18,11 +18,11 @@ const Contact = () => {
           {t("contact.description")}
         </p>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
           {/* Email Button */}
           <a
             href="mailto:arjungopinath06@gmail.com?subject=Kudos%20on%20the%20Portfolio&body=Hi%20Arjun%2C%0A%0AI%20just%20checked%20out%20your%20portfolio%20and%20I%20really%20loved%20the%20work%20you've%20done!%0A%0AJust%20wanted%20to%20reach%20out%20and%20say%20keep%20up%20the%20great%20work!"
-            className="inline-flex items-center gap-3 bg-sky-600 hover:bg-sky-700 transition px-5 py-3 rounded-full text-white font-medium text-sm shadow"
+            className="flex items-center justify-center gap-3 bg-sky-600 hover:bg-sky-700 transition px-5 py-3 rounded-full text-white font-medium text-sm shadow"
             aria-label="Send an email to Arjun"
           >
             <FaEnvelope className="text-base" />
@@ -34,7 +34,7 @@ const Contact = () => {
             href="https://www.linkedin.com/in/arjun-g-b3b57b1a1/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 transition px-5 py-3 rounded-full text-white font-medium text-sm shadow"
+            className="flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 transition px-5 py-3 rounded-full text-white font-medium text-sm shadow"
             aria-label="Connect on LinkedIn"
           >
             <FaLinkedin className="text-base" />
@@ -46,7 +46,7 @@ const Contact = () => {
             href="https://github.com/Arjun-Gopinath"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-gray-800 hover:bg-gray-700 transition px-5 py-3 rounded-full text-white font-medium text-sm shadow"
+            className="flex items-center justify-center gap-3 bg-gray-800 hover:bg-gray-700 transition px-5 py-3 rounded-full text-white font-medium text-sm shadow"
             aria-label="Visit GitHub Profile"
           >
             <FaGithub className="text-base" />
@@ -57,7 +57,7 @@ const Contact = () => {
           <a
             href="/resume/arjun-gopinath-resume.pdf"
             download
-            className="inline-flex items-center gap-3 bg-sky-700 hover:bg-sky-800 transition px-5 py-3 rounded-full text-white font-medium text-sm shadow"
+            className="flex items-center justify-center gap-3 bg-sky-700 hover:bg-sky-800 transition px-5 py-3 rounded-full text-white font-medium text-sm shadow"
             aria-label="Download Arjun's resume"
           >
             <FaFileDownload className="text-base" />

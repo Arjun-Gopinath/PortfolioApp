@@ -1,5 +1,21 @@
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
+import { FaGraduationCap } from "react-icons/fa";
+
+const accents = [
+  {
+    border: "border-emerald-500/40",
+    dot: "bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.6)]",
+    icon: "text-emerald-300 bg-emerald-500/10 border-emerald-500/30",
+    year: "text-emerald-400",
+  },
+  {
+    border: "border-violet-500/40",
+    dot: "bg-violet-400 shadow-[0_0_10px_rgba(167,139,250,0.6)]",
+    icon: "text-violet-300 bg-violet-500/10 border-violet-500/30",
+    year: "text-violet-400",
+  },
+];
 
 const Education = () => {
   const { t } = useTranslation();
@@ -8,52 +24,64 @@ const Education = () => {
   return (
     <section
       id="education"
-      className="py-20 bg-gray-900 text-white px-6 md:px-12"
+      className="py-20 px-4 sm:px-6 md:px-12 bg-gray-900 text-white"
     >
-      <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
+      <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">
         {t("education.heading")}
       </h2>
 
       <div className="relative max-w-4xl mx-auto">
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full md:bg-sky-300"></div>
+        {/* Vertical timeline bar */}
+        <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-2 bottom-2 w-px bg-gradient-to-b from-emerald-400/60 via-violet-300/20 to-transparent" />
 
-        {educationList.map((edu, index) => {
-          const isLeft = index % 2 === 0;
-          return (
-            <motion.div
-              key={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              variants={{
-                visible: { opacity: 1, y: 0 },
-                hidden: { opacity: 0, y: 50 },
-              }}
-            >
-              <div
+        <div className="space-y-10">
+          {educationList.map((edu, index) => {
+            const isLeft = index % 2 === 0;
+            const accent = accents[index % accents.length];
+
+            return (
+              <motion.div
                 key={index}
-                className={`w-full px-4 mb-10 ${
-                  isLeft ? "md:pr-[55%]" : "md:pl-[55%]"
+                initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.1 }}
+                className={`relative flex ${
+                  isLeft ? "md:justify-start" : "md:justify-end"
                 }`}
               >
+                {/* Timeline dot */}
                 <div
-                  className={`relative backdrop-blur-md bg-white/5 border border-white/10 text-white p-6 rounded-xl shadow-md ${
-                    isLeft
-                      ? "md:ml-auto md:mr-0 md:before:right-[-8px]"
-                      : "md:ml-0 md:mr-auto md:before:left-[-8px]"
-                  }`}
+                  className={`hidden md:block absolute left-1/2 -translate-x-1/2 top-7 w-3 h-3 rounded-full z-10 ${accent.dot}`}
+                />
+
+                {/* Card */}
+                <div
+                  className={`w-full md:w-[46%] backdrop-blur-md bg-white/5 border ${accent.border} rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300`}
                 >
-                  <h3 className="text-lg text-sky-200 font-bold">
-                    {edu.degree}
-                  </h3>
-                  <p className="text-sm text-gray-300">{edu.institution}</p>
-                  <p className="text-sm text-gray-100">{edu.years}</p>
+                  <div className="flex items-start gap-3">
+                    <div
+                      className={`w-9 h-9 rounded-full border flex items-center justify-center shrink-0 ${accent.icon}`}
+                    >
+                      <FaGraduationCap className="text-base" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-bold text-white leading-tight">
+                        {edu.degree}
+                      </h3>
+                      <p className="text-sm text-gray-400 mt-0.5">
+                        {edu.institution}
+                      </p>
+                      <p className={`text-xs font-medium mt-1.5 ${accent.year}`}>
+                        {edu.years}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          );
-        })}
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
