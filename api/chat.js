@@ -2,27 +2,7 @@ export const config = {
   runtime: "edge",
 };
 
-const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGIN || "")
-  .split(",")
-  .map((s) => s.trim())
-  .filter(Boolean);
-
-function isOriginAllowed(origin) {
-  if (!origin) return true; // server-side / curl — can't fully block, API key is the guard
-  if (origin.includes("localhost") || origin.includes("127.0.0.1")) return true;
-  return ALLOWED_ORIGINS.some((o) => origin.startsWith(o));
-}
-
 export default async function handler(req) {
-  const origin = req.headers.get("origin") || "";
-
-  if (!isOriginAllowed(origin)) {
-    return new Response(JSON.stringify({ reply: "Unauthorized" }), {
-      status: 403,
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-
   const { messages } = await req.json();
 
   const systemPrompt = `You are a helpful assistant who knows everything about Arjun Gopinath.
