@@ -10,7 +10,7 @@ const Education = () => {
       id="education"
       className="py-20 bg-gray-900 text-white px-6 md:px-12"
     >
-      <h2 className="text-3xl font-bold mb-12 text-center text-white">
+      <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
         {t("education.heading")}
       </h2>
 

@@ -8,6 +8,7 @@ const Footer = () => {
   const navLinks = [
     { id: "skills", label: t("navbar.skills") },
     { id: "experience", label: t("navbar.experience") },
+    { id: "certifications", label: t("navbar.certifications") },
     { id: "projects", label: t("navbar.projects") },
     { id: "contact", label: t("navbar.contact") },
   ];

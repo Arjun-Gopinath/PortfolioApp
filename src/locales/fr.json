@@ -12,6 +12,7 @@
     "skills": "Compétences",
     "experience": "Expérience",
     "education": "Éducation",
+    "certifications": "Certifications",
     "projects": "Projets",
     "contact": "Contact"
   },
@@ -75,6 +76,31 @@
         "degree": "Lycée",
         "institution": "Chinmaya Vidyalaya, Vaduthala",
         "years": "Juin 2015 - Juin 2017"
+      }
+    ]
+  },
+  "certifications": {
+    "heading": "Certifications",
+    "courses": "cours",
+    "showCourses": "Afficher les cours",
+    "hideCourses": "Masquer les cours",
+    "list": [
+      {
+        "name": "Meta Front-End Developer",
+        "issuer": "Meta",
+        "type": "Certificat Professionnel",
+        "date": "Août 2024 – Sept 2024",
+        "courses": [
+          "Introduction to Frontend Development",
+          "Programming with Javascript",
+          "Version Control",
+          "HTML and CSS in Depth",
+          "React Basics",
+          "Advanced React",
+          "Principles Of UI/UX Design",
+          "Frontend Developer Capstone",
+          "Coding Interview Preparation"
+        ]
       }
     ]
   },
