@@ -1,10 +1,10 @@
 {
   "hero": {
     "name": "Arjun Gopinath",
-    "title": "Ingénieur Logiciel Fullstack",
+    "title": "Ingénieur Logiciel Senior",
     "openToWork": "Disponible pour travailler",
     "downloadResume": "Télécharger le CV",
-    "subtitle": "Expérience dans la création d'applications web de niveau entreprise dans les domaines de la santé, de l'analyse et du trading. Solide expertise en React, JavaScript, TypeScript, Python, FastAPI, REST APIs et livraison cloud-native sur les environnements AWS/Azure. Un parcours éprouvé dans la construction d'expériences frontend évolutives, de services backend, de produits alimentés par l'IA et de plateformes de visualisation de données.",
+    "subtitle": "Ingénieur Full Stack avec 5 ans d'expérience dans la création de produits évolutifs et intensifs en données dans la fintech et la santé. Solide expertise en React, TypeScript et architecture frontend — avec une expérience pratique du backend en Node.js et Python. Historique de livraison de fonctionnalités de bout en bout, de collaboration entre équipes produit et ingénierie, et de solutions propulsées par l'IA.",
     "scroll": "Faites défiler vers le bas"
   },
   "navbar": {
@@ -21,44 +21,28 @@
     "jobs": [
       {
         "title": "Ransky Tech",
-        "role": "Ingénieur Logiciel (Fév 2026 - Avr 2026)",
+        "role": "Développeur Logiciel (Fév 2026 - Avr 2026)",
         "responsibilities": [
-          "Conçu des plateformes internes à faible latence pour les flux de travail HFT, permettant aux traders d'analyser les données commerciales à haut volume en quasi temps réel.",
-          "Créé des tableaux de bord en temps réel et des pipelines d'analyse pour la visibilité du PnL, de la qualité d'exécution et des performances commerciales.",
-          "Collaboré avec les équipes de trading pour identifier les inefficacités et automatiser les flux de travail d'analyse, améliorant la vitesse de prise de décision.",
-          "Exploité des outils assistés par l'IA pour accélérer le développement de fonctionnalités d'analyse et d'outils internes."
+          "Créé des tableaux de bord de trading en React et TypeScript qui récupéraient des données en direct depuis plusieurs APIs d'exchanges — normalisant les formats entre sources et maintenant un rendu assez rapide pour le suivi du P&L en temps réel.",
+          "Développé des services Node.js et Python pour automatiser la génération quotidienne de rapports — les traders réconciliaient les données manuellement avant, ce qui prenait des heures chaque jour.",
+          "Travaillé directement avec les ingénieurs backend pour définir les contrats d'API, puis pris en charge l'intégralité de l'implémentation frontend jusqu'à la livraison."
         ]
       },
       {
         "title": "Thoughtworks",
-        "role": "Développeur d'Applications - Consultant Senior (Août 2024 – Jan 2026)",
+        "role": "Développeur d'Applications – Consultant Senior (Août 2024 – Jan 2026)",
         "responsibilities": [
-          "Dirigé le développement d'une application de génération de rapports basée sur LLM pour une plateforme de santé en utilisant React.js et Express.js",
-          "Piloté la mise en production d'un chatbot avec Python, FastAPI et PostgreSQL, fournissant des réponses en temps réel en contexte clinique",
-          "Contribué aux versions de Bahmni via des PR clés et le développement de fonctionnalités patient hospitalisé",
-          "Encadré des développeurs, améliorant la qualité du code et réduisant les problèmes de déploiement de 25 %",
-          "Dirigé des revues de code critiques, réduisant les bugs en production de 20 %",
-          "Amélioré l'alignement avec les parties prenantes grâce à une documentation technique et des rapports de livraison (+30 % de visibilité)",
-          "Collaboré en transversal pour améliorer l'efficacité de livraison sur les initiatives open-source et clients"
+          "Dirigé le développement frontend d'une plateforme de génération de Rapports d'Études Cliniques pour un client pharmaceutique mondial — React avec CKEditor pour la rédaction de documents enrichis, backend FastAPI intégré avec des pipelines LLM et RAG pour l'intelligence documentaire et la génération structurée de rapports.",
+          "Construit une plateforme de gestion des flux de travail pour un grand cabinet de conseil en management, frontend React avec backend FastAPI, permettant la gestion d'études et de processus complexes avec de multiples parties prenantes.",
+          "Encadré les membres de l'équipe cliente et les développeurs juniors via la programmation en binôme et les revues de code, en prônant le TDD et la conception simple, réduisant de façon mesurable les frictions de déploiement."
         ]
       },
       {
         "title": "Thoughtworks",
-        "role": "Développeur d'Applications - Consultant (Août 2021 – Août 2024)",
+        "role": "Développeur d'Applications – Consultant (Août 2021 – Août 2024)",
         "responsibilities": [
-          "Migré des modules AngularJS existants de Bahmni vers une architecture Micro Frontend (MFE) avec React.js et TypeScript",
-          "Créé des bibliothèques de composants réutilisables, augmentant la vitesse de développement de 25 % et réduisant les bugs UI de 15 %",
-          "Optimisé les flux backend avec Spring Boot, Java et Node.js, réduisant les temps de réponse de 5–10 %",
-          "Intégré les flux frontend et backend avec TypeScript, accélérant les déploiements de fonctionnalités (+20 %)",
-          "Contributeur actif aux écosystèmes open-source OpenMRS & Bahmni"
-        ]
-      },
-      {
-        "title": "EDITH Industries",
-        "role": "Stagiaire (Jan 2017 – Juin 2017)",
-        "responsibilities": [
-          "Développé un site web responsive avec React.js, améliorant l’engagement utilisateur",
-          "Acquis une expérience pratique de la containerisation et des frameworks web"
+          "Migré un code legacy AngularJS vers des Micro Frontends React + TypeScript avec Module Federation — permettant la coexistence d'Angular et React à l'exécution ; construit une bibliothèque de composants frontend réutilisable adoptée par plusieurs équipes produit.",
+          "Travaillé en étroite collaboration avec les ingénieurs backend sur les services Spring Boot — impliqué dans la conception des contrats d'API, la mise en place de l'authentification JWT et le débogage des intégrations RabbitMQ."
         ]
       }
     ],
@@ -108,6 +92,58 @@
     "heading": "Projets",
     "list": [
       {
+        "name": "Financial Reporting Platform",
+        "description": "Tableau de bord de trading en temps réel pour le P&L, les soldes et les frais entre exchanges — avec génération automatisée de rapports quotidiens remplaçant la réconciliation manuelle.",
+        "tech": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "Python"
+        ],
+        "links": []
+      },
+      {
+        "name": "Clinical Study Report",
+        "description": "Application React et FastAPI intégrant des pipelines LLM et RAG pour générer des rapports d'études cliniques structurés à partir d'entrées médicales non structurées pour un client pharmaceutique mondial.",
+        "tech": [
+          "React",
+          "FastAPI",
+          "Python",
+          "LLM",
+          "RAG"
+        ],
+        "links": []
+      },
+      {
+        "name": "Chatbot for Admin Console",
+        "description": "Assistant conversationnel construit avec des workflows agentiques et déterministes Temporal — aide les utilisateurs à naviguer dans les consoles d'administration de manière interactive via LLM et RAG.",
+        "tech": [
+          "React",
+          "FastAPI",
+          "Python",
+          "LLM",
+          "RAG",
+          "Temporal"
+        ],
+        "links": []
+      },
+      {
+        "name": "Bahmni Open Source (EMR)",
+        "description": "Contributions de fonctionnalités sur le frontend React et le backend Spring Boot de la plateforme EHR open-source Bahmni — i18n, améliorations d'authentification JWT, intégrations RabbitMQ et coordination des releases.",
+        "tech": [
+          "React",
+          "Spring Boot",
+          "Java",
+          "RabbitMQ"
+        ],
+        "links": [
+          {
+            "url": "https://github.com/Bahmni",
+            "text": "Voir sur GitHub →"
+          }
+        ]
+      },
+      {
         "name": "Captain's Wheel",
         "description": "Un jeu de navigateur sur le thème du casino développé avec Phaser 3. Faites tourner la roue, associez la couleur, battez la maison.",
         "tech": [
@@ -126,81 +162,17 @@
         ]
       },
       {
-        "name": "Personnalisations Bahmni",
-        "description": "Contributions à l'amélioration des modules de santé et aux refactorisations microfrontend de la plateforme open-source Bahmni.",
-        "tech": [
-          "React",
-          "Webpack",
-          "Node.js"
-        ],
-        "links": [
-          {
-            "url": "https://github.com/Bahmni",
-            "text": "Voir sur GitHub →"
-          }
-        ]
-      },
-      {
-        "name": "Portail Admin Client",
-        "description": "Outils internes centrés sur le frontend avec composants réutilisables, routage basé sur les rôles et analytique.",
-        "tech": [
-          "React",
-          "Redux",
-          "Tailwind"
-        ],
-        "links": [
-          {
-            "url": "https://github.com/Bahmni/openmrs-module-ipd-frontend",
-            "text": "Voir sur GitHub →"
-          }
-        ]
-      },
-      {
-        "name": "Site Personnel",
-        "description": "Ce site ! Conçu et développé de zéro avec React et Tailwind CSS.",
+        "name": "Portfolio Website",
+        "description": "Ce site — conçu et développé de zéro avec React, Tailwind CSS et Framer Motion.",
         "tech": [
           "React",
           "TailwindCSS",
-          "Vite"
+          "Vite",
+          "Framer Motion"
         ],
         "links": [
           {
             "url": "https://github.com/Arjun-Gopinath/PortfolioApp",
-            "text": "Voir sur GitHub →"
-          }
-        ]
-      },
-      {
-        "name": "CHA-O-TraffIC",
-        "description": "Jeu WebGL HTML5 développé avec Godot Engine.",
-        "tech": [
-          "Python",
-          "Godot",
-          "WebGL"
-        ],
-        "links": [
-          {
-            "url": "https://github.com/Arjun-Gopinath/CHA-O-TraffIC",
-            "text": "Voir sur GitHub →"
-          },
-          {
-            "url": "https://aaryyn.itch.io/chaotic",
-            "text": "Essayer sur itch →"
-          }
-        ]
-      },
-      {
-        "name": "Estimation de Prix de Voitures d’Occasion",
-        "description": "Modèle de prédiction basé sur le machine learning pour estimer le prix de voitures d’occasion selon les données utilisateurs",
-        "tech": [
-          "Python",
-          "Flask",
-          "LightGBM",
-          "Anaconda"
-        ],
-        "links": [
-          {
-            "url": "https://github.com/Arjun-Gopinath/Price-Foreteller-for-Preowned-Cars",
             "text": "Voir sur GitHub →"
           }
         ]

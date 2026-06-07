@@ -10,9 +10,16 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center text-center px-6 py-24 bg-gradient-to-b from-gray-950 to-gray-900"
+      className="relative min-h-screen flex items-center justify-center text-center px-6 py-24 bg-gray-950 overflow-hidden"
     >
-      <div className="max-w-2xl mx-auto w-full">
+      {/* Atmospheric gradient orbs */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl animate-orb-1" />
+        <div className="absolute top-1/2 -right-32 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl animate-orb-2" />
+        <div className="absolute -bottom-24 left-1/3 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl animate-orb-3" />
+      </div>
+
+      <div className="relative max-w-2xl mx-auto w-full">
         {isOpenToWork && (
           <motion.div
             initial={{ opacity: 0, y: -8 }}
@@ -90,6 +97,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
+
   );
 };
 

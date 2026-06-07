@@ -1,10 +1,10 @@
 {
   "hero": {
     "name": "Arjun Gopinath",
-    "title": "Fullstack Software Engineer",
+    "title": "Senior Software Engineer",
     "openToWork": "Open to Work",
     "downloadResume": "Download Resume",
-    "subtitle": "Experience building enterprise-grade web applications across healthcare, analytics, and trading domains. Strong expertise in React, JavaScript, TypeScript, Python, FastAPI, REST APIs, and cloud-native delivery on AWS/Azure environments. Proven track record in building scalable frontend experiences, backend services, AI-powered products, and data visualization platforms.",
+    "subtitle": "Full Stack Engineer with 5 years building scalable, data-intensive products across fintech and healthcare. Strong in React, TypeScript, and frontend architecture — with hands-on backend experience in Node.js and Python. Track record of owning features end to end, collaborating across product and engineering teams, and delivering AI-powered solutions.",
     "scroll": "Scroll down"
   },
   "navbar": {
@@ -21,44 +21,28 @@
     "jobs": [
       {
         "title": "Ransky Tech",
-        "role": "Software Engineer (Feb 2026 - Apr 2026)",
+        "role": "Software Developer (Feb 2026 - Apr 2026)",
         "responsibilities": [
-          "Engineered low-latency internal platforms for HFT workflows, enabling traders to analyze high-volume trade data in near real-time.",
-          "Built real-time dashboards and analytics pipelines for PnL, execution quality, and trade performance visibility.",
-          "Collaborated with trading teams to identify inefficiencies and automate analysis workflows, improving decision-making speed.",
-          "Leveraged AI-assisted tools to accelerate development of analytics features and internal tooling."
+          "Built trading dashboards in React and TypeScript that pulled live data from multiple exchange APIs — normalizing formats across sources and keeping rendering fast enough for real-time P&L tracking.",
+          "Coded Node.js and Python services to automate daily report generation — traders were reconciling data manually before this, which took hours each day.",
+          "Worked directly with backend engineers to define API contracts, then took full ownership of the frontend implementation through to delivery."
         ]
       },
       {
         "title": "Thoughtworks",
-        "role": "Application Developer - Senior Consultant (Aug 2024 – Jan 2026)",
+        "role": "Application Developer – Senior Consultant (Aug 2024 – Jan 2026)",
         "responsibilities": [
-          "Spearheaded development of an LLM-powered report generation app for a healthcare platform using React.js and Express.js",
-          "Led chatbot productization using Python, FastAPI, and PostgreSQL, delivering real-time user responses in clinical settings",
-          "Supported Bahmni releases through key PRs and in-patient feature development",
-          "Mentored developers, improving code quality and reducing deployment issues by 25%",
-          "Led critical code reviews, cutting production bugs by 20%",
-          "Increased stakeholder alignment with consistent technical documentation and delivery reports (+30% visibility)",
-          "Collaborated cross-functionally to improve delivery efficiency on open-source and client initiatives"
+          "Led frontend development of a Clinical Study Report generation platform for a global pharmaceutical client — React with CKEditor for rich document authoring, FastAPI backend integrated with LLM and RAG pipelines for document intelligence and structured report generation from unstructured clinical inputs.",
+          "Built a workflow management platform for a leading management consulting firm, React frontend with FastAPI backend, enabling structured study and process management across complex multi-stakeholder user flows.",
+          "Mentored client team members and junior developers through pair programming and code reviews, advocating TDD and simple design, measurably reducing deployment friction."
         ]
       },
       {
         "title": "Thoughtworks",
-        "role": "Application Developer - Consultant (Aug 2021 – Aug 2024)",
+        "role": "Application Developer – Consultant (Aug 2021 – Aug 2024)",
         "responsibilities": [
-          "Migrated legacy AngularJS modules in Bahmni to a Micro Frontend (MFE) architecture using React.js and TypeScript",
-          "Built reusable component libraries, boosting frontend velocity by 25% and reducing UI bugs by 15%",
-          "Optimized backend flows using Spring Boot, Java, and Node.js, improving response time by 5–10%",
-          "Integrated frontend and backend flows with TypeScript, enabling faster feature rollouts (+20% speed)",
-          "Active contributor to OpenMRS & Bahmni open-source ecosystems"
-        ]
-      },
-      {
-        "title": "EDITH Industries",
-        "role": "Intern (Jan 2017 – Jun 2017)",
-        "responsibilities": [
-          "Built a responsive website with React.js, enhancing user engagement",
-          "Gained hands-on experience with containerization and web frameworks"
+          "Migrated a legacy AngularJS codebase to React + TypeScript Micro Frontends using Module Federation — enabling seamless coexistence of Angular and React at runtime so the migration could happen incrementally; built a reusable front-end component library adopted across multiple product teams, eliminating duplicated UI work and standardising design patterns.",
+          "Worked closely with backend engineers on Spring Boot services — involved in API contract design, JWT auth setup, and debugging RabbitMQ integrations alongside the backend team."
         ]
       }
     ],
@@ -108,6 +92,58 @@
     "heading": "Projects",
     "list": [
       {
+        "name": "Financial Reporting Platform",
+        "description": "Real-time trading dashboard for P&L, balances, and fees across exchanges — with automated daily report generation replacing manual reconciliation.",
+        "tech": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "Python"
+        ],
+        "links": []
+      },
+      {
+        "name": "Clinical Study Report",
+        "description": "React and FastAPI application integrating LLM and RAG pipelines to generate structured clinical study reports from unstructured medical inputs for a global pharmaceutical client.",
+        "tech": [
+          "React",
+          "FastAPI",
+          "Python",
+          "LLM",
+          "RAG"
+        ],
+        "links": []
+      },
+      {
+        "name": "Chatbot for Admin Console",
+        "description": "Conversational assistant built with agentic and deterministic Temporal workflows — helps users navigate admin consoles interactively using LLM and RAG.",
+        "tech": [
+          "React",
+          "FastAPI",
+          "Python",
+          "LLM",
+          "RAG",
+          "Temporal"
+        ],
+        "links": []
+      },
+      {
+        "name": "Bahmni Open Source (EMR)",
+        "description": "Feature contributions across the React frontend and Spring Boot backend for Bahmni's open-source EHR platform — i18n, JWT auth improvements, RabbitMQ integrations, and release coordination.",
+        "tech": [
+          "React",
+          "Spring Boot",
+          "Java",
+          "RabbitMQ"
+        ],
+        "links": [
+          {
+            "url": "https://github.com/Bahmni",
+            "text": "View on GitHub →"
+          }
+        ]
+      },
+      {
         "name": "Captain's Wheel",
         "description": "A fast-paced casino-themed browser game built with Phaser 3. Spin the wheel, match the suit, beat the house.",
         "tech": [
@@ -126,81 +162,17 @@
         ]
       },
       {
-        "name": "Bahmni Customizations",
-        "description": "Contributed to healthcare module enhancements and microfrontend refactors for Bahmni’s open-source EHR platform.",
-        "tech": [
-          "React",
-          "Webpack",
-          "Node.js"
-        ],
-        "links": [
-          {
-            "url": "https://github.com/Bahmni",
-            "text": "View on GitHub →"
-          }
-        ]
-      },
-      {
-        "name": "Client Admin Portal",
-        "description": "Built frontend-heavy internal tooling with reusable components, role-based routing, and analytics.",
-        "tech": [
-          "React",
-          "Redux",
-          "Tailwind"
-        ],
-        "links": [
-          {
-            "url": "https://github.com/Bahmni/openmrs-module-ipd-frontend",
-            "text": "View on GitHub →"
-          }
-        ]
-      },
-      {
         "name": "Portfolio Website",
-        "description": "This site! Designed and developed from scratch using React and Tailwind CSS.",
+        "description": "This site — designed and developed from scratch with React, Tailwind CSS, and Framer Motion.",
         "tech": [
           "React",
           "TailwindCSS",
-          "Vite"
+          "Vite",
+          "Framer Motion"
         ],
         "links": [
           {
             "url": "https://github.com/Arjun-Gopinath/PortfolioApp",
-            "text": "View on GitHub →"
-          }
-        ]
-      },
-      {
-        "name": "CHA-O-TraffIC",
-        "description": "A HTML5 WebGL game developed using Godot Engine.",
-        "tech": [
-          "Python",
-          "Godot",
-          "WebGL"
-        ],
-        "links": [
-          {
-            "url": "https://github.com/Arjun-Gopinath/CHA-O-TraffIC",
-            "text": "View on GitHub →"
-          },
-          {
-            "url": "https://aaryyn.itch.io/chaotic",
-            "text": "Try on itch →"
-          }
-        ]
-      },
-      {
-        "name": "Price-Foreteller-for-Preowned-Cars",
-        "description": "A machine learning based prediction model that is used to predict the price of used cars based on data given by user",
-        "tech": [
-          "Python",
-          "Flask",
-          "LightGBM",
-          "Anaconda"
-        ],
-        "links": [
-          {
-            "url": "https://github.com/Arjun-Gopinath/Price-Foreteller-for-Preowned-Cars",
             "text": "View on GitHub →"
           }
         ]

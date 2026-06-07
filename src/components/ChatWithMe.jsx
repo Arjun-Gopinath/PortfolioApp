@@ -48,7 +48,15 @@ const ChatWithMe = () => {
   const [input, setInput] = useState("");
   const [conversation, setConversation] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -103,118 +111,160 @@ const ChatWithMe = () => {
     }
   };
 
+  const panelVariants = isMobile
+    ? { initial: { y: "100%" }, animate: { y: 0 }, exit: { y: "100%" } }
+    : { initial: { x: "100%" }, animate: { x: 0 }, exit: { x: "100%" } };
+
+  const panelClass = isMobile
+    ? "fixed bottom-0 left-0 right-0 z-50 h-[85dvh] bg-gray-950 text-white shadow-2xl flex flex-col rounded-t-2xl border-t border-gray-800 px-5 pt-5 pb-4"
+    : "fixed bottom-0 right-0 z-50 w-[500px] h-full bg-gray-950 text-white shadow-2xl flex flex-col border-l border-gray-800 rounded-l-2xl p-6";
+
   return (
     <>
-      {/* Floating button */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 bg-sky-600 hover:bg-sky-700 text-white p-4 rounded-full shadow-lg transition-colors duration-200"
-        aria-label="Ask Arjun"
-      >
-        <FiMessageCircle size={24} />
-      </button>
+      <AnimatePresence>
+        {!isOpen && (
+          <motion.button
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setIsOpen(true)}
+            className="fixed bottom-6 right-6 z-50 bg-sky-600 hover:bg-sky-700 text-white p-4 rounded-full shadow-lg transition-colors duration-200"
+            aria-label="Ask Arjun"
+          >
+            <FiMessageCircle size={24} />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "tween", duration: 0.3 }}
-            className="fixed bottom-0 right-0 z-50 w-full lg:w-[500px] h-full bg-gray-950 text-white shadow-2xl flex flex-col border-l border-gray-800 md:rounded-l-2xl p-6"
-            style={{ fontFamily: "Manrope, sans-serif" }}
-          >
-            {/* Header */}
-            <div className="flex justify-between items-center mb-4 shrink-0">
-              <h3 className="text-lg font-semibold text-sky-400">
-                Ask Arjun Anything
-              </h3>
-              <div className="flex items-center gap-3">
-                {conversation.length > 0 && (
-                  <button
-                    onClick={() => setConversation([])}
-                    aria-label="Clear conversation"
-                    className="text-gray-500 hover:text-gray-300 transition-colors duration-200"
-                  >
-                    <FiTrash2 size={18} />
-                  </button>
-                )}
-                <button onClick={() => setIsOpen(false)} aria-label="Close chat">
-                  <FiX size={24} />
-                </button>
-              </div>
-            </div>
+          <>
+            {/* Mobile backdrop */}
+            {isMobile && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 bg-black/50 z-40"
+                onClick={() => setIsOpen(false)}
+              />
+            )}
 
-            {/* Messages */}
-            <div
-              className="flex-1 overflow-y-auto space-y-3 pr-1"
-              style={{ overscrollBehavior: "contain" }}
+            <motion.div
+              initial={panelVariants.initial}
+              animate={panelVariants.animate}
+              exit={panelVariants.exit}
+              transition={{ type: "tween", duration: 0.3 }}
+              className={panelClass}
+              style={{ fontFamily: "Manrope, sans-serif" }}
             >
-              {conversation.length === 0 && (
-                <div className="mt-6 px-2 space-y-4">
-                  <p className="text-sm text-gray-500 text-center">{WELCOME}</p>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {SUGGESTED_PROMPTS.map((prompt) => (
-                      <button
-                        key={prompt}
-                        onClick={() => sendMessage(prompt)}
-                        disabled={loading}
-                        className="text-xs border border-white/15 hover:border-sky-500/50 hover:bg-sky-500/10 text-gray-400 hover:text-sky-300 px-3 py-1.5 rounded-full transition-all duration-200 disabled:opacity-40"
-                      >
-                        {prompt}
-                      </button>
-                    ))}
-                  </div>
+              {/* Drag handle (mobile only) */}
+              {isMobile && (
+                <div className="flex justify-center mb-4">
+                  <div className="w-10 h-1 bg-white/20 rounded-full" />
                 </div>
               )}
 
-              {conversation.map((msg, idx) => (
-                <div
-                  key={idx}
-                  className={`text-sm p-3 rounded-lg max-w-[85%] ${
-                    msg.role === "user"
-                      ? "bg-sky-700 text-white ml-auto text-right"
-                      : msg.isError
-                      ? "bg-red-900/60 border border-red-700/40 text-red-200"
-                      : "bg-gray-800 text-gray-200"
-                  }`}
-                >
-                  {msg.role === "assistant" ? (
-                    <ReactMarkdown components={markdownComponents}>
-                      {msg.content}
-                    </ReactMarkdown>
-                  ) : (
-                    msg.content
+              {/* Header */}
+              <div className="flex justify-between items-center mb-4 shrink-0">
+                <h3 className="text-lg font-semibold text-sky-400">
+                  Ask Arjun Anything
+                </h3>
+                <div className="flex items-center gap-3">
+                  {conversation.length > 0 && (
+                    <button
+                      onClick={() => setConversation([])}
+                      aria-label="Clear conversation"
+                      className="text-gray-500 hover:text-gray-300 transition-colors duration-200 p-1"
+                    >
+                      <FiTrash2 size={18} />
+                    </button>
                   )}
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    aria-label="Close chat"
+                    className="text-gray-500 hover:text-gray-300 transition-colors duration-200 p-1"
+                  >
+                    <FiX size={24} />
+                  </button>
                 </div>
-              ))}
+              </div>
 
-              {loading && <TypingIndicator />}
-              <div ref={messagesEndRef} />
-            </div>
-
-            {/* Input */}
-            <div className="mt-4 flex gap-2 shrink-0">
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) =>
-                  e.key === "Enter" && !e.shiftKey && sendMessage()
-                }
-                placeholder="Ask about Arjun..."
-                disabled={loading}
-                className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-sky-600 transition-colors duration-200 disabled:opacity-60"
-              />
-              <button
-                onClick={() => sendMessage()}
-                disabled={loading || !input.trim()}
-                className="bg-sky-600 hover:bg-sky-700 disabled:opacity-50 disabled:cursor-not-allowed px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+              {/* Messages */}
+              <div
+                className="flex-1 overflow-y-auto space-y-3 pr-1"
+                style={{ overscrollBehavior: "contain" }}
               >
-                Send
-              </button>
-            </div>
-          </motion.div>
+                {conversation.length === 0 && (
+                  <div className="mt-6 px-2 space-y-4">
+                    <p className="text-sm text-gray-500 text-center">
+                      {WELCOME}
+                    </p>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {SUGGESTED_PROMPTS.map((prompt) => (
+                        <button
+                          key={prompt}
+                          onClick={() => sendMessage(prompt)}
+                          disabled={loading}
+                          className="text-xs border border-white/15 hover:border-sky-500/50 hover:bg-sky-500/10 text-gray-400 hover:text-sky-300 px-3 py-2 rounded-full transition-all duration-200 disabled:opacity-40"
+                        >
+                          {prompt}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {conversation.map((msg, idx) => (
+                  <div
+                    key={idx}
+                    className={`text-sm p-3 rounded-lg max-w-[85%] ${
+                      msg.role === "user"
+                        ? "bg-sky-700 text-white ml-auto text-right"
+                        : msg.isError
+                        ? "bg-red-900/60 border border-red-700/40 text-red-200"
+                        : "bg-gray-800 text-gray-200"
+                    }`}
+                  >
+                    {msg.role === "assistant" ? (
+                      <ReactMarkdown components={markdownComponents}>
+                        {msg.content}
+                      </ReactMarkdown>
+                    ) : (
+                      msg.content
+                    )}
+                  </div>
+                ))}
+
+                {loading && <TypingIndicator />}
+                <div ref={messagesEndRef} />
+              </div>
+
+              {/* Input */}
+              <div className="mt-4 flex gap-2 shrink-0">
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={(e) =>
+                    e.key === "Enter" && !e.shiftKey && sendMessage()
+                  }
+                  placeholder="Ask about Arjun..."
+                  disabled={loading}
+                  className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-sky-600 transition-colors duration-200 disabled:opacity-60"
+                />
+                <button
+                  onClick={() => sendMessage()}
+                  disabled={loading || !input.trim()}
+                  className="bg-sky-600 hover:bg-sky-700 disabled:opacity-50 disabled:cursor-not-allowed px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-200"
+                >
+                  Send
+                </button>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

@@ -4,10 +4,32 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: #030712; /* gray-950 */
+}
+
 @layer utilities {
   .animate-slowspin {
     animation: spin 5s linear infinite;
   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes orb-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, 20px) scale(1.1); }
+  }
+  @keyframes orb-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-20px, 30px) scale(1.05); }
+  }
+  @keyframes orb-3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(20px, -20px) scale(1.08); }
+  }
+  .animate-orb-1 { animation: orb-1 8s ease-in-out infinite; }
+  .animate-orb-2 { animation: orb-2 10s ease-in-out infinite; }
+  .animate-orb-3 { animation: orb-3 12s ease-in-out infinite; }
 }
 
 .perspective {
