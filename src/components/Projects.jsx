@@ -82,7 +82,7 @@ const DesktopProjects = ({ projects, heading }) => {
             <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-1">
               Selected
             </p>
-            <h2 className="text-2xl font-bold text-white">{heading}</h2>
+            <h2 className="text-3xl font-bold text-white" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{heading}</h2>
           </div>
           <div className="font-mono text-gray-600 text-sm tabular-nums">
             <span className="text-white font-semibold text-lg">
@@ -109,7 +109,7 @@ const DesktopProjects = ({ projects, heading }) => {
                 {/* Accent line */}
                 <div className={`h-0.5 w-12 bg-gradient-to-r ${accent} mb-6 rounded-full`} />
 
-                <h3 className="text-3xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+                <h3 className="text-3xl lg:text-5xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                   {project.name}
                 </h3>
 
@@ -219,7 +219,7 @@ const Projects = () => {
           <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-1 text-center">
             Selected
           </p>
-          <h2 className="text-3xl font-bold text-white text-center">{heading}</h2>
+          <h2 className="text-3xl font-bold text-white text-center" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{heading}</h2>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 max-w-2xl mx-auto">

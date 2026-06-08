@@ -10,16 +10,9 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center text-center px-6 py-24 bg-gray-950 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-24 bg-gray-950 overflow-hidden hero-pitch-lines"
     >
-      {/* Atmospheric gradient orbs */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl animate-orb-1" />
-        <div className="absolute top-1/2 -right-32 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl animate-orb-2" />
-        <div className="absolute -bottom-24 left-1/3 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl animate-orb-3" />
-      </div>
-
-      <div className="relative max-w-2xl mx-auto w-full">
+      <div className="relative max-w-3xl mx-auto w-full">
         {isOpenToWork && (
           <motion.div
             initial={{ opacity: 0, y: -8 }}
@@ -35,28 +28,35 @@ const Hero = () => {
         )}
 
         <motion.h1
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl sm:text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500 mb-4 leading-tight"
+          transition={{ duration: 0.7, delay: 0.1 }}
+          style={{
+            fontFamily: "'Bebas Neue', sans-serif",
+            fontSize: "clamp(4rem, 10vw, 9rem)",
+            lineHeight: 0.92,
+            color: "white",
+          }}
         >
           {t("hero.name")}
         </motion.h1>
 
-        <motion.h2
+        <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg md:text-2xl font-medium text-gray-300 mb-6"
+          className="text-xs md:text-sm uppercase tracking-[0.25em] text-sky-400 mt-5 mb-6"
+          style={{ fontFamily: "Manrope, sans-serif" }}
         >
           {t("hero.title")}
-        </motion.h2>
+        </motion.p>
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-sm md:text-base text-gray-400 max-w-xl mx-auto leading-relaxed mb-10"
+          style={{ fontFamily: "Manrope, sans-serif" }}
         >
           {t("hero.subtitle")}
         </motion.p>
@@ -72,6 +72,7 @@ const Hero = () => {
             download
             className="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-700 transition-colors duration-200 px-6 py-3 rounded-full text-white text-sm font-medium shadow-lg shadow-sky-900/40"
             aria-label="Download Arjun's resume"
+            style={{ fontFamily: "Manrope, sans-serif" }}
           >
             <FaFileDownload className="text-base" />
             {t("hero.downloadResume")}
@@ -80,6 +81,7 @@ const Hero = () => {
           <a
             href="#contact"
             className="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-200 px-6 py-3 rounded-full text-white text-sm font-medium"
+            style={{ fontFamily: "Manrope, sans-serif" }}
           >
             {t("navbar.contact")}
           </a>
@@ -97,7 +99,6 @@ const Hero = () => {
         </div>
       </div>
     </section>
-
   );
 };
 

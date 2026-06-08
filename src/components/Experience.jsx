@@ -79,7 +79,7 @@ const DesktopExperience = ({ jobs, heading }) => {
             <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-1">
               Professional
             </p>
-            <h2 className="text-2xl font-bold text-white">{heading}</h2>
+            <h2 className="text-3xl font-bold text-white" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{heading}</h2>
           </div>
           <div className="flex items-center gap-8">
             <div className="text-right">
@@ -119,7 +119,7 @@ const DesktopExperience = ({ jobs, heading }) => {
                   {parseRole(jobs[activeStep].role).period}
                 </span>
 
-                <h3 className="text-3xl lg:text-5xl font-bold text-white mb-2 leading-tight">
+                <h3 className="text-3xl lg:text-5xl font-bold text-white mb-2 leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                   {jobs[activeStep].title}
                 </h3>
 
@@ -221,7 +221,7 @@ const Experience = () => {
             Professional
           </p>
           <div className="flex items-end justify-between">
-            <h2 className="text-3xl font-bold text-white">{heading}</h2>
+            <h2 className="text-3xl font-bold text-white" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{heading}</h2>
             <p className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500">
               5+ Years
             </p>

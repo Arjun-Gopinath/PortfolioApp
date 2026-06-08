@@ -58,8 +58,16 @@ const StatCard = ({ label, value, suffix }) => {
 const StatsBar = () => (
   <section
     className="bg-gray-950 border-y border-white/5"
-    style={{ fontFamily: "Manrope, sans-serif" }}
+    style={{ fontFamily: "Manrope, sans-serif", borderTop: "1px solid rgba(56,189,248,0.2)" }}
   >
+    <div className="max-w-4xl mx-auto px-4 pt-3 pb-0 flex items-center justify-between">
+      <span style={{ fontSize: "9px" }} className="uppercase tracking-[0.25em] text-sky-500/50 font-medium">
+        ARJUN G ✦ FT 90+3
+      </span>
+      <span style={{ fontSize: "9px" }} className="uppercase tracking-[0.25em] text-gray-600">
+        Career Stats
+      </span>
+    </div>
     <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5">
       {stats.map((stat) => (
         <StatCard key={stat.label} {...stat} />

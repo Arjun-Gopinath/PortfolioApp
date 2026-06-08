@@ -6,6 +6,7 @@ import Experience from "./components/Experience";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import LoadingScreen from "./components/LoadingScreen";
+import MarqueeDivider from "./components/MarqueeDivider";
 import Projects from "./components/Projects";
 import ScrollProgress from "./components/ScrollProgress";
 import ScrollToTop from "./components/ScrollToTop";
@@ -20,11 +21,15 @@ function App() {
       <TopNavbar />
       <main style={{ fontFamily: "Manrope, sans-serif" }}>
         <Hero />
+        <MarqueeDivider items={["SKILLS", "TECHNOLOGIES", "EXPERTISE"]} direction="left" />
         <Skills />
+        <MarqueeDivider items={["EXPERIENCE", "PROFESSIONAL", "5+ YEARS"]} direction="right" />
         <Experience />
+        <MarqueeDivider items={["EDUCATION", "LEARNING", "GROWTH"]} direction="left" />
         <Education />
         <Certifications />
         <Projects />
+        <MarqueeDivider items={["PROJECTS", "BUILT", "SHIPPED ⚽"]} direction="right" />
         <Contact />
       </main>
       <ChatWithMe />

@@ -29,7 +29,10 @@ const Contact = () => {
           <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-3">
             Get in Touch
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-5">
+          <h2
+            className="text-4xl md:text-5xl font-bold mb-5 font-display"
+            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          >
             {t("contact.heading")}
           </h2>
           <p className="text-gray-400 text-base leading-relaxed">

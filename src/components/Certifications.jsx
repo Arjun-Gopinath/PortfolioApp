@@ -142,7 +142,7 @@ const Certifications = () => {
         <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-1">
           Credentials
         </p>
-        <h2 className="text-2xl md:text-3xl font-bold text-white">
+        <h2 className="text-3xl md:text-4xl font-bold text-white" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
           {t("certifications.heading")}
         </h2>
       </div>

@@ -70,14 +70,6 @@ const TopNavbar = () => {
             />
           </a>
 
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-xl p-1 text-gray-400 hover:text-white transition-colors duration-200"
-            aria-label="Menu Toggle"
-          >
-            {isOpen ? <FiX /> : <FiMenu />}
-          </button>
-
           <nav className="hidden md:flex items-center gap-1">
             {sections.map((section) => (
               <a
@@ -103,8 +95,15 @@ const TopNavbar = () => {
           </nav>
         </div>
 
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
           <ToggleLang />
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-xl p-1 text-gray-400 hover:text-white transition-colors duration-200"
+            aria-label="Menu Toggle"
+          >
+            {isOpen ? <FiX /> : <FiMenu />}
+          </button>
         </div>
       </header>
 

@@ -4,8 +4,14 @@ import { AnimatePresence, motion } from "framer-motion";
 const LoadingScreen = () => {
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
+  const [phase, setPhase] = useState("ball");
   const rafRef = useRef(null);
   const capRef = useRef(null);
+
+  useEffect(() => {
+    const ballTimer = setTimeout(() => setPhase("logo"), 900);
+    return () => clearTimeout(ballTimer);
+  }, []);
 
   useEffect(() => {
     const duration = 1400;
@@ -45,13 +51,30 @@ const LoadingScreen = () => {
           className="fixed inset-0 z-[200] bg-gray-950 flex flex-col items-center justify-center gap-8"
           style={{ fontFamily: "Manrope, sans-serif" }}
         >
-          <motion.img
-            src="/images/logo.svg"
-            alt="AG"
-            className="w-14 h-14"
-            animate={{ scale: [1, 1.06, 1] }}
-            transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-          />
+          <AnimatePresence mode="wait">
+            {phase === "ball" ? (
+              <motion.div
+                key="ball"
+                initial={{ x: "-60vw", rotate: 0 }}
+                animate={{ x: "60vw", rotate: 720 }}
+                exit={{ opacity: 0, scale: 0.5 }}
+                transition={{ duration: 0.85, ease: "easeInOut" }}
+                style={{ fontSize: "3rem", lineHeight: 1 }}
+              >
+                ⚽
+              </motion.div>
+            ) : (
+              <motion.img
+                key="logo"
+                src="/images/logo.svg"
+                alt="AG"
+                className="w-14 h-14"
+                initial={{ opacity: 0, scale: 0.7 }}
+                animate={{ opacity: 1, scale: [1, 1.06, 1] }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+              />
+            )}
+          </AnimatePresence>
 
           <div className="w-44 h-px bg-white/10 rounded-full overflow-hidden">
             <motion.div

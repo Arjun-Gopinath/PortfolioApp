@@ -29,12 +29,12 @@ import {
 } from "react-icons/si";
 
 const categoryAccents = [
-  "bg-sky-400",
+  "bg-sky-300",
   "bg-violet-400",
   "bg-emerald-400",
   "bg-teal-400",
   "bg-purple-400",
-  "bg-amber-400",
+  "bg-sky-400",
 ];
 
 const Skills = () => {
@@ -128,7 +128,10 @@ const Skills = () => {
         <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-1">
           Technical
         </p>
-        <h2 className="text-2xl md:text-3xl font-bold text-white">
+        <h2
+          className="text-3xl md:text-4xl font-bold text-white"
+          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+        >
           {t("skills.techHeading")}
         </h2>
       </div>

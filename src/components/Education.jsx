@@ -58,7 +58,7 @@ const DesktopEducation = ({ items, heading }) => {
             <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-1">
               Educational
             </p>
-            <h2 className="text-2xl font-bold text-white">{heading}</h2>
+            <h2 className="text-3xl font-bold text-white" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{heading}</h2>
           </div>
           <div className="font-mono text-gray-600 text-sm tabular-nums">
             <span className="text-white font-semibold text-lg">
@@ -88,7 +88,7 @@ const DesktopEducation = ({ items, heading }) => {
                   {items[activeStep].years}
                 </span>
 
-                <h3 className="text-3xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+                <h3 className="text-3xl lg:text-5xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                   {items[activeStep].degree}
                 </h3>
 
@@ -170,7 +170,7 @@ const Education = () => {
           <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-1 text-center">
             Educational
           </p>
-          <h2 className="text-3xl font-bold text-white text-center">{heading}</h2>
+          <h2 className="text-3xl font-bold text-white text-center" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{heading}</h2>
         </div>
 
         <div className="max-w-lg mx-auto space-y-6">
