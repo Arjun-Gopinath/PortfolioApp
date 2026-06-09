@@ -42,11 +42,13 @@ const BACKEND = new Set([
   "Node.js", "Express.js", "FastAPI", "Java", "Spring Boot", "Python", "Flask",
 ]);
 const DATA = new Set(["PostgreSQL", "MySQL", "LightGBM", "Anaconda", "MongoDB"]);
+const AI = new Set(["LLM", "RAG", "LangGraph", "LangChain", "Ollama", "Temporal", "Streamlit"]);
 
 const getTechColor = (tech) => {
   if (FRONTEND.has(tech)) return "text-sky-300 bg-sky-500/10 border-sky-500/20";
   if (BACKEND.has(tech)) return "text-violet-300 bg-violet-500/10 border-violet-500/20";
   if (DATA.has(tech)) return "text-emerald-300 bg-emerald-500/10 border-emerald-500/20";
+  if (AI.has(tech)) return "text-amber-300 bg-amber-500/10 border-amber-500/20";
   return "text-teal-300 bg-teal-500/10 border-teal-500/20";
 };
 

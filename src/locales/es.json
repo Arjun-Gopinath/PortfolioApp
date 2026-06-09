@@ -128,6 +128,27 @@
         "links": []
       },
       {
+        "name": "Swarm Intel",
+        "description": "Enjambre de agentes de investigación construido para el Hackathon de Microsoft Build IA. Despacha 5 agentes de IA especializados en paralelo para investigar cualquier empresa — noticias, finanzas, LinkedIn, GitHub y regulación — luego valida y sintetiza los hallazgos en un informe de due diligence estructurado.",
+        "tech": [
+          "Python",
+          "LangGraph",
+          "LangChain",
+          "Streamlit",
+          "Ollama"
+        ],
+        "links": [
+          {
+            "url": "https://github.com/Arjun-Gopinath/swarm-intel",
+            "text": "Ver en GitHub →"
+          },
+          {
+            "url": "https://swarm-intel.streamlit.app/",
+            "text": "Demo en vivo →"
+          }
+        ]
+      },
+      {
         "name": "Bahmni Open Source (EMR)",
         "description": "Contribuciones de funcionalidades en el frontend React y backend Spring Boot de la plataforma EHR de código abierto Bahmni — i18n, mejoras de autenticación JWT, integraciones RabbitMQ y coordinación de releases.",
         "tech": [
