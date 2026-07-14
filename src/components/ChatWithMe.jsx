@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiMessageCircle, FiX, FiTrash2 } from "react-icons/fi";
 import ReactMarkdown from "react-markdown";
+import { CINEMATIC_EASE } from "../motion";
 
 const WELCOME = "Ask me anything about Arjun's experience, projects, or skills.";
 const MAX_MESSAGES = 20;
@@ -156,7 +157,7 @@ const ChatWithMe = () => {
               initial={panelVariants.initial}
               animate={panelVariants.animate}
               exit={panelVariants.exit}
-              transition={{ type: "tween", duration: 0.3 }}
+              transition={{ type: "tween", duration: 0.35, ease: CINEMATIC_EASE }}
               className={panelClass}
               style={{ fontFamily: "Manrope, sans-serif" }}
             >

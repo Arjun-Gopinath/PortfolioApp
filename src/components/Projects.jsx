@@ -52,6 +52,16 @@ const getTechColor = (tech) => {
   return "text-teal-300 bg-teal-500/10 border-teal-500/20";
 };
 
+// Movie-poster "billing block" — the tech stack rendered like the condensed,
+// centered credits at the foot of a film poster.
+const BillingBlock = ({ tech, className = "" }) => (
+  <p
+    className={`text-[9px] sm:text-[10px] uppercase tracking-[0.18em] text-gray-500 leading-relaxed ${className}`}
+  >
+    {tech.join("  ·  ")}
+  </p>
+);
+
 const DesktopProjects = ({ projects, heading }) => {
   const [activeStep, setActiveStep] = useState(0);
   const containerRef = useRef(null);
@@ -70,7 +80,6 @@ const DesktopProjects = ({ projects, heading }) => {
 
   const project = projects[activeStep];
   const accent = cardAccents[activeStep % cardAccents.length];
-  const dc = dotColors[activeStep % dotColors.length];
 
   return (
     <div ref={containerRef} style={{ height: `${projects.length * 100}vh` }}>
@@ -81,13 +90,13 @@ const DesktopProjects = ({ projects, heading }) => {
         {/* Header */}
         <div className="pt-20 pb-6 shrink-0 flex items-end justify-between border-b border-white/5">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-1">
-              Selected
+            <p className="text-[10px] uppercase tracking-[0.35em] text-gold/80 font-semibold mb-1">
+              Now Showing
             </p>
             <h2 className="text-3xl font-bold text-white" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{heading}</h2>
           </div>
           <div className="font-mono text-gray-600 text-sm tabular-nums">
-            <span className="text-white font-semibold text-lg">
+            <span className="text-gold font-semibold text-lg">
               {String(activeStep + 1).padStart(2, "0")}
             </span>
             {" / "}
@@ -218,8 +227,8 @@ const Projects = () => {
         style={{ fontFamily: "Manrope, sans-serif" }}
       >
         <div className="mb-10">
-          <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-1 text-center">
-            Selected
+          <p className="text-[10px] uppercase tracking-[0.35em] text-gold/80 font-semibold mb-1 text-center">
+            Now Showing
           </p>
           <h2 className="text-3xl font-bold text-white text-center" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{heading}</h2>
         </div>
@@ -228,47 +237,47 @@ const Projects = () => {
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 40, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              whileHover={{ y: -6 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.45, delay: idx * 0.06 }}
             >
-              <div className="relative overflow-hidden backdrop-blur-lg bg-white/5 border border-white/10 rounded-2xl shadow-lg p-5 flex flex-col justify-between h-full">
+              {/* Poster: taller frame, Bebas title, billing-block credits */}
+              <div className="group relative overflow-hidden backdrop-blur-lg bg-gradient-to-b from-white/8 to-white/[0.03] border border-white/10 rounded-2xl shadow-lg p-5 flex flex-col justify-between h-full transition-all duration-300 hover:border-gold/30 hover:shadow-[0_0_28px_rgba(245,185,66,0.12)]">
                 <div
                   className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${cardAccents[idx % cardAccents.length]}`}
                 />
                 <div>
-                  <h3 className="text-lg font-semibold text-sky-200 mb-2">
+                  <h3
+                    className="text-2xl text-white mb-2 leading-none tracking-wide"
+                    style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                  >
                     {project.name}
                   </h3>
-                  <p className="text-sm text-gray-300 mb-3">{project.description}</p>
-                  <div className="flex flex-wrap gap-1.5 text-xs mb-3">
-                    {project.tech.map((tech, i) => (
-                      <span
-                        key={i}
-                        className={`border px-2 py-0.5 rounded-full ${getTechColor(tech)}`}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                  <p className="text-sm text-gray-300 mb-4">{project.description}</p>
                 </div>
-                {project.links?.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {project.links.map((link, i) => (
-                      <a
-                        key={i}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-sky-600/30 border border-white/10 hover:border-sky-500/40 px-3 py-1.5 rounded-full text-xs text-gray-200 hover:text-white transition-all duration-200"
-                      >
-                        {getLinkIcon(link.url)}
-                        {link.text}
-                      </a>
-                    ))}
+                <div>
+                  <div className="border-t border-white/8 pt-3 mb-3">
+                    <BillingBlock tech={project.tech} />
                   </div>
-                )}
+                  {project.links?.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {project.links.map((link, i) => (
+                        <a
+                          key={i}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-sky-600/30 border border-white/10 hover:border-sky-500/40 px-3 py-1.5 rounded-full text-xs text-gray-200 hover:text-white transition-all duration-200"
+                        >
+                          {getLinkIcon(link.url)}
+                          {link.text}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             </motion.div>
           ))}

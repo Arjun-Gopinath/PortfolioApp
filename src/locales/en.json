@@ -209,6 +209,10 @@
     "resume": "Download Resume"
   },
   "footer": {
-    "quickLinks": "Quick Links"
+    "quickLinks": "Quick Links",
+    "directedBy": "Directed by"
+  },
+  "act": {
+    "label": "ACT"
   }
 }
