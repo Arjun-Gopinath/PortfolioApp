@@ -26,8 +26,8 @@ const Contact = () => {
           transition={{ duration: 0.5 }}
           className="mb-10"
         >
-          <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-3">
-            Get in Touch
+          <p className="text-[10px] uppercase tracking-[0.35em] text-gold/80 font-semibold mb-3">
+            Roll Credits
           </p>
           <h2
             className="text-4xl md:text-5xl font-bold mb-5 font-display"

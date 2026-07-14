@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/* Cinematic accent — warm marquee gold. Registered as a Tailwind theme color
+   so utilities like text-gold, bg-gold/50, border-gold/40 all work.
+   Sky-blue stays the primary interactive color. */
+@theme {
+  --color-gold: #f5b942;
+}
+
+:root {
+  --gold: #f5b942;
+  --gold-soft: rgba(245, 185, 66, 0.5);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -10,6 +22,139 @@ body {
 
 .font-display {
   font-family: 'Bebas Neue', sans-serif;
+}
+
+/* ---------------------------------------------------------------------------
+   Cinematic layer — all effects are CSS-only, animate transform/opacity only,
+   are aria-hidden + pointer-events:none, and switch off under reduced motion.
+   --------------------------------------------------------------------------- */
+
+/* Film grain — a very subtle animated noise wash over the whole page. */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  animation: grain-shift 0.6s steps(4) infinite;
+}
+@keyframes grain-shift {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-4%, 3%); }
+  50%  { transform: translate(3%, -2%); }
+  75%  { transform: translate(-2%, -3%); }
+  100% { transform: translate(2%, 2%); }
+}
+
+/* Letterbox bars — one-time opening-titles frame that eases outward on load. */
+.letterbox-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 95;
+  height: 8vh;
+  background: #000;
+  pointer-events: none;
+}
+.letterbox-bar.top { top: 0; }
+.letterbox-bar.bottom { bottom: 0; }
+
+/* Projector spotlight that follows the cursor over the hero (desktop only). */
+.hero-spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    600px circle at var(--mx, 50%) var(--my, 40%),
+    rgba(255, 255, 255, 0.05),
+    transparent 60%
+  );
+  transition: background 0.15s ease-out;
+}
+
+/* Countdown leader ring for the loading screen. */
+.countdown-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+}
+.countdown-sweep {
+  position: absolute;
+  inset: -1px;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  border-top-color: var(--gold);
+  border-right-color: var(--gold-soft);
+  animation: sweep-spin 1s linear infinite;
+}
+@keyframes sweep-spin {
+  to { transform: rotate(360deg); }
+}
+/* Countdown crosshair lines. */
+.countdown-cross::before,
+.countdown-cross::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+}
+.countdown-cross::before {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+}
+.countdown-cross::after {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+/* Marquee bulbs — a chase shimmer of theater lights along a divider edge. */
+.marquee-bulbs {
+  height: 3px;
+  background-image: radial-gradient(
+    circle,
+    var(--gold-soft) 0.5px,
+    transparent 1.4px
+  );
+  background-size: 14px 3px;
+  background-repeat: repeat-x;
+  opacity: 0.5;
+  animation: bulb-chase 1.2s linear infinite;
+}
+@keyframes bulb-chase {
+  to { background-position: 14px 0; }
+}
+
+/* Filmstrip sprocket-hole edge for the timeline spine. */
+.sprocket-edge {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.14) 0,
+    rgba(255, 255, 255, 0.14) 3px,
+    transparent 3px,
+    transparent 9px
+  );
+}
+
+/* Reduced motion: silence every ambient cinematic animation. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .film-grain,
+  .countdown-sweep,
+  .marquee-bulbs {
+    animation: none !important;
+  }
+  .film-grain { display: none; }
+  .hero-spotlight { display: none; }
 }
 
 /* Football pitch lines — barely visible Easter egg in Hero background */

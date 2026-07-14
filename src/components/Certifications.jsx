@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { SiMeta } from "react-icons/si";
+import ActLabel from "./ActLabel";
 
 const issuerIcon = {
   Meta: <SiMeta className="text-blue-400" style={{ fontSize: "2rem" }} />,
@@ -139,9 +140,7 @@ const Certifications = () => {
       style={{ fontFamily: "Manrope, sans-serif" }}
     >
       <div className="max-w-5xl mx-auto mb-12">
-        <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-1">
-          Credentials
-        </p>
+        <ActLabel act="IV" className="mb-2" />
         <h2 className="text-3xl md:text-4xl font-bold text-white" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
           {t("certifications.heading")}
         </h2>

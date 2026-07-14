@@ -7,6 +7,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import ActLabel from "./ActLabel";
 
 const accentStyles = [
   {
@@ -76,9 +77,7 @@ const DesktopExperience = ({ jobs, heading }) => {
         {/* Header — sits below the navbar (~64px), pt-20 gives clearance */}
         <div className="pt-20 pb-6 shrink-0 flex items-end justify-between border-b border-white/5">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-1">
-              Professional
-            </p>
+            <ActLabel act="II" className="mb-2" />
             <h2 className="text-3xl font-bold text-white" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{heading}</h2>
           </div>
           <div className="flex items-center gap-8">
@@ -150,9 +149,14 @@ const DesktopExperience = ({ jobs, heading }) => {
           {/* Right: dot timeline sidebar */}
           <div className="w-52 lg:w-60 shrink-0 flex items-center">
             <div className="relative w-full">
+              {/* Filmstrip sprocket-hole edge running alongside the spine */}
+              <div
+                className="absolute left-[1px] top-3 bottom-3 w-[9px] sprocket-edge opacity-40"
+                aria-hidden="true"
+              />
               {/* Background track */}
               <div className="absolute left-[5px] top-3 bottom-3 w-px bg-white/8" />
-              {/* Animated fill */}
+              {/* Animated fill — the strip "feeds" as you scroll */}
               <motion.div
                 className="absolute left-[5px] top-3 bottom-3 w-px bg-gradient-to-b from-sky-400/80 to-blue-500/80 origin-top"
                 style={{ scaleY: lineScaleY }}
@@ -217,9 +221,7 @@ const Experience = () => {
         style={{ fontFamily: "Manrope, sans-serif" }}
       >
         <div className="max-w-lg mx-auto mb-10">
-          <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-1">
-            Professional
-          </p>
+          <ActLabel act="II" className="mb-2" />
           <div className="flex items-end justify-between">
             <h2 className="text-3xl font-bold text-white" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{heading}</h2>
             <p className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500">
@@ -229,6 +231,10 @@ const Experience = () => {
         </div>
 
         <div className="relative max-w-lg mx-auto">
+          <div
+            className="absolute left-[13px] top-2 bottom-2 w-[9px] sprocket-edge opacity-30"
+            aria-hidden="true"
+          />
           <div className="absolute left-4 top-2 bottom-2 w-px bg-gradient-to-b from-sky-400/60 via-sky-300/20 to-transparent" />
 
           <div className="space-y-8">

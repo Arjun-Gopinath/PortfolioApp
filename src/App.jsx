@@ -3,6 +3,7 @@ import ChatWithMe from "./components/ChatWithMe";
 import Contact from "./components/Contact";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
+import FilmGrain from "./components/FilmGrain";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import LoadingScreen from "./components/LoadingScreen";
@@ -17,6 +18,7 @@ function App() {
   return (
     <>
       <LoadingScreen />
+      <FilmGrain />
       <ScrollProgress />
       <TopNavbar />
       <main style={{ fontFamily: "Manrope, sans-serif" }}>

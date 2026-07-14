@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { FaGraduationCap } from "react-icons/fa";
+import ActLabel from "./ActLabel";
 
 const eduAccents = [
   {
@@ -55,9 +56,7 @@ const DesktopEducation = ({ items, heading }) => {
         {/* Header */}
         <div className="pt-20 pb-6 shrink-0 flex items-end justify-between border-b border-white/5">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-1">
-              Educational
-            </p>
+            <ActLabel act="III" className="mb-2" />
             <h2 className="text-3xl font-bold text-white" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{heading}</h2>
           </div>
           <div className="font-mono text-gray-600 text-sm tabular-nums">
@@ -102,6 +101,10 @@ const DesktopEducation = ({ items, heading }) => {
           {/* Right: dot sidebar */}
           <div className="w-52 lg:w-60 shrink-0 flex items-center">
             <div className="relative w-full">
+              <div
+                className="absolute left-[1px] top-3 bottom-3 w-[9px] sprocket-edge opacity-40"
+                aria-hidden="true"
+              />
               <div className="absolute left-[5px] top-3 bottom-3 w-px bg-white/8" />
               <motion.div
                 className="absolute left-[5px] top-3 bottom-3 w-px bg-gradient-to-b from-emerald-400/80 to-violet-500/80 origin-top"
@@ -166,10 +169,8 @@ const Education = () => {
         className="md:hidden py-16 px-4 sm:px-6 bg-gray-950"
         style={{ fontFamily: "Manrope, sans-serif" }}
       >
-        <div className="mb-10">
-          <p className="text-xs uppercase tracking-[0.2em] text-gray-600 mb-1 text-center">
-            Educational
-          </p>
+        <div className="mb-10 flex flex-col items-center">
+          <ActLabel act="III" className="mb-2" />
           <h2 className="text-3xl font-bold text-white text-center" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{heading}</h2>
         </div>
 

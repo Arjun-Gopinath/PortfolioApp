@@ -209,6 +209,10 @@
     "resume": "Descargar CV"
   },
   "footer": {
-    "quickLinks": "Enlaces Rápidos"
+    "quickLinks": "Enlaces Rápidos",
+    "directedBy": "Dirigido por"
+  },
+  "act": {
+    "label": "ACTO"
   }
 }
