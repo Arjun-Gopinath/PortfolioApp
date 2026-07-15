@@ -5,7 +5,10 @@
     "openToWork": "Disponible pour travailler",
     "downloadResume": "Télécharger le CV",
     "subtitle": "Ingénieur Full Stack avec 5 ans d'expérience dans la création de produits évolutifs et intensifs en données dans la fintech et la santé. Solide expertise en React, TypeScript et architecture frontend — avec une expérience pratique du backend en Node.js et Python. Historique de livraison de fonctionnalités de bout en bout, de collaboration entre équipes produit et ingénierie, et de solutions propulsées par l'IA.",
-    "scroll": "Faites défiler vers le bas"
+    "scroll": "Faites défiler vers le bas",
+    "play": "Lecture",
+    "moreInfo": "Plus d'Infos",
+    "experienceBadge": "5+ Ans d'Expérience"
   },
   "navbar": {
     "home": "Accueil",

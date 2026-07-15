@@ -52,22 +52,28 @@ const TopNavbar = () => {
       <header
         className={`sticky top-0 z-50 px-6 py-3 flex justify-between items-center transition-all duration-300 ${
           scrolled
-            ? "bg-gray-950/85 backdrop-blur-md border-b border-white/5"
-            : "bg-transparent"
+            ? "bg-gray-950/90 backdrop-blur-md border-b border-white/5"
+            : "bg-gradient-to-b from-gray-950/80 via-gray-950/30 to-transparent"
         }`}
         style={{ fontFamily: "Manrope, sans-serif" }}
       >
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-8">
           <a
             href="#hero"
             onClick={() => handleNavClick("hero")}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2.5"
           >
             <img
               src="images/logo.svg"
               alt="AG Logo"
               className="w-8 h-8 md:w-9 md:h-9 object-contain"
             />
+            <span
+              className="hidden sm:inline text-white text-sm font-bold uppercase tracking-[0.2em]"
+              style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.15em" }}
+            >
+              Arjun Gopinath
+            </span>
           </a>
 
           <nav className="hidden md:flex items-center gap-1">
@@ -76,20 +82,20 @@ const TopNavbar = () => {
                 key={section.id}
                 href={`#${section.id}`}
                 onClick={() => handleNavClick(section.id)}
-                className={`relative text-sm font-medium px-3 py-1.5 rounded transition-colors duration-200 ${
+                className={`relative text-sm font-medium px-3 py-1.5 rounded-md transition-colors duration-200 ${
                   active === section.id
-                    ? "text-sky-400"
+                    ? "text-white"
                     : "text-gray-400 hover:text-white"
                 }`}
               >
-                {section.label}
                 {active === section.id && (
                   <motion.span
                     layoutId="nav-indicator"
-                    className="absolute bottom-0 left-3 right-3 h-px bg-sky-400 rounded-full"
+                    className="absolute inset-0 bg-white/10 rounded-md"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
+                <span className="relative">{section.label}</span>
               </a>
             ))}
           </nav>

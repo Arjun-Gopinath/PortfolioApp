@@ -49,3 +49,15 @@ export const fadeOnly = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { duration: DURATION.base } },
 };
+
+// Streaming-row "TitleCard" hover/focus lift — used for the poster-style
+// cards inside Row. Reduced-motion callers should skip this variant entirely
+// (they still get the CSS opacity reveal on the card's info panel).
+export const cardHover = {
+  rest: { y: 0, scale: 1 },
+  active: {
+    y: -8,
+    scale: 1.03,
+    transition: { duration: DURATION.fast + 0.05, ease: CINEMATIC_EASE },
+  },
+};

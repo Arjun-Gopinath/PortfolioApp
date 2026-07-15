@@ -5,7 +5,10 @@
     "openToWork": "Open to Work",
     "downloadResume": "Download Resume",
     "subtitle": "Full Stack Engineer with 5 years building scalable, data-intensive products across fintech and healthcare. Strong in React, TypeScript, and frontend architecture — with hands-on backend experience in Node.js and Python. Track record of owning features end to end, collaborating across product and engineering teams, and delivering AI-powered solutions.",
-    "scroll": "Scroll down"
+    "scroll": "Scroll down",
+    "play": "Play",
+    "moreInfo": "More Info",
+    "experienceBadge": "5+ Years Experience"
   },
   "navbar": {
     "home": "Home",

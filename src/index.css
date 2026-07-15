@@ -201,3 +201,36 @@ body {
 .backface-hidden {
   backface-visibility: hidden;
 }
+
+/* ---------------------------------------------------------------------------
+   Streaming-service row browsing — horizontal scroll-snap carousels.
+   --------------------------------------------------------------------------- */
+.row-scroll {
+  scroll-snap-type: x proximity;
+  scroll-padding-left: 0.25rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.row-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Solid edge fades that match the section background, signalling more content
+   without depending on mask-image (uneven Safari support). */
+.row-fade-left,
+.row-fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2.5rem;
+  pointer-events: none;
+  z-index: 10;
+}
+.row-fade-left {
+  left: 0;
+  background: linear-gradient(to right, #030712, transparent);
+}
+.row-fade-right {
+  right: 0;
+  background: linear-gradient(to left, #030712, transparent);
+}
