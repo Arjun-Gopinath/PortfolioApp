@@ -55,7 +55,6 @@ const TopNavbar = () => {
             ? "bg-gray-950/90 backdrop-blur-md border-b border-white/5"
             : "bg-gradient-to-b from-gray-950/80 via-gray-950/30 to-transparent"
         }`}
-        style={{ fontFamily: "Manrope, sans-serif" }}
       >
         <div className="flex items-center gap-8">
           <a
@@ -69,8 +68,8 @@ const TopNavbar = () => {
               className="w-8 h-8 md:w-9 md:h-9 object-contain"
             />
             <span
-              className="hidden sm:inline text-white text-sm font-bold uppercase tracking-[0.2em]"
-              style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.15em" }}
+              className="hidden sm:inline text-white text-sm font-bold uppercase tracking-[0.2em] font-display"
+              style={{ letterSpacing: "0.15em" }}
             >
               Arjun Gopinath
             </span>
@@ -82,7 +81,7 @@ const TopNavbar = () => {
                 key={section.id}
                 href={`#${section.id}`}
                 onClick={() => handleNavClick(section.id)}
-                className={`relative text-sm font-medium px-3 py-1.5 rounded-md transition-colors duration-200 ${
+                className={`group relative text-sm font-medium px-3 py-1.5 rounded-md transition-colors duration-200 ${
                   active === section.id
                     ? "text-white"
                     : "text-gray-400 hover:text-white"
@@ -96,6 +95,9 @@ const TopNavbar = () => {
                   />
                 )}
                 <span className="relative">{section.label}</span>
+                {active !== section.id && (
+                  <span className="absolute left-3 right-3 bottom-0.5 h-px bg-sky-400 scale-x-0 origin-left transition-transform duration-200 group-hover:scale-x-100" />
+                )}
               </a>
             ))}
           </nav>
@@ -131,7 +133,6 @@ const TopNavbar = () => {
               exit={{ x: "-100%" }}
               transition={{ type: "tween", duration: 0.28 }}
               className="fixed left-0 top-0 h-full w-72 bg-gray-950/95 backdrop-blur-md z-50 md:hidden flex flex-col shadow-2xl border-r border-white/5"
-              style={{ fontFamily: "Manrope, sans-serif" }}
             >
               {/* Drawer header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-white/8">

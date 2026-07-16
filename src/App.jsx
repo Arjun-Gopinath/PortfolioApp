@@ -1,6 +1,7 @@
 import Certifications from "./components/Certifications";
 import ChatWithMe from "./components/ChatWithMe";
 import Contact from "./components/Contact";
+import CustomCursor from "./components/CustomCursor";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
 import FilmGrain from "./components/FilmGrain";
@@ -19,9 +20,10 @@ function App() {
     <>
       <LoadingScreen />
       <FilmGrain />
+      <CustomCursor />
       <ScrollProgress />
       <TopNavbar />
-      <main style={{ fontFamily: "Manrope, sans-serif" }}>
+      <main>
         <Hero />
         <MarqueeDivider items={["SKILLS", "TECHNOLOGIES", "EXPERTISE"]} direction="left" />
         <Skills />

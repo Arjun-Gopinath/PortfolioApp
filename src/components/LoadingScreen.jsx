@@ -55,7 +55,6 @@ const LoadingScreen = () => {
           exit={{ y: "-100%" }}
           transition={{ duration: 0.65, ease: CINEMATIC_EASE }}
           className="fixed inset-0 z-[200] bg-gray-950 flex flex-col items-center justify-center gap-10"
-          style={{ fontFamily: "Manrope, sans-serif" }}
         >
           {/* Countdown leader ring */}
           <div className="relative w-40 h-40 flex items-center justify-center">
@@ -71,8 +70,8 @@ const LoadingScreen = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.6 }}
                   transition={{ duration: 0.3, ease: CINEMATIC_EASE }}
-                  className="text-gold relative z-10 select-none"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "5rem", lineHeight: 1 }}
+                  className="text-gold relative z-10 select-none font-display"
+                  style={{ fontSize: "5rem", lineHeight: 1 }}
                 >
                   {phase}
                 </motion.span>

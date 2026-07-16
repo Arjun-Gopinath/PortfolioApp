@@ -116,14 +116,10 @@ const Skills = () => {
     <section
       id="skills"
       className="py-20 px-6 md:px-12 bg-gray-950 text-white"
-      style={{ fontFamily: "Manrope, sans-serif" }}
     >
       <div className="max-w-5xl mx-auto mb-12">
         <ActLabel act="I" className="mb-2" />
-        <h2
-          className="text-3xl md:text-4xl font-bold text-white"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-        >
+        <h2 className="text-3xl md:text-4xl font-bold text-white font-display">
           {t("skills.techHeading")}
         </h2>
       </div>

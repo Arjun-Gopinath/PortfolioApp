@@ -6,7 +6,7 @@ import { titleCard, fadeOnly } from "../motion";
 // A horizontally-scrollable "row" — the core streaming-catalog browsing
 // primitive. Native CSS scroll-snap drives touch/trackpad scrolling; the
 // chevrons are the explicit affordance for mouse/keyboard users.
-const Row = ({ title, accent = "bg-sky-400", ariaLabel, children, className = "" }) => {
+const Row = ({ title, accent = "bg-sky-400", ariaLabel, showTitle = true, children, className = "" }) => {
   const scrollerRef = useRef(null);
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(false);
@@ -46,16 +46,15 @@ const Row = ({ title, accent = "bg-sky-400", ariaLabel, children, className = ""
       variants={reduceMotion ? fadeOnly : titleCard}
       className={`relative ${className}`}
     >
-      <div className="flex items-center justify-between gap-4 mb-4 px-1">
-        <div className="flex items-center gap-3">
-          <span className={`h-0.5 w-6 rounded-full shrink-0 ${accent}`} />
-          <h3
-            className="text-lg md:text-xl font-bold text-white"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-          >
-            {title}
-          </h3>
-        </div>
+      <div className={`flex items-center gap-4 mb-4 px-1 ${showTitle ? "justify-between" : "justify-end"}`}>
+        {showTitle && (
+          <div className="flex items-center gap-3">
+            <span className={`h-0.5 w-6 rounded-full shrink-0 ${accent}`} />
+            <h3 className="text-lg md:text-xl font-bold text-white font-display">
+              {title}
+            </h3>
+          </div>
+        )}
 
         <div className="hidden sm:flex items-center gap-2 shrink-0">
           <button

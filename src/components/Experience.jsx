@@ -25,15 +25,11 @@ const Experience = () => {
     <section
       id="experience"
       className="py-20 px-6 md:px-12 bg-gray-950 text-white"
-      style={{ fontFamily: "Manrope, sans-serif" }}
     >
       <div className="max-w-5xl mx-auto mb-10 flex items-end justify-between flex-wrap gap-4">
         <div>
           <ActLabel act="II" className="mb-2" />
-          <h2
-            className="text-3xl md:text-4xl font-bold text-white"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-          >
+          <h2 className="text-3xl md:text-4xl font-bold text-white font-display">
             {heading}
           </h2>
         </div>
@@ -43,7 +39,7 @@ const Experience = () => {
       </div>
 
       <div className="max-w-5xl mx-auto">
-        <Row title={heading} accent="bg-teal-400" ariaLabel={heading}>
+        <Row title={heading} showTitle={false} accent="bg-teal-400" ariaLabel={heading}>
           {jobs.map((job, idx) => {
             const { title: roleTitle, period } = parseRole(job.role);
             return (

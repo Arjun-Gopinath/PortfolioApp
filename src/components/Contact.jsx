@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaLinkedin, FaGithub, FaFileDownload } from "react-icons/fa";
+import Magnetic from "./Magnetic";
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -9,7 +10,6 @@ const Contact = () => {
     <section
       id="contact"
       className="relative min-h-screen flex flex-col items-center justify-center px-6 bg-gray-950 text-white overflow-hidden"
-      style={{ fontFamily: "Manrope, sans-serif" }}
     >
       {/* Subtle background orbs */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -29,10 +29,7 @@ const Contact = () => {
           <p className="text-[10px] uppercase tracking-[0.35em] text-gold/80 font-semibold mb-3">
             Roll Credits
           </p>
-          <h2
-            className="text-4xl md:text-5xl font-bold mb-5 font-display"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-          >
+          <h2 className="text-4xl md:text-5xl font-bold mb-5 font-display">
             {t("contact.heading")}
           </h2>
           <p className="text-gray-400 text-base leading-relaxed">
@@ -48,46 +45,54 @@ const Contact = () => {
           transition={{ duration: 0.5, delay: 0.15 }}
           className="grid grid-cols-1 sm:grid-cols-2 gap-3"
         >
-          <a
-            href="mailto:arjungopinath06@gmail.com?subject=Kudos%20on%20the%20Portfolio&body=Hi%20Arjun%2C%0A%0AI%20just%20checked%20out%20your%20portfolio%20and%20I%20really%20loved%20the%20work%20you've%20done!%0A%0AJust%20wanted%20to%20reach%20out%20and%20say%20keep%20up%20the%20great%20work!"
-            className="flex items-center justify-center gap-3 bg-sky-600 hover:bg-sky-700 transition-colors duration-200 px-5 py-3.5 rounded-full text-white font-medium text-sm shadow"
-            aria-label="Send an email to Arjun"
-          >
-            <FaEnvelope className="text-base" />
-            {t("contact.email")}
-          </a>
+          <Magnetic className="w-full">
+            <a
+              href="mailto:arjungopinath06@gmail.com?subject=Kudos%20on%20the%20Portfolio&body=Hi%20Arjun%2C%0A%0AI%20just%20checked%20out%20your%20portfolio%20and%20I%20really%20loved%20the%20work%20you've%20done!%0A%0AJust%20wanted%20to%20reach%20out%20and%20say%20keep%20up%20the%20great%20work!"
+              className="btn-sweep flex items-center justify-center gap-3 bg-sky-600 transition-colors duration-200 px-5 py-3.5 rounded-full text-white font-medium text-sm shadow"
+              aria-label="Send an email to Arjun"
+            >
+              <FaEnvelope className="text-base" />
+              {t("contact.email")}
+            </a>
+          </Magnetic>
 
-          <a
-            href="https://www.linkedin.com/in/arjun-g-b3b57b1a1/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 transition-colors duration-200 px-5 py-3.5 rounded-full text-white font-medium text-sm shadow"
-            aria-label="Connect on LinkedIn"
-          >
-            <FaLinkedin className="text-base" />
-            {t("contact.linkedin")}
-          </a>
+          <Magnetic className="w-full">
+            <a
+              href="https://www.linkedin.com/in/arjun-g-b3b57b1a1/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 transition-colors duration-200 px-5 py-3.5 rounded-full text-white font-medium text-sm shadow"
+              aria-label="Connect on LinkedIn"
+            >
+              <FaLinkedin className="text-base" />
+              {t("contact.linkedin")}
+            </a>
+          </Magnetic>
 
-          <a
-            href="https://github.com/Arjun-Gopinath"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3 bg-white/8 hover:bg-white/15 border border-white/10 hover:border-white/20 transition-all duration-200 px-5 py-3.5 rounded-full text-white font-medium text-sm"
-            aria-label="Visit GitHub Profile"
-          >
-            <FaGithub className="text-base" />
-            {t("contact.github")}
-          </a>
+          <Magnetic className="w-full">
+            <a
+              href="https://github.com/Arjun-Gopinath"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 bg-white/8 hover:bg-white/15 border border-white/10 hover:border-white/20 transition-all duration-200 px-5 py-3.5 rounded-full text-white font-medium text-sm"
+              aria-label="Visit GitHub Profile"
+            >
+              <FaGithub className="text-base" />
+              {t("contact.github")}
+            </a>
+          </Magnetic>
 
-          <a
-            href="/resume/arjun-gopinath-resume.pdf"
-            download
-            className="flex items-center justify-center gap-3 bg-white/8 hover:bg-white/15 border border-white/10 hover:border-white/20 transition-all duration-200 px-5 py-3.5 rounded-full text-white font-medium text-sm"
-            aria-label="Download Arjun's resume"
-          >
-            <FaFileDownload className="text-base" />
-            {t("contact.resume")}
-          </a>
+          <Magnetic className="w-full">
+            <a
+              href="/resume/arjun-gopinath-resume.pdf"
+              download
+              className="flex items-center justify-center gap-3 bg-white/8 hover:bg-white/15 border border-white/10 hover:border-white/20 transition-all duration-200 px-5 py-3.5 rounded-full text-white font-medium text-sm"
+              aria-label="Download Arjun's resume"
+            >
+              <FaFileDownload className="text-base" />
+              {t("contact.resume")}
+            </a>
+          </Magnetic>
         </motion.div>
       </div>
     </section>

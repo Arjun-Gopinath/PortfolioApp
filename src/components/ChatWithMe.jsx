@@ -159,7 +159,6 @@ const ChatWithMe = () => {
               exit={panelVariants.exit}
               transition={{ type: "tween", duration: 0.35, ease: CINEMATIC_EASE }}
               className={panelClass}
-              style={{ fontFamily: "Manrope, sans-serif" }}
             >
               {/* Drag handle (mobile only) */}
               {isMobile && (

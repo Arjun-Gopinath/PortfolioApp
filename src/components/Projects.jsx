@@ -28,22 +28,18 @@ const Projects = () => {
     <section
       id="projects"
       className="py-20 px-6 md:px-12 bg-gray-950 text-white"
-      style={{ fontFamily: "Manrope, sans-serif" }}
     >
       <div className="max-w-5xl mx-auto mb-10">
         <p className="text-[10px] uppercase tracking-[0.35em] text-gold/80 font-semibold mb-1">
           Now Showing
         </p>
-        <h2
-          className="text-3xl md:text-4xl font-bold text-white"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-        >
+        <h2 className="text-3xl md:text-4xl font-bold text-white font-display">
           {heading}
         </h2>
       </div>
 
       <div className="max-w-5xl mx-auto">
-        <Row title={heading} accent="bg-sky-400" ariaLabel={heading}>
+        <Row title={heading} showTitle={false} accent="bg-sky-400" ariaLabel={heading}>
           {projects.map((project, idx) => (
             <TitleCard
               key={idx}

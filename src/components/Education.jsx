@@ -51,13 +51,12 @@ const DesktopEducation = ({ items, heading }) => {
     <div ref={containerRef} style={{ height: `${items.length * 100}vh` }}>
       <div
         className="sticky top-0 h-screen bg-gray-950 flex flex-col px-8 lg:px-16 xl:px-20 overflow-hidden"
-        style={{ fontFamily: "Manrope, sans-serif" }}
       >
         {/* Header */}
         <div className="pt-20 pb-6 shrink-0 flex items-end justify-between border-b border-white/5">
           <div>
             <ActLabel act="III" className="mb-2" />
-            <h2 className="text-3xl font-bold text-white" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{heading}</h2>
+            <h2 className="text-3xl font-bold text-white font-display">{heading}</h2>
           </div>
           <div className="font-mono text-gray-600 text-sm tabular-nums">
             <span className="text-white font-semibold text-lg">
@@ -87,7 +86,7 @@ const DesktopEducation = ({ items, heading }) => {
                   {items[activeStep].years}
                 </span>
 
-                <h3 className="text-3xl lg:text-5xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                <h3 className="text-3xl lg:text-5xl font-bold text-white mb-4 leading-tight font-display">
                   {items[activeStep].degree}
                 </h3>
 
@@ -167,11 +166,10 @@ const Education = () => {
       {/* Mobile: vertical stack */}
       <div
         className="md:hidden py-16 px-4 sm:px-6 bg-gray-950"
-        style={{ fontFamily: "Manrope, sans-serif" }}
       >
         <div className="mb-10 flex flex-col items-center">
           <ActLabel act="III" className="mb-2" />
-          <h2 className="text-3xl font-bold text-white text-center" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{heading}</h2>
+          <h2 className="text-3xl font-bold text-white text-center font-display">{heading}</h2>
         </div>
 
         <div className="max-w-lg mx-auto space-y-6">

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { motion, useReducedMotion } from "framer-motion";
 import { FaPlay, FaInfoCircle, FaFileDownload } from "react-icons/fa";
 import { CINEMATIC_EASE } from "../motion";
+import Magnetic from "./Magnetic";
 
 const isOpenToWork = import.meta.env.VITE_OPEN_TO_WORK === "true";
 
@@ -77,9 +78,8 @@ const Hero = () => {
 
         {/* Opening title — name rises word-by-word from behind a mask */}
         <h1
-          className="flex flex-wrap justify-center gap-x-[0.25em]"
+          className="flex flex-wrap justify-center gap-x-[0.25em] font-display"
           style={{
-            fontFamily: "'Bebas Neue', sans-serif",
             fontSize: "clamp(4rem, 10vw, 9rem)",
             lineHeight: 0.92,
             color: "white",
@@ -109,7 +109,6 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
           className="text-xs md:text-sm uppercase tracking-[0.25em] text-sky-400 mt-5 mb-6"
-          style={{ fontFamily: "Manrope, sans-serif" }}
         >
           {t("hero.title")}
         </motion.p>
@@ -119,7 +118,6 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.85 }}
           className="text-sm md:text-base text-gray-400 max-w-xl mx-auto leading-relaxed mb-6"
-          style={{ fontFamily: "Manrope, sans-serif" }}
         >
           {t("hero.subtitle")}
         </motion.p>
@@ -130,7 +128,6 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.95 }}
           className="flex flex-wrap items-center justify-center gap-2 mb-9 text-xs"
-          style={{ fontFamily: "Manrope, sans-serif" }}
         >
           <span className="inline-flex items-center border border-gold/30 text-gold/90 px-2.5 py-1 rounded font-semibold uppercase tracking-wide">
             {t("hero.experienceBadge")}
@@ -152,25 +149,27 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 1.1 }}
           className="flex flex-wrap items-center justify-center gap-4"
         >
-          <button
-            type="button"
-            onClick={() => scrollToId("experience")}
-            className="inline-flex items-center gap-2 bg-white hover:bg-gray-200 transition-colors duration-200 px-7 py-3 rounded-md text-gray-950 text-sm font-bold shadow-lg"
-            style={{ fontFamily: "Manrope, sans-serif" }}
-          >
-            <FaPlay className="text-sm" />
-            {t("hero.play")}
-          </button>
+          <Magnetic>
+            <button
+              type="button"
+              onClick={() => scrollToId("experience")}
+              className="btn-sweep inline-flex items-center gap-2 bg-white transition-colors duration-200 px-7 py-3 rounded-md text-gray-950 text-sm font-bold shadow-lg"
+            >
+              <FaPlay className="text-sm" />
+              {t("hero.play")}
+            </button>
+          </Magnetic>
 
-          <button
-            type="button"
-            onClick={() => scrollToId("projects")}
-            className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 border border-white/20 transition-all duration-200 px-7 py-3 rounded-md text-white text-sm font-bold"
-            style={{ fontFamily: "Manrope, sans-serif" }}
-          >
-            <FaInfoCircle className="text-sm" />
-            {t("hero.moreInfo")}
-          </button>
+          <Magnetic>
+            <button
+              type="button"
+              onClick={() => scrollToId("projects")}
+              className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 border border-white/20 transition-all duration-200 px-7 py-3 rounded-md text-white text-sm font-bold"
+            >
+              <FaInfoCircle className="text-sm" />
+              {t("hero.moreInfo")}
+            </button>
+          </Magnetic>
         </motion.div>
 
         <motion.a
@@ -181,7 +180,6 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 1.3 }}
           className="inline-flex items-center gap-2 mt-5 text-xs text-gray-500 hover:text-sky-400 transition-colors duration-200"
           aria-label="Download Arjun's resume"
-          style={{ fontFamily: "Manrope, sans-serif" }}
         >
           <FaFileDownload className="text-xs" />
           {t("hero.downloadResume")}

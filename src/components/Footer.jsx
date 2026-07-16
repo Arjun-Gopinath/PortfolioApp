@@ -18,7 +18,6 @@ const Footer = () => {
   return (
     <footer
       className="bg-gray-950 border-t border-white/10 text-white py-10 px-6 md:px-12"
-      style={{ fontFamily: "Manrope, sans-serif" }}
     >
       {/* End-credits cascade — lines rise in sequence, once, on scroll into view */}
       <motion.div

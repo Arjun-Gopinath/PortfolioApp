@@ -3,8 +3,13 @@
 /* Cinematic accent — warm marquee gold. Registered as a Tailwind theme color
    so utilities like text-gold, bg-gold/50, border-gold/40 all work.
    Sky-blue stays the primary interactive color. */
+/* Shared typography tokens — the only place either typeface is declared.
+   Generates the font-display / font-body utility classes; components must
+   use these instead of inline fontFamily styles. */
 @theme {
   --color-gold: #f5b942;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Manrope', sans-serif;
 }
 
 :root {
@@ -18,10 +23,7 @@ html {
 
 body {
   background-color: #030712; /* gray-950 */
-}
-
-.font-display {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--font-body);
 }
 
 /* ---------------------------------------------------------------------------
@@ -145,6 +147,37 @@ body {
   );
 }
 
+/* Hover-sweep fill for primary CTAs — a diagonal color wipe driven purely by
+   a pseudo-element transform, no JS. */
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--gold);
+  transform: translateX(-105%);
+  transition: transform 0.35s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.btn-sweep:hover::before,
+.btn-sweep:focus-visible::before {
+  transform: translateX(0);
+}
+.btn-sweep,
+.btn-sweep * {
+  transition: color 0.35s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.btn-sweep:hover,
+.btn-sweep:hover *,
+.btn-sweep:focus-visible,
+.btn-sweep:focus-visible * {
+  color: #030712;
+}
+
 /* Reduced motion: silence every ambient cinematic animation. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -155,6 +188,11 @@ body {
   }
   .film-grain { display: none; }
   .hero-spotlight { display: none; }
+  .btn-sweep::before,
+  .btn-sweep,
+  .btn-sweep * {
+    transition: none !important;
+  }
 }
 
 /* Football pitch lines — barely visible Easter egg in Hero background */
@@ -212,6 +250,17 @@ body {
   scrollbar-width: none;
 }
 .row-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* TitleCard hover/focus overlay — same scrollbar-hiding treatment as
+   .row-scroll so overflowing synopsis/bullets/links scroll without a
+   visible system scrollbar bisecting the card. */
+.titlecard-overlay-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.titlecard-overlay-scroll::-webkit-scrollbar {
   display: none;
 }
 
