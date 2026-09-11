@@ -67,12 +67,6 @@ const TopNavbar = () => {
               alt="AG Logo"
               className="w-8 h-8 md:w-9 md:h-9 object-contain"
             />
-            <span
-              className="hidden sm:inline text-white text-sm font-bold uppercase tracking-[0.2em] font-display"
-              style={{ letterSpacing: "0.15em" }}
-            >
-              Arjun Gopinath
-            </span>
           </a>
 
           <nav className="hidden md:flex items-center gap-1">

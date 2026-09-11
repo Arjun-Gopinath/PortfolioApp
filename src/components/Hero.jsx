@@ -81,15 +81,15 @@ const Hero = () => {
           className="flex flex-wrap justify-center gap-x-[0.25em] font-display"
           style={{
             fontSize: "clamp(4rem, 10vw, 9rem)",
-            lineHeight: 0.92,
+            lineHeight: 1,
             color: "white",
           }}
         >
           {words.map((word, i) => (
-            <span key={i} className="inline-block overflow-hidden pb-[0.05em]">
+            <span key={i} className="inline-block overflow-hidden p-[0.05em]">
               <motion.span
                 className="inline-block"
-                initial={reduceMotion ? { opacity: 0 } : { y: "110%" }}
+                initial={reduceMotion ? { opacity: 0 } : { y: "100%" }}
                 animate={reduceMotion ? { opacity: 1 } : { y: 0 }}
                 transition={{
                   duration: 0.8,
@@ -190,7 +190,11 @@ const Hero = () => {
             <motion.div
               className="absolute top-0 left-0 w-full rounded-full bg-gradient-to-b from-sky-400 to-sky-400/0"
               animate={{ y: ["-100%", "200%"] }}
-              transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+              transition={{
+                duration: 1.4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               style={{ height: "50%" }}
             />
           </div>

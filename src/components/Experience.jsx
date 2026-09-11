@@ -39,7 +39,12 @@ const Experience = () => {
       </div>
 
       <div className="max-w-5xl mx-auto">
-        <Row title={heading} showTitle={false} accent="bg-teal-400" ariaLabel={heading}>
+        <Row
+          title={heading}
+          showTitle={false}
+          accent="bg-teal-400"
+          ariaLabel={heading}
+        >
           {jobs.map((job, idx) => {
             const { title: roleTitle, period } = parseRole(job.role);
             return (

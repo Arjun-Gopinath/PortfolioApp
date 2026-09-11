@@ -25,15 +25,27 @@ function App() {
       <TopNavbar />
       <main>
         <Hero />
-        <MarqueeDivider items={["SKILLS", "TECHNOLOGIES", "EXPERTISE"]} direction="left" />
+        <MarqueeDivider
+          items={["SKILLS", "TECHNOLOGIES", "EXPERTISE"]}
+          direction="left"
+        />
         <Skills />
-        <MarqueeDivider items={["EXPERIENCE", "PROFESSIONAL", "5+ YEARS"]} direction="right" />
+        <MarqueeDivider
+          items={["EXPERIENCE", "PROFESSIONAL", "5+ YEARS"]}
+          direction="right"
+        />
         <Experience />
-        <MarqueeDivider items={["EDUCATION", "LEARNING", "GROWTH"]} direction="left" />
+        <MarqueeDivider
+          items={["EDUCATION", "LEARNING", "GROWTH"]}
+          direction="left"
+        />
         <Education />
         <Certifications />
         <Projects />
-        <MarqueeDivider items={["PROJECTS", "BUILT", "SHIPPED ⚽"]} direction="right" />
+        <MarqueeDivider
+          items={["PROJECTS", "BUILT", "SHIPPED ⚽"]}
+          direction="right"
+        />
         <Contact />
       </main>
       <ChatWithMe />
