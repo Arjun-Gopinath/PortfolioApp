@@ -27,7 +27,10 @@ export const titleCard = {
 };
 
 // A staggered container for choreographed reveals.
-export const staggerContainer = (stagger = STAGGER.base, delayChildren = 0) => ({
+export const staggerContainer = (
+  stagger = STAGGER.base,
+  delayChildren = 0,
+) => ({
   hidden: {},
   visible: {
     transition: { staggerChildren: stagger, delayChildren },

@@ -1,99 +1,120 @@
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
-import { FaEnvelope, FaLinkedin, FaGithub, FaFileDownload } from "react-icons/fa";
-import Magnetic from "./Magnetic";
+import {
+  FaEnvelope,
+  FaLinkedin,
+  FaGithub,
+  FaFileDownload,
+  FaNetworkWired,
+} from "react-icons/fa";
 
 const Contact = () => {
   const { t } = useTranslation();
 
+  const channels = [
+    {
+      protocol: "SMTP",
+      label: t("contact.email"),
+      address: "arjungopinath06@gmail.com",
+      href: "mailto:arjungopinath06@gmail.com?subject=Kudos%20on%20the%20Portfolio&body=Hi%20Arjun%2C%0A%0AI%20just%20checked%20out%20your%20portfolio%20and%20I%20really%20loved%20the%20work%20you've%20done!%0A%0AJust%20wanted%20to%20reach%20out%20and%20say%20keep%20up%20the%20great%20work!",
+      icon: <FaEnvelope className="text-[#58a6ff]" />,
+      action: "send_mail()",
+      primary: true,
+    },
+    {
+      protocol: "HTTPS",
+      label: t("contact.linkedin"),
+      address: "in/arjun-g-b3b57b1a1",
+      href: "https://www.linkedin.com/in/arjun-g-b3b57b1a1/",
+      icon: <FaLinkedin className="text-[#0a66c2]" />,
+      action: "connect()",
+      target: "_blank",
+    },
+    {
+      protocol: "GIT/SSH",
+      label: t("contact.github"),
+      address: "github.com/Arjun-Gopinath",
+      href: "https://github.com/Arjun-Gopinath",
+      icon: <FaGithub className="text-gray-300" />,
+      action: "view_profile()",
+      target: "_blank",
+    },
+    {
+      protocol: "STATIC/PDF",
+      label: t("contact.resume"),
+      address: "arjun-gopinath-resume.pdf",
+      href: "/resume/arjun-gopinath-resume.pdf",
+      icon: <FaFileDownload className="text-[#3fb950]" />,
+      action: "curl -O resume",
+      download: true,
+    },
+  ];
+
   return (
-    <section
-      id="contact"
-      className="relative min-h-screen flex flex-col items-center justify-center px-6 bg-gray-950 text-white overflow-hidden"
-    >
-      {/* Subtle background orbs */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-sky-500/8 rounded-full blur-3xl" />
-        <div className="absolute top-1/4 right-0 w-72 h-72 bg-blue-600/8 rounded-full blur-3xl" />
+    <section id="contact" className="font-mono text-gray-200 space-y-6">
+      {/* Terminal Header */}
+      <div className="border-b border-[#30363d] pb-3 flex flex-wrap items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <FaNetworkWired className="text-[#3fb950] text-sm" />
+          <span className="text-gray-400 text-xs">netstat --listen</span>
+          <h2 className="text-base font-semibold text-gray-100">
+            ~/network/open-ports
+          </h2>
+        </div>
+        <span className="text-[11px] text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-2 py-0.5 rounded">
+          PORT: 25, 443 [OPEN]
+        </span>
       </div>
 
-      <div className="relative max-w-lg w-full text-center">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5 }}
-          className="mb-10"
-        >
-          <p className="text-[10px] uppercase tracking-[0.35em] text-gold/80 font-semibold mb-3">
-            Roll Credits
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-5 font-display">
+      {/* Description / Summary Box */}
+      <div className="border border-[#30363d] bg-[#0d1117] rounded-lg p-5 sm:p-6 space-y-5">
+        <div className="space-y-1">
+          <p className="text-xs text-gray-500">// Handshake Request</p>
+          <h3 className="text-lg sm:text-xl font-bold text-white tracking-wide">
             {t("contact.heading")}
-          </h2>
-          <p className="text-gray-400 text-base leading-relaxed">
+          </h3>
+          <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-xl">
             {t("contact.description")}
           </p>
-        </motion.div>
+        </div>
 
-        {/* Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-3"
-        >
-          <Magnetic className="w-full">
+        {/* Network Connection Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+          {channels.map((ch, idx) => (
             <a
-              href="mailto:arjungopinath06@gmail.com?subject=Kudos%20on%20the%20Portfolio&body=Hi%20Arjun%2C%0A%0AI%20just%20checked%20out%20your%20portfolio%20and%20I%20really%20loved%20the%20work%20you've%20done!%0A%0AJust%20wanted%20to%20reach%20out%20and%20say%20keep%20up%20the%20great%20work!"
-              className="btn-sweep flex items-center justify-center gap-3 bg-sky-600 transition-colors duration-200 px-5 py-3.5 rounded-full text-white font-medium text-sm shadow"
-              aria-label="Send an email to Arjun"
+              key={idx}
+              href={ch.href}
+              target={ch.target}
+              rel={ch.target ? "noopener noreferrer" : undefined}
+              download={ch.download}
+              className={`group p-3.5 rounded border transition-colors flex items-center justify-between ${
+                ch.primary
+                  ? "border-[#58a6ff]/40 bg-[#161b22] hover:border-[#58a6ff]"
+                  : "border-[#30363d] bg-[#161b22]/50 hover:bg-[#161b22] hover:border-gray-500"
+              }`}
             >
-              <FaEnvelope className="text-base" />
-              {t("contact.email")}
-            </a>
-          </Magnetic>
+              <div className="flex items-center gap-3 min-w-0">
+                <span className="text-base shrink-0">{ch.icon}</span>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[10px] text-gray-500 font-bold">
+                      [{ch.protocol}]
+                    </span>
+                    <span className="text-xs font-semibold text-gray-200 group-hover:text-white truncate">
+                      {ch.label}
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-gray-400 truncate mt-0.5">
+                    {ch.address}
+                  </p>
+                </div>
+              </div>
 
-          <Magnetic className="w-full">
-            <a
-              href="https://www.linkedin.com/in/arjun-g-b3b57b1a1/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 transition-colors duration-200 px-5 py-3.5 rounded-full text-white font-medium text-sm shadow"
-              aria-label="Connect on LinkedIn"
-            >
-              <FaLinkedin className="text-base" />
-              {t("contact.linkedin")}
+              <span className="text-[10px] text-[#58a6ff] group-hover:underline ml-2 shrink-0 font-medium">
+                {ch.action} &rarr;
+              </span>
             </a>
-          </Magnetic>
-
-          <Magnetic className="w-full">
-            <a
-              href="https://github.com/Arjun-Gopinath"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 bg-white/8 hover:bg-white/15 border border-white/10 hover:border-white/20 transition-all duration-200 px-5 py-3.5 rounded-full text-white font-medium text-sm"
-              aria-label="Visit GitHub Profile"
-            >
-              <FaGithub className="text-base" />
-              {t("contact.github")}
-            </a>
-          </Magnetic>
-
-          <Magnetic className="w-full">
-            <a
-              href="/resume/arjun-gopinath-resume.pdf"
-              download
-              className="flex items-center justify-center gap-3 bg-white/8 hover:bg-white/15 border border-white/10 hover:border-white/20 transition-all duration-200 px-5 py-3.5 rounded-full text-white font-medium text-sm"
-              aria-label="Download Arjun's resume"
-            >
-              <FaFileDownload className="text-base" />
-              {t("contact.resume")}
-            </a>
-          </Magnetic>
-        </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

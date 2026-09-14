@@ -23,6 +23,15 @@
     "heading": "Expérience Professionnelle",
     "jobs": [
       {
+        "title": "EY GDS",
+        "role": "Assistant Manager (Juil 2026 – Présent)",
+        "responsibilities": [
+          "Membre d'EY Global Delivery Services (GDS) — le pôle de livraison technologique d'EY — au sein de la ligne de services Conseil.",
+          "Direction de bout en bout du développement frontend et backend d'une initiative d'IA agentique sur un engagement d'entreprise majeur conçu avec React et FastAPI. Conception d'agents d'IA en production pour automatiser le rapprochement et le mappage manuel entre sources de données hétérogènes.",
+          "Évaluation comparative de LLMs et de modèles d'embeddings sur des cas d'usage concrets avec sélection de la solution optimale par tâche; intégration d'Apache Iceberg et Neo4j pour l'infrastructure de données et d'Azure AI Foundry pour la gestion des LLMs dans un cycle de développement dynamique orienté IA."
+        ]
+      },
+      {
         "title": "Ransky Tech",
         "role": "Développeur Logiciel (Fév 2026 - Avr 2026)",
         "responsibilities": [
@@ -97,49 +106,25 @@
       {
         "name": "Financial Reporting Platform",
         "description": "Tableau de bord de trading en temps réel pour le P&L, les soldes et les frais entre exchanges — avec génération automatisée de rapports quotidiens remplaçant la réconciliation manuelle.",
-        "tech": [
-          "React",
-          "TypeScript",
-          "Node.js",
-          "Python"
-        ],
+        "tech": ["React", "TypeScript", "Node.js", "Python"],
         "links": []
       },
       {
         "name": "Clinical Study Report",
         "description": "Application React et FastAPI intégrant des pipelines LLM et RAG pour générer des rapports d'études cliniques structurés à partir d'entrées médicales non structurées pour un client pharmaceutique mondial.",
-        "tech": [
-          "React",
-          "FastAPI",
-          "Python",
-          "LLM",
-          "RAG"
-        ],
+        "tech": ["React", "FastAPI", "Python", "LLM", "RAG"],
         "links": []
       },
       {
         "name": "Chatbot for Admin Console",
         "description": "Assistant conversationnel construit avec des workflows agentiques et déterministes Temporal — aide les utilisateurs à naviguer dans les consoles d'administration de manière interactive via LLM et RAG.",
-        "tech": [
-          "React",
-          "FastAPI",
-          "Python",
-          "LLM",
-          "RAG",
-          "Temporal"
-        ],
+        "tech": ["React", "FastAPI", "Python", "LLM", "RAG", "Temporal"],
         "links": []
       },
       {
         "name": "Swarm Intel",
         "description": "Essaim d'agents de recherche construit pour le Hackathon Microsoft Build IA. Déploie 5 agents IA spécialisés en parallèle pour rechercher n'importe quelle entreprise — actualités, finances, LinkedIn, GitHub, réglementation — puis valide et synthétise les résultats en un rapport de due diligence structuré.",
-        "tech": [
-          "Python",
-          "LangGraph",
-          "LangChain",
-          "Streamlit",
-          "Ollama"
-        ],
+        "tech": ["Python", "LangGraph", "LangChain", "Streamlit", "Ollama"],
         "links": [
           {
             "url": "https://github.com/Arjun-Gopinath/swarm-intel",
@@ -154,12 +139,7 @@
       {
         "name": "Bahmni Open Source (EMR)",
         "description": "Contributions de fonctionnalités sur le frontend React et le backend Spring Boot de la plateforme EHR open-source Bahmni — i18n, améliorations d'authentification JWT, intégrations RabbitMQ et coordination des releases.",
-        "tech": [
-          "React",
-          "Spring Boot",
-          "Java",
-          "RabbitMQ"
-        ],
+        "tech": ["React", "Spring Boot", "Java", "RabbitMQ"],
         "links": [
           {
             "url": "https://github.com/Bahmni",
@@ -170,10 +150,7 @@
       {
         "name": "Captain's Wheel",
         "description": "Un jeu de navigateur sur le thème du casino développé avec Phaser 3. Faites tourner la roue, associez la couleur, battez la maison.",
-        "tech": [
-          "JavaScript",
-          "Phaser 3"
-        ],
+        "tech": ["JavaScript", "Phaser 3"],
         "links": [
           {
             "url": "https://github.com/Arjun-Gopinath/captains-wheel",
@@ -188,12 +165,7 @@
       {
         "name": "Portfolio Website",
         "description": "Ce site — conçu et développé de zéro avec React, Tailwind CSS et Framer Motion.",
-        "tech": [
-          "React",
-          "TailwindCSS",
-          "Vite",
-          "Framer Motion"
-        ],
+        "tech": ["React", "TailwindCSS", "Vite", "Framer Motion"],
         "links": [
           {
             "url": "https://github.com/Arjun-Gopinath/PortfolioApp",

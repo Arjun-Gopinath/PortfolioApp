@@ -1,10 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { FiMessageCircle, FiX, FiTrash2 } from "react-icons/fi";
+import { FaTerminal, FaTrash, FaPaperPlane } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
-import { CINEMATIC_EASE } from "../motion";
 
-const WELCOME = "Ask me anything about Arjun's experience, projects, or skills.";
+const WELCOME =
+  "AI Assistant initialized. Ask me anything regarding Arjun's experience, projects, or skill stack.";
 const MAX_MESSAGES = 20;
 
 const SUGGESTED_PROMPTS = [
@@ -14,50 +13,40 @@ const SUGGESTED_PROMPTS = [
   "Where did he study?",
 ];
 
-const TypingIndicator = () => (
-  <div className="flex gap-1.5 p-3 bg-gray-800 rounded-lg w-fit">
-    {[0, 1, 2].map((i) => (
-      <motion.span
-        key={i}
-        className="w-2 h-2 rounded-full bg-gray-400 block"
-        animate={{ opacity: [0.3, 1, 0.3] }}
-        transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.2 }}
-      />
-    ))}
-  </div>
-);
-
 const markdownComponents = {
   strong: ({ children }) => (
-    <strong className="text-sky-300 font-semibold">{children}</strong>
+    <strong className="text-[#58a6ff] font-semibold">{children}</strong>
   ),
-  ul: ({ children }) => <ul className="space-y-1 my-2">{children}</ul>,
+  ul: ({ children }) => (
+    <ul className="space-y-1 my-1 pl-4 border-l border-[#30363d]">
+      {children}
+    </ul>
+  ),
   ol: ({ children }) => (
-    <ol className="space-y-1 my-2 list-decimal ml-4">{children}</ol>
+    <ol className="space-y-1 my-1 list-decimal pl-4">{children}</ol>
   ),
   li: ({ children }) => (
-    <li className="flex gap-2 items-start">
-      <span className="text-sky-400 shrink-0 mt-0.5">•</span>
+    <li className="flex gap-1.5 items-start">
+      <span className="text-[#3fb950] shrink-0 font-mono">›</span>
       <span>{children}</span>
     </li>
   ),
-  p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+  p: ({ children }) => (
+    <p className="mb-1.5 last:mb-0 leading-relaxed">{children}</p>
+  ),
+  code: ({ children }) => (
+    <code className="bg-[#161b22] px-1.5 py-0.5 rounded border border-[#30363d] text-emerald-400 font-mono text-[11px]">
+      {children}
+    </code>
+  ),
 };
 
 const ChatWithMe = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [conversation, setConversation] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const messagesEndRef = useRef(null);
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 1024);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -66,6 +55,12 @@ const ChatWithMe = () => {
   const sendMessage = async (overrideText) => {
     const text = overrideText ?? input;
     if (!text.trim() || loading) return;
+
+    if (text.trim().toLowerCase() === "clear") {
+      setConversation([]);
+      setInput("");
+      return;
+    }
 
     const userMessage = { role: "user", content: text.trim() };
     const updated = [...conversation, userMessage].slice(-MAX_MESSAGES);
@@ -91,10 +86,10 @@ const ChatWithMe = () => {
             role: "assistant",
             content:
               data.reply ||
-              "Something went wrong. Try again or refresh the conversation.",
+              "Command error: failed to resolve query. Try again.",
             isError,
           },
-        ].slice(-MAX_MESSAGES)
+        ].slice(-MAX_MESSAGES),
       );
     } catch {
       setConversation((prev) =>
@@ -102,172 +97,159 @@ const ChatWithMe = () => {
           ...prev,
           {
             role: "assistant",
-            content: "Failed to reach the server. Please try again later.",
+            content: "Network error: Connection to AI daemon failed.",
             isError: true,
           },
-        ].slice(-MAX_MESSAGES)
+        ].slice(-MAX_MESSAGES),
       );
     } finally {
       setLoading(false);
     }
   };
 
-  const panelVariants = isMobile
-    ? { initial: { y: "100%" }, animate: { y: 0 }, exit: { y: "100%" } }
-    : { initial: { x: "100%" }, animate: { x: 0 }, exit: { x: "100%" } };
-
-  const panelClass = isMobile
-    ? "fixed bottom-0 left-0 right-0 z-50 h-[85dvh] bg-gray-950 text-white shadow-2xl flex flex-col rounded-t-2xl border-t border-gray-800 px-5 pt-5 pb-4"
-    : "fixed bottom-0 right-0 z-50 w-[500px] h-full bg-gray-950 text-white shadow-2xl flex flex-col border-l border-gray-800 rounded-l-2xl p-6";
-
   return (
-    <>
-      <AnimatePresence>
-        {!isOpen && (
-          <motion.button
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 bg-sky-600 hover:bg-sky-700 text-white p-4 rounded-full shadow-lg transition-colors duration-200"
-            aria-label="Ask Arjun"
-          >
-            <FiMessageCircle size={24} />
-          </motion.button>
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            {/* Mobile backdrop */}
-            {isMobile && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="fixed inset-0 bg-black/50 z-40"
-                onClick={() => setIsOpen(false)}
-              />
-            )}
-
-            <motion.div
-              initial={panelVariants.initial}
-              animate={panelVariants.animate}
-              exit={panelVariants.exit}
-              transition={{ type: "tween", duration: 0.35, ease: CINEMATIC_EASE }}
-              className={panelClass}
+    <section id="chat" className="font-mono text-gray-200 space-y-4">
+      {/* Terminal Subshell Header */}
+      <div className="border-b border-[#30363d] pb-3 flex flex-wrap items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <FaTerminal className="text-[#3fb950] text-sm" />
+          <span className="text-gray-400 text-xs">
+            bot-session --interactive
+          </span>
+          <h2 className="text-base font-semibold text-gray-100">
+            ~/services/assistant
+          </h2>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-[11px] text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-2 py-0.5 rounded">
+            daemon: online
+          </span>
+          {conversation.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setConversation([])}
+              className="text-gray-400 hover:text-white transition-colors p-1"
+              title="Reset terminal session (or type 'clear')"
             >
-              {/* Drag handle (mobile only) */}
-              {isMobile && (
-                <div className="flex justify-center mb-4">
-                  <div className="w-10 h-1 bg-white/20 rounded-full" />
-                </div>
-              )}
+              <FaTrash className="text-xs" />
+            </button>
+          )}
+        </div>
+      </div>
 
-              {/* Header */}
-              <div className="flex justify-between items-center mb-4 shrink-0">
-                <h3 className="text-lg font-semibold text-sky-400">
-                  Ask Arjun Anything
-                </h3>
-                <div className="flex items-center gap-3">
-                  {conversation.length > 0 && (
+      {/* Terminal Screen & Message Feed */}
+      <div className="border border-[#30363d] bg-[#0d1117] rounded-lg p-4 sm:p-5 flex flex-col h-[520px] justify-between">
+        {/* Messages Stream */}
+        <div className="flex-1 overflow-y-auto space-y-3.5 pr-2">
+          {/* Default banner if conversation is empty */}
+          {conversation.length === 0 && (
+            <div className="space-y-4 py-4">
+              <div className="p-3 bg-[#161b22] border border-[#30363d] rounded text-xs text-gray-300">
+                <span className="text-[#3fb950] font-bold">INFO: </span>
+                <span>{WELCOME}</span>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-[11px] text-gray-500 uppercase tracking-wider">
+                  // Suggested Queries (Click to execute)
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {SUGGESTED_PROMPTS.map((prompt) => (
                     <button
-                      onClick={() => setConversation([])}
-                      aria-label="Clear conversation"
-                      className="text-gray-500 hover:text-gray-300 transition-colors duration-200 p-1"
+                      key={prompt}
+                      type="button"
+                      onClick={() => sendMessage(prompt)}
+                      disabled={loading}
+                      className="text-xs font-mono bg-[#161b22] hover:bg-[#21262d] border border-[#30363d] hover:border-[#58a6ff] text-gray-300 hover:text-white px-2.5 py-1.5 rounded transition-colors disabled:opacity-40"
                     >
-                      <FiTrash2 size={18} />
+                      $ {prompt}
                     </button>
-                  )}
-                  <button
-                    onClick={() => setIsOpen(false)}
-                    aria-label="Close chat"
-                    className="text-gray-500 hover:text-gray-300 transition-colors duration-200 p-1"
-                  >
-                    <FiX size={24} />
-                  </button>
+                  ))}
                 </div>
               </div>
+            </div>
+          )}
 
-              {/* Messages */}
-              <div
-                className="flex-1 overflow-y-auto space-y-3 pr-1"
-                style={{ overscrollBehavior: "contain" }}
-              >
-                {conversation.length === 0 && (
-                  <div className="mt-6 px-2 space-y-4">
-                    <p className="text-sm text-gray-500 text-center">
-                      {WELCOME}
-                    </p>
-                    <div className="flex flex-wrap gap-2 justify-center">
-                      {SUGGESTED_PROMPTS.map((prompt) => (
-                        <button
-                          key={prompt}
-                          onClick={() => sendMessage(prompt)}
-                          disabled={loading}
-                          className="text-xs border border-white/15 hover:border-sky-500/50 hover:bg-sky-500/10 text-gray-400 hover:text-sky-300 px-3 py-2 rounded-full transition-all duration-200 disabled:opacity-40"
-                        >
-                          {prompt}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+          {/* Conversation history */}
+          {conversation.map((msg, idx) => (
+            <div key={idx} className="space-y-1 text-xs">
+              <div className="flex items-center gap-2">
+                {msg.role === "user" ? (
+                  <>
+                    <span className="text-[#3fb950] font-bold">
+                      guest@terminal
+                    </span>
+                    <span className="text-gray-600">:~$</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-[#58a6ff] font-bold">assistant</span>
+                    <span className="text-gray-600">:&gt;</span>
+                  </>
                 )}
-
-                {conversation.map((msg, idx) => (
-                  <div
-                    key={idx}
-                    className={`text-sm p-3 rounded-lg max-w-[85%] ${
-                      msg.role === "user"
-                        ? "bg-sky-700 text-white ml-auto text-right"
-                        : msg.isError
-                        ? "bg-red-900/60 border border-red-700/40 text-red-200"
-                        : "bg-gray-800 text-gray-200"
-                    }`}
-                  >
-                    {msg.role === "assistant" ? (
-                      <ReactMarkdown components={markdownComponents}>
-                        {msg.content}
-                      </ReactMarkdown>
-                    ) : (
-                      msg.content
-                    )}
-                  </div>
-                ))}
-
-                {loading && <TypingIndicator />}
-                <div ref={messagesEndRef} />
               </div>
 
-              {/* Input */}
-              <div className="mt-4 flex gap-2 shrink-0">
-                <input
-                  type="text"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={(e) =>
-                    e.key === "Enter" && !e.shiftKey && sendMessage()
-                  }
-                  placeholder="Ask about Arjun..."
-                  disabled={loading}
-                  className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-sky-600 transition-colors duration-200 disabled:opacity-60"
-                />
-                <button
-                  onClick={() => sendMessage()}
-                  disabled={loading || !input.trim()}
-                  className="bg-sky-600 hover:bg-sky-700 disabled:opacity-50 disabled:cursor-not-allowed px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-200"
-                >
-                  Send
-                </button>
+              <div
+                className={`pl-4 border-l-2 py-0.5 ${
+                  msg.role === "user"
+                    ? "border-[#3fb950]/50 text-gray-200"
+                    : msg.isError
+                      ? "border-red-500/50 text-red-300 bg-red-950/20 p-2 rounded"
+                      : "border-[#58a6ff]/50 text-gray-300"
+                }`}
+              >
+                {msg.role === "assistant" ? (
+                  <ReactMarkdown components={markdownComponents}>
+                    {msg.content}
+                  </ReactMarkdown>
+                ) : (
+                  <p>{msg.content}</p>
+                )}
               </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-    </>
+            </div>
+          ))}
+
+          {/* Assistant Loading Output */}
+          {loading && (
+            <div className="space-y-1 text-xs pl-4 border-l-2 border-[#58a6ff]/50">
+              <span className="text-gray-500 animate-pulse">
+                [processing query...]
+              </span>
+            </div>
+          )}
+
+          <div ref={messagesEndRef} />
+        </div>
+
+        {/* Input Bar */}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            sendMessage();
+          }}
+          className="pt-3 mt-3 border-t border-[#30363d] flex items-center gap-2"
+        >
+          <span className="text-[#3fb950] font-bold select-none">&gt;</span>
+          <input
+            ref={inputRef}
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Type a query or 'clear'..."
+            disabled={loading}
+            className="flex-1 bg-transparent border-none outline-none font-mono text-xs text-gray-200 placeholder-gray-600"
+          />
+          <button
+            type="submit"
+            disabled={loading || !input.trim()}
+            className="text-xs bg-[#21262d] hover:bg-[#30363d] text-gray-200 px-3 py-1.5 rounded border border-[#30363d] transition-colors disabled:opacity-40 flex items-center gap-1.5"
+          >
+            <span>Run</span>
+            <FaPaperPlane className="text-[10px]" />
+          </button>
+        </form>
+      </div>
+    </section>
   );
 };
 

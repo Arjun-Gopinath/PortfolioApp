@@ -1,9 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { staggerContainer, riseItem } from "../motion";
-
-const Footer = () => {
+import { FaGithub, FaLinkedin, FaEnvelope, FaTerminal } from "react-icons/fa";
+const Footer = ({ onNavigate }) => {
   const { t } = useTranslation();
   const year = new Date().getFullYear();
 
@@ -15,85 +12,70 @@ const Footer = () => {
     { id: "contact", label: t("navbar.contact") },
   ];
 
+  const handleLinkClick = (e, id) => {
+    if (onNavigate) {
+      e.preventDefault();
+      onNavigate(id);
+    }
+  };
+
   return (
-    <footer
-      className="bg-gray-950 border-t border-white/10 text-white py-10 px-6 md:px-12"
-    >
-      {/* End-credits cascade — lines rise in sequence, once, on scroll into view */}
-      <motion.div
-        variants={staggerContainer(0.12)}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
-        className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 items-center"
-      >
-        <motion.p variants={riseItem} className="text-gray-400 text-sm">
-          © {year} Arjun Gopinath. All rights reserved.
-        </motion.p>
+    <footer className="border-t border-[#30363d] bg-[#0d1117] text-gray-400 font-mono text-xs py-5 px-4 sm:px-6 mt-8">
+      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        {/* Terminal Status / Copyright */}
+        <div className="flex items-center gap-2 text-gray-400">
+          <FaTerminal className="text-[#3fb950] text-[11px]" />
+          <span>sh_exit(0)</span>
+          <span className="text-gray-600">|</span>
+          <span className="text-gray-400">&copy; {year} Arjun Gopinath</span>
+        </div>
 
-        <motion.div
-          variants={riseItem}
-          className="flex flex-col items-start md:items-center gap-2"
-        >
-          <p className="text-xs uppercase tracking-widest text-gray-500">
-            {t("footer.quickLinks")}
-          </p>
-          <div className="flex flex-wrap gap-x-4 gap-y-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
-                className="text-sm text-gray-300 hover:text-sky-400 transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </motion.div>
+        {/* Quick Nav Commands */}
+        <nav className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-gray-500">
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={(e) => handleLinkClick(e, link.id)}
+              className="hover:text-[#58a6ff] transition-colors"
+            >
+              .{link.id}()
+            </a>
+          ))}
+        </nav>
 
-        <motion.div
-          variants={riseItem}
-          className="flex items-center md:justify-end gap-4"
-        >
+        {/* Social Links & Remotes */}
+        <div className="flex items-center gap-3 text-gray-400">
+          <span className="text-[11px] text-gray-600 hidden md:inline">
+            git remote:
+          </span>
           <a
             href="https://github.com/Arjun-Gopinath"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition-colors duration-200"
+            className="hover:text-white transition-colors"
             aria-label="GitHub"
           >
-            <FaGithub className="text-xl" />
+            <FaGithub className="text-sm" />
           </a>
           <a
             href="https://www.linkedin.com/in/arjun-g-b3b57b1a1/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-sky-400 transition-colors duration-200"
+            className="hover:text-[#58a6ff] transition-colors"
             aria-label="LinkedIn"
           >
-            <FaLinkedin className="text-xl" />
+            <FaLinkedin className="text-sm" />
           </a>
           <a
             href="mailto:arjungopinath06@gmail.com"
-            className="text-gray-400 hover:text-sky-400 transition-colors duration-200"
+            className="hover:text-amber-400 transition-colors"
             aria-label="Email"
           >
-            <FaEnvelope className="text-xl" />
+            <FaEnvelope className="text-sm" />
           </a>
-        </motion.div>
-      </motion.div>
-
-      {/* Closing credit — the one self-aware wink of the cinematic theme */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        className="mt-8 text-center text-[11px] uppercase tracking-[0.3em] text-gray-600"
-      >
-        {t("footer.directedBy")}{" "}
-        <span className="text-gold/80">Arjun Gopinath</span>
-      </motion.p>
+        </div>
+      </div>
     </footer>
   );
 };

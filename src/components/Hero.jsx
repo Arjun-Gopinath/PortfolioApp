@@ -1,203 +1,122 @@
-import { useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { motion, useReducedMotion } from "framer-motion";
-import { FaPlay, FaInfoCircle, FaFileDownload } from "react-icons/fa";
-import { CINEMATIC_EASE } from "../motion";
-import Magnetic from "./Magnetic";
+import { FaFileDownload, FaTerminal, FaCodeBranch } from "react-icons/fa";
 
 const isOpenToWork = import.meta.env.VITE_OPEN_TO_WORK === "true";
-
 const TOP_SKILLS = ["React", "TypeScript", "Node.js", "Python"];
 
-const Hero = () => {
+const Hero = ({ onNavigate }) => {
   const { t } = useTranslation();
-  const reduceMotion = useReducedMotion();
-  const sectionRef = useRef(null);
 
   const name = t("hero.name");
-  const words = name.split(" ");
+  const title = t("hero.title");
+  const subtitle = t("hero.subtitle");
+  const expBadge = t("hero.experienceBadge");
 
-  // Projector spotlight — track the pointer as CSS vars on the section.
-  const handlePointer = (e) => {
-    if (reduceMotion) return;
-    const el = sectionRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-    el.style.setProperty("--my", `${e.clientY - rect.top}px`);
-  };
-
-  const scrollToId = (id) => {
-    document
-      .getElementById(id)
-      ?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+  const handleNav = (section) => {
+    if (onNavigate) {
+      onNavigate(section);
+      return;
+    }
+    document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section
-      id="hero"
-      ref={sectionRef}
-      onPointerMove={handlePointer}
-      className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-24 bg-gray-950 overflow-hidden hero-pitch-lines"
-    >
-      {/* Projector spotlight (desktop pointer only; hidden under reduced motion) */}
-      <div className="hero-spotlight hidden md:block" aria-hidden="true" />
+    <section id="hero" className="font-mono text-gray-300 space-y-6">
+      {/* CLI Command Line Banner */}
+      <div className="flex items-center gap-2 text-xs text-gray-500 pb-2 border-b border-[#30363d]/60">
+        <FaTerminal className="text-[#3fb950]" />
+        <span>system.exec(&quot;whoami --verbose&quot;)</span>
+        <span className="text-gray-600 ml-auto">status: 200 OK</span>
+      </div>
 
-      {/* One-time letterbox entrance — thin black bars ease outward on load */}
-      {!reduceMotion && (
-        <>
-          <motion.div
-            className="letterbox-bar top"
-            initial={{ height: "8vh" }}
-            animate={{ height: 0 }}
-            transition={{ duration: 0.9, ease: CINEMATIC_EASE, delay: 0.2 }}
-          />
-          <motion.div
-            className="letterbox-bar bottom"
-            initial={{ height: "8vh" }}
-            animate={{ height: 0 }}
-            transition={{ duration: 0.9, ease: CINEMATIC_EASE, delay: 0.2 }}
-          />
-        </>
-      )}
-
-      <div className="relative max-w-3xl mx-auto w-full">
-        {isOpenToWork && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="flex justify-center mb-6"
-          >
-            <span className="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/40 text-green-400 text-xs font-medium px-3 py-1 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              {t("hero.openToWork")}
+      {/* Main Terminal Overview Block */}
+      <div className="border border-[#30363d] bg-[#0d1117] rounded-lg p-5 sm:p-7 space-y-6">
+        {/* Availability & Header Meta */}
+        <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2">
+            <span className="text-gray-500">USER:</span>
+            <span className="text-[#58a6ff] font-semibold">
+              {name.toLowerCase().replace(/\s+/g, ".")}
             </span>
-          </motion.div>
-        )}
-
-        {/* Opening title — name rises word-by-word from behind a mask */}
-        <h1
-          className="flex flex-wrap justify-center gap-x-[0.25em] font-display"
-          style={{
-            fontSize: "clamp(4rem, 10vw, 9rem)",
-            lineHeight: 1,
-            color: "white",
-          }}
-        >
-          {words.map((word, i) => (
-            <span key={i} className="inline-block overflow-hidden p-[0.05em]">
-              <motion.span
-                className="inline-block"
-                initial={reduceMotion ? { opacity: 0 } : { y: "100%" }}
-                animate={reduceMotion ? { opacity: 1 } : { y: 0 }}
-                transition={{
-                  duration: 0.8,
-                  ease: CINEMATIC_EASE,
-                  delay: 0.35 + i * 0.12,
-                }}
-              >
-                {word}
-              </motion.span>
-            </span>
-          ))}
-        </h1>
-
-        {/* "Starring" credit line */}
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="text-xs md:text-sm uppercase tracking-[0.25em] text-sky-400 mt-5 mb-6"
-        >
-          {t("hero.title")}
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.85 }}
-          className="text-sm md:text-base text-gray-400 max-w-xl mx-auto leading-relaxed mb-6"
-        >
-          {t("hero.subtitle")}
-        </motion.p>
-
-        {/* Meta row — a compact "rating badge" of years + top genre tags */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.95 }}
-          className="flex flex-wrap items-center justify-center gap-2 mb-9 text-xs"
-        >
-          <span className="inline-flex items-center border border-gold/30 text-gold/90 px-2.5 py-1 rounded font-semibold uppercase tracking-wide">
-            {t("hero.experienceBadge")}
-          </span>
-          {TOP_SKILLS.map((skill) => (
-            <span
-              key={skill}
-              className="text-gray-500 px-2.5 py-1 border border-white/10 rounded-full"
-            >
-              {skill}
-            </span>
-          ))}
-        </motion.div>
-
-        {/* Streaming-banner CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.1 }}
-          className="flex flex-wrap items-center justify-center gap-4"
-        >
-          <Magnetic>
-            <button
-              type="button"
-              onClick={() => scrollToId("experience")}
-              className="btn-sweep inline-flex items-center gap-2 bg-white transition-colors duration-200 px-7 py-3 rounded-md text-gray-950 text-sm font-bold shadow-lg"
-            >
-              <FaPlay className="text-sm" />
-              {t("hero.play")}
-            </button>
-          </Magnetic>
-
-          <Magnetic>
-            <button
-              type="button"
-              onClick={() => scrollToId("projects")}
-              className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 border border-white/20 transition-all duration-200 px-7 py-3 rounded-md text-white text-sm font-bold"
-            >
-              <FaInfoCircle className="text-sm" />
-              {t("hero.moreInfo")}
-            </button>
-          </Magnetic>
-        </motion.div>
-
-        <motion.a
-          href="/resume/arjun-gopinath-resume.pdf"
-          download
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.3 }}
-          className="inline-flex items-center gap-2 mt-5 text-xs text-gray-500 hover:text-sky-400 transition-colors duration-200"
-          aria-label="Download Arjun's resume"
-        >
-          <FaFileDownload className="text-xs" />
-          {t("hero.downloadResume")}
-        </motion.a>
-
-        <div className="mt-10 hidden sm:flex flex-col items-center">
-          <div className="relative w-px h-12 bg-white/10 overflow-hidden rounded-full">
-            <motion.div
-              className="absolute top-0 left-0 w-full rounded-full bg-gradient-to-b from-sky-400 to-sky-400/0"
-              animate={{ y: ["-100%", "200%"] }}
-              transition={{
-                duration: 1.4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              style={{ height: "50%" }}
-            />
+            <span className="text-gray-600">@</span>
+            <span className="text-gray-400">portfolio</span>
           </div>
+
+          {isOpenToWork && (
+            <div className="inline-flex items-center gap-2 bg-emerald-950/50 border border-emerald-500/30 text-emerald-400 text-xs px-2.5 py-0.5 rounded">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+              <span>{t("hero.openToWork")}</span>
+            </div>
+          )}
+        </div>
+
+        {/* Name / Display Output */}
+        <div>
+          <p className="text-xs text-gray-500 mb-1"># Identity</p>
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+            {name}
+          </h1>
+          <p className="text-sm sm:text-base text-[#58a6ff] mt-1 flex items-center gap-2">
+            <span>&gt;</span>
+            <span>{title}</span>
+          </p>
+        </div>
+
+        {/* Bio / Subtitle */}
+        <div className="border-l-2 border-[#30363d] pl-4 py-1">
+          <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-2xl">
+            {subtitle}
+          </p>
+        </div>
+
+        {/* Technical Stack / System Specs */}
+        <div className="space-y-2 pt-2">
+          <p className="text-xs text-gray-500 flex items-center gap-1.5">
+            <FaCodeBranch className="text-gray-600 text-[10px]" />
+            <span>PRIMARY_STACK &amp; METRICS:</span>
+          </p>
+          <div className="flex flex-wrap items-center gap-2 text-xs">
+            <span className="border border-amber-500/40 bg-amber-500/10 text-amber-300 px-2 py-0.5 rounded">
+              {expBadge}
+            </span>
+            {TOP_SKILLS.map((skill) => (
+              <span
+                key={skill}
+                className="bg-[#161b22] border border-[#30363d] text-gray-300 px-2 py-0.5 rounded"
+              >
+                [{skill}]
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* CLI Actions & Resume Download */}
+        <div className="pt-4 border-t border-[#30363d]/60 flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={() => handleNav("experience")}
+            className="inline-flex items-center gap-2 bg-[#238636] hover:bg-[#2ea043] text-white text-xs px-3.5 py-1.5 rounded font-medium transition-colors"
+          >
+            <span>./view-experience.sh</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleNav("projects")}
+            className="inline-flex items-center gap-2 bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] text-gray-200 text-xs px-3.5 py-1.5 rounded transition-colors"
+          >
+            <span>./explore-projects.sh</span>
+          </button>
+
+          <a
+            href="/resume/arjun-gopinath-resume.pdf"
+            download
+            className="inline-flex items-center gap-1.5 text-xs text-gray-400 hover:text-[#58a6ff] hover:underline px-2 py-1.5 ml-auto transition-colors"
+            aria-label="Download resume"
+          >
+            <FaFileDownload className="text-[11px]" />
+            <span>resume.pdf</span>
+          </a>
         </div>
       </div>
     </section>

@@ -1,286 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
 @import "tailwindcss";
-@import url('https://googleapis.com');
 
-/* Cinematic accent — warm marquee gold. Registered as a Tailwind theme color
-   so utilities like text-gold, bg-gold/50, border-gold/40 all work.
-   Sky-blue stays the primary interactive color. */
-/* Shared typography tokens — the only place either typeface is declared.
-   Generates the font-display / font-body utility classes; components must
-   use these instead of inline fontFamily styles. */
 @theme {
-  --color-gold: #f5b942;
-  --font-display: 'Inter', sans-serif;
-  --font-body: 'Manrope', sans-serif;
-}
-
-:root {
-  --gold: #f5b942;
-  --gold-soft: rgba(245, 185, 66, 0.5);
-}
-
-html {
-  scroll-behavior: smooth;
+  --font-mono: 'Fira Code', monospace;
+  --font-sans: 'Inter', sans-serif;
+  --color-term-bg: #0d1117;
+  --color-term-header: #161b22;
+  --color-term-border: #30363d;
+  --color-term-green: #3fb950;
+  --color-term-cyan: #58a6ff;
+  --color-term-amber: #d29922;
+  --color-term-muted: #8b949e;
 }
 
 body {
-  background-color: #030712; /* gray-950 */
-  font-family: var(--font-body);
+  background-color: #030712;
+  color: #c9d1d9;
+  font-family: var(--font-mono);
+  margin: 0;
+  min-height: 100vh;
 }
 
-/* ---------------------------------------------------------------------------
-   Cinematic layer — all effects are CSS-only, animate transform/opacity only,
-   are aria-hidden + pointer-events:none, and switch off under reduced motion.
-   --------------------------------------------------------------------------- */
-
-/* Film grain — a very subtle animated noise wash over the whole page. */
-.film-grain {
-  position: fixed;
-  inset: 0;
-  z-index: 90;
-  pointer-events: none;
-  opacity: 0.035;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-  animation: grain-shift 0.6s steps(4) infinite;
-}
-@keyframes grain-shift {
-  0%   { transform: translate(0, 0); }
-  25%  { transform: translate(-4%, 3%); }
-  50%  { transform: translate(3%, -2%); }
-  75%  { transform: translate(-2%, -3%); }
-  100% { transform: translate(2%, 2%); }
+/* Subtle CRT scanline effect (clean & non-intrusive) */
+.terminal-screen {
+  background: radial-gradient(circle at 50% 50%, rgba(22, 27, 34, 0.2) 0%, rgba(13, 17, 23, 0.95) 100%);
 }
 
-/* Letterbox bars — one-time opening-titles frame that eases outward on load. */
-.letterbox-bar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: 95;
-  height: 8vh;
-  background: #000;
-  pointer-events: none;
+/* Custom terminal scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
-.letterbox-bar.top { top: 0; }
-.letterbox-bar.bottom { bottom: 0; }
-
-/* Projector spotlight that follows the cursor over the hero (desktop only). */
-.hero-spotlight {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    600px circle at var(--mx, 50%) var(--my, 40%),
-    rgba(255, 255, 255, 0.05),
-    transparent 60%
-  );
-  transition: background 0.15s ease-out;
+::-webkit-scrollbar-track {
+  background: #0d1117;
 }
-
-/* Countdown leader ring for the loading screen. */
-.countdown-ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 9999px;
-  border: 2px solid rgba(255, 255, 255, 0.12);
+::-webkit-scrollbar-thumb {
+  background: #21262d;
+  border-radius: 4px;
 }
-.countdown-sweep {
-  position: absolute;
-  inset: -1px;
-  border-radius: 9999px;
-  border: 2px solid transparent;
-  border-top-color: var(--gold);
-  border-right-color: var(--gold-soft);
-  animation: sweep-spin 1s linear infinite;
-}
-@keyframes sweep-spin {
-  to { transform: rotate(360deg); }
-}
-/* Countdown crosshair lines. */
-.countdown-cross::before,
-.countdown-cross::after {
-  content: "";
-  position: absolute;
-  background: rgba(255, 255, 255, 0.1);
-}
-.countdown-cross::before {
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  transform: translateX(-50%);
-}
-.countdown-cross::after {
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  transform: translateY(-50%);
-}
-
-/* Marquee bulbs — a chase shimmer of theater lights along a divider edge. */
-.marquee-bulbs {
-  height: 3px;
-  background-image: radial-gradient(
-    circle,
-    var(--gold-soft) 0.5px,
-    transparent 1.4px
-  );
-  background-size: 14px 3px;
-  background-repeat: repeat-x;
-  opacity: 0.5;
-  animation: bulb-chase 1.2s linear infinite;
-}
-@keyframes bulb-chase {
-  to { background-position: 14px 0; }
-}
-
-/* Filmstrip sprocket-hole edge for the timeline spine. */
-.sprocket-edge {
-  background-image: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.14) 0,
-    rgba(255, 255, 255, 0.14) 3px,
-    transparent 3px,
-    transparent 9px
-  );
-}
-
-/* Hover-sweep fill for primary CTAs — a diagonal color wipe driven purely by
-   a pseudo-element transform, no JS. */
-.btn-sweep {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
-.btn-sweep::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: var(--gold);
-  transform: translateX(-105%);
-  transition: transform 0.35s cubic-bezier(0.76, 0, 0.24, 1);
-}
-.btn-sweep:hover::before,
-.btn-sweep:focus-visible::before {
-  transform: translateX(0);
-}
-.btn-sweep,
-.btn-sweep * {
-  transition: color 0.35s cubic-bezier(0.76, 0, 0.24, 1);
-}
-.btn-sweep:hover,
-.btn-sweep:hover *,
-.btn-sweep:focus-visible,
-.btn-sweep:focus-visible * {
-  color: #030712;
-}
-
-/* Reduced motion: silence every ambient cinematic animation. */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .film-grain,
-  .countdown-sweep,
-  .marquee-bulbs {
-    animation: none !important;
-  }
-  .film-grain { display: none; }
-  .hero-spotlight { display: none; }
-  .btn-sweep::before,
-  .btn-sweep,
-  .btn-sweep * {
-    transition: none !important;
-  }
-}
-
-/* Football pitch lines — barely visible Easter egg in Hero background */
-.hero-pitch-lines {
-  background-image:
-    linear-gradient(to bottom,
-      transparent calc(50% - 0.5px),
-      rgba(255,255,255,0.018) calc(50% - 0.5px),
-      rgba(255,255,255,0.018) calc(50% + 0.5px),
-      transparent calc(50% + 0.5px)),
-    radial-gradient(circle at 50% 50%,
-      transparent 17%,
-      rgba(255,255,255,0.018) 17.5%,
-      rgba(255,255,255,0.018) 18%,
-      transparent 18.5%),
-    radial-gradient(circle at 50% 50%,
-      rgba(255,255,255,0.025) 0.4%,
-      transparent 0.8%);
-}
-
-@layer utilities {
-  .animate-slowspin {
-    animation: spin 5s linear infinite;
-  }
-}
-
-@keyframes marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-@keyframes marquee-reverse {
-  0%   { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
-}
-.animate-marquee         { animation: marquee 28s linear infinite; }
-.animate-marquee-reverse { animation: marquee-reverse 28s linear infinite; }
-
-.perspective {
-  perspective: 1200px;
-}
-.transform-style-preserve-3d {
-  transform-style: preserve-3d;
-}
-.backface-hidden {
-  backface-visibility: hidden;
-}
-
-/* ---------------------------------------------------------------------------
-   Streaming-service row browsing — horizontal scroll-snap carousels.
-   --------------------------------------------------------------------------- */
-.row-scroll {
-  scroll-snap-type: x proximity;
-  scroll-padding-left: 0.25rem;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-.row-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-/* TitleCard hover/focus overlay — same scrollbar-hiding treatment as
-   .row-scroll so overflowing synopsis/bullets/links scroll without a
-   visible system scrollbar bisecting the card. */
-.titlecard-overlay-scroll {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.titlecard-overlay-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-/* Solid edge fades that match the section background, signalling more content
-   without depending on mask-image (uneven Safari support). */
-.row-fade-left,
-.row-fade-right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2.5rem;
-  pointer-events: none;
-  z-index: 10;
-}
-.row-fade-left {
-  left: 0;
-  background: linear-gradient(to right, #030712, transparent);
-}
-.row-fade-right {
-  right: 0;
-  background: linear-gradient(to left, #030712, transparent);
+::-webkit-scrollbar-thumb:hover {
+  background: #30363d;
 }

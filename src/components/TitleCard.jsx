@@ -1,4 +1,9 @@
-import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from "framer-motion";
 import { cardHover } from "../motion";
 
 const TILT_SPRING = { stiffness: 300, damping: 25 };
@@ -26,7 +31,9 @@ const TitleCard = ({
   const reduceMotion = useReducedMotion();
   const cardWidth = width || (compact ? "w-32 sm:w-36" : "w-64 sm:w-72");
   const cardHeight = height || (compact ? "h-24 sm:h-28" : "h-64 sm:h-72");
-  const hasOverlay = !compact && (synopsis || (bullets && bullets.length > 0) || links.length > 0);
+  const hasOverlay =
+    !compact &&
+    (synopsis || (bullets && bullets.length > 0) || links.length > 0);
 
   // Pointer-tracked 3D tilt — full (non-compact) cards only, off under
   // reduced motion. Springs back to flat on pointer leave.
@@ -62,17 +69,26 @@ const TitleCard = ({
       aria-label={title}
       style={
         tiltEnabled
-          ? { rotateX: springRotateX, rotateY: springRotateY, transformPerspective: 800 }
+          ? {
+              rotateX: springRotateX,
+              rotateY: springRotateY,
+              transformPerspective: 800,
+            }
           : undefined
       }
       className={`group relative shrink-0 snap-start ${cardWidth} ${cardHeight} rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-b from-white/8 to-white/[0.03] backdrop-blur-lg shadow-lg outline-none focus-visible:ring-2 focus-visible:ring-sky-400/60 ${className}`}
     >
-      <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${accent}`} aria-hidden="true" />
+      <div
+        className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${accent}`}
+        aria-hidden="true"
+      />
 
       {compact ? (
         <div className="p-4 flex flex-col items-center justify-center gap-2 h-full text-center">
           {icon && <span className="text-2xl text-sky-300">{icon}</span>}
-          <span className="text-sm font-medium text-white leading-snug">{title}</span>
+          <span className="text-sm font-medium text-white leading-snug">
+            {title}
+          </span>
         </div>
       ) : (
         <div className="p-5 h-full flex flex-col relative">
@@ -92,12 +108,18 @@ const TitleCard = ({
           )}
 
           <div className="relative z-10 flex items-start gap-3 mb-3">
-            {icon && <span className="text-2xl text-white/80 shrink-0">{icon}</span>}
+            {icon && (
+              <span className="text-2xl text-white/80 shrink-0">{icon}</span>
+            )}
             <div className="min-w-0">
               <h4 className="text-lg font-bold text-white leading-snug font-display">
                 {title}
               </h4>
-              {subtitle && <p className="text-xs text-gray-500 truncate mt-0.5">{subtitle}</p>}
+              {subtitle && (
+                <p className="text-xs text-gray-500 truncate mt-0.5">
+                  {subtitle}
+                </p>
+              )}
             </div>
           </div>
 
@@ -117,11 +139,15 @@ const TitleCard = ({
           {hasOverlay && (
             <div
               className={`titlecard-overlay-scroll absolute inset-x-0 bottom-0 z-20 max-h-[75%] overflow-y-auto bg-gray-950/95 border-t border-white/10 p-4 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200 ${
-                reduceMotion ? "" : "translate-y-1 group-hover:translate-y-0 group-focus-within:translate-y-0 transition-[opacity,transform] duration-200"
+                reduceMotion
+                  ? ""
+                  : "translate-y-1 group-hover:translate-y-0 group-focus-within:translate-y-0 transition-[opacity,transform] duration-200"
               }`}
             >
               {synopsis && (
-                <p className="text-sm text-gray-400 leading-relaxed mb-3">{synopsis}</p>
+                <p className="text-sm text-gray-400 leading-relaxed mb-3">
+                  {synopsis}
+                </p>
               )}
 
               {bullets && bullets.length > 0 && (

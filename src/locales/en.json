@@ -23,8 +23,17 @@
     "heading": "Professional Experience",
     "jobs": [
       {
+        "title": "EY GDS",
+        "role": "Assistant Manager (Jul 2026 – Present)",
+        "responsibilities": [
+          "Part of EY Global Delivery Services (GDS) — the technology delivery arm of EY — working within the Consulting service line.",
+          "Owned end-to-end frontend and backend development for an agentic AI initiative on a large enterprise engagement built with React and FastAPI. Built production AI agents for replacing manual reconciliation and mapping work across disparate data sources.",
+          "Benchmarked LLMs and embedding models against real use cases, selecting the best-performing option per task and worked with Apache Iceberg and Neo4j for data infrastructure, and Azure AI Foundry for LLM model management in a fast-paced, AI-driven development workflow."
+        ]
+      },
+      {
         "title": "Ransky Tech",
-        "role": "Software Developer (Feb 2026 - Apr 2026)",
+        "role": "Software Developer (Feb 2026 – Apr 2026)",
         "responsibilities": [
           "Built trading dashboards in React and TypeScript that pulled live data from multiple exchange APIs — normalizing formats across sources and keeping rendering fast enough for real-time P&L tracking.",
           "Coded Node.js and Python services to automate daily report generation — traders were reconciling data manually before this, which took hours each day.",
@@ -97,49 +106,25 @@
       {
         "name": "Financial Reporting Platform",
         "description": "Real-time trading dashboard for P&L, balances, and fees across exchanges — with automated daily report generation replacing manual reconciliation.",
-        "tech": [
-          "React",
-          "TypeScript",
-          "Node.js",
-          "Python"
-        ],
+        "tech": ["React", "TypeScript", "Node.js", "Python"],
         "links": []
       },
       {
         "name": "Clinical Study Report",
         "description": "React and FastAPI application integrating LLM and RAG pipelines to generate structured clinical study reports from unstructured medical inputs for a global pharmaceutical client.",
-        "tech": [
-          "React",
-          "FastAPI",
-          "Python",
-          "LLM",
-          "RAG"
-        ],
+        "tech": ["React", "FastAPI", "Python", "LLM", "RAG"],
         "links": []
       },
       {
         "name": "Chatbot for Admin Console",
         "description": "Conversational assistant built with agentic and deterministic Temporal workflows — helps users navigate admin consoles interactively using LLM and RAG.",
-        "tech": [
-          "React",
-          "FastAPI",
-          "Python",
-          "LLM",
-          "RAG",
-          "Temporal"
-        ],
+        "tech": ["React", "FastAPI", "Python", "LLM", "RAG", "Temporal"],
         "links": []
       },
       {
         "name": "Swarm Intel",
         "description": "Multi-agent research swarm built for the Microsoft Build AI Hackathon. Dispatches 5 specialized AI agents in parallel to research any company — news, financials, LinkedIn, GitHub, and regulatory — then validates and synthesizes findings into a structured due diligence report.",
-        "tech": [
-          "Python",
-          "LangGraph",
-          "LangChain",
-          "Streamlit",
-          "Ollama"
-        ],
+        "tech": ["Python", "LangGraph", "LangChain", "Streamlit", "Ollama"],
         "links": [
           {
             "url": "https://github.com/Arjun-Gopinath/swarm-intel",
@@ -154,12 +139,7 @@
       {
         "name": "Bahmni Open Source (EMR)",
         "description": "Feature contributions across the React frontend and Spring Boot backend for Bahmni's open-source EHR platform — i18n, JWT auth improvements, RabbitMQ integrations, and release coordination.",
-        "tech": [
-          "React",
-          "Spring Boot",
-          "Java",
-          "RabbitMQ"
-        ],
+        "tech": ["React", "Spring Boot", "Java", "RabbitMQ"],
         "links": [
           {
             "url": "https://github.com/Bahmni",
@@ -170,10 +150,7 @@
       {
         "name": "Captain's Wheel",
         "description": "A fast-paced casino-themed browser game built with Phaser 3. Spin the wheel, match the suit, beat the house.",
-        "tech": [
-          "JavaScript",
-          "Phaser 3"
-        ],
+        "tech": ["JavaScript", "Phaser 3"],
         "links": [
           {
             "url": "https://github.com/Arjun-Gopinath/captains-wheel",
@@ -188,12 +165,7 @@
       {
         "name": "Portfolio Website",
         "description": "This site — designed and developed from scratch with React, Tailwind CSS, and Framer Motion.",
-        "tech": [
-          "React",
-          "TailwindCSS",
-          "Vite",
-          "Framer Motion"
-        ],
+        "tech": ["React", "TailwindCSS", "Vite", "Framer Motion"],
         "links": [
           {
             "url": "https://github.com/Arjun-Gopinath/PortfolioApp",
