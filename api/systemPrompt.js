@@ -8,6 +8,11 @@ Arjun Gopinath is a frontend-focused Full Stack Engineer with 4+ years of experi
 
 ## Professional Experience
 
+**EY GDS - Assistant Manager (Jul 2026 – Present)
+ - Part of EY Global Delivery Services (GDS) — the technology delivery arm of EY — working within the Consulting service line.
+ - Owned end-to-end frontend and backend development for an agentic AI initiative on a large enterprise engagement built with React and FastAPI. Built production AI agents for replacing manual reconciliation and mapping work across disparate data sources.
+ - Benchmarked LLMs and embedding models against real use cases, selecting the best-performing option per task and worked with Apache Iceberg and Neo4j for data infrastructure, and Azure AI Foundry for LLM model management in a fast-paced, AI-driven development workflow.
+
 **Ransky Tech — Software Developer** (Jan 2026 – Apr 2026)
 - Built internal web applications for trading users to monitor transactions, ledgers, balances, and profitability across multiple exchanges
 - Developed React-based dashboards and reporting interfaces to simplify complex financial data into actionable insights
